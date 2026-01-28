@@ -232,7 +232,7 @@ export default function SearchBar({
 
       {/* Search Results Dropdown */}
       {isDropdownOpen && (
-        <div className="absolute left-0 right-0 mt-2 bg-background border rounded-lg shadow-lg z-50 max-h-[600px] overflow-y-auto custom-scrollbar">
+        <div className="absolute left-0 right-0 mt-2 bg-background border rounded-lg shadow-lg z-50 max-h-150 overflow-y-auto custom-scrollbar">
           {!searchQuery && !searchResults ? (
             /* Trending Searches */
             <div className="p-3">
@@ -274,9 +274,7 @@ export default function SearchBar({
                         className="flex items-start gap-3 px-3 py-2.5 hover:bg-muted rounded-lg transition-colors"
                         onClick={() => setIsDropdownOpen(false)}
                       >
-                        <div className="text-2xl flex-shrink-0">
-                          {course.image}
-                        </div>
+                        <div className="text-2xl shrink-0">{course.image}</div>
                         <div className="flex-1 min-w-0">
                           <div className="text-sm font-medium text-foreground line-clamp-1">
                             {course.title}
@@ -306,7 +304,7 @@ export default function SearchBar({
                         className="flex items-center gap-3 px-3 py-2.5 hover:bg-muted rounded-lg transition-colors"
                         onClick={() => setIsDropdownOpen(false)}
                       >
-                        <div className="text-2xl flex-shrink-0">
+                        <div className="text-2xl shrink-0">
                           {community.image}
                         </div>
                         <div className="flex-1 min-w-0">
@@ -338,9 +336,7 @@ export default function SearchBar({
                         className="flex items-center gap-3 px-3 py-2.5 hover:bg-muted rounded-lg transition-colors"
                         onClick={() => setIsDropdownOpen(false)}
                       >
-                        <div className="text-2xl flex-shrink-0">
-                          {user.image}
-                        </div>
+                        <div className="text-2xl shrink-0">{user.image}</div>
                         <div className="flex-1 min-w-0">
                           <div className="text-sm font-medium text-foreground line-clamp-1">
                             {user.name}
@@ -370,9 +366,7 @@ export default function SearchBar({
                         className="flex items-center gap-3 px-3 py-2.5 hover:bg-muted rounded-lg transition-colors"
                         onClick={() => setIsDropdownOpen(false)}
                       >
-                        <div className="text-2xl flex-shrink-0">
-                          {event.image}
-                        </div>
+                        <div className="text-2xl shrink-0">{event.image}</div>
                         <div className="flex-1 min-w-0">
                           <div className="text-sm font-medium text-foreground line-clamp-1">
                             {event.title}

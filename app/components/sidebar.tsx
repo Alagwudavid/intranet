@@ -505,16 +505,16 @@ export default function Sidebar({ className = "" }: SidebarProps) {
               </Tooltip>
             }
           >
-            <DropdownItem icon={<AppsIcon className="!w-5 !h-5" />}>
+            <DropdownItem icon={<AppsIcon className="w-5! h-5!" />}>
               Apps & toolkit
             </DropdownItem>
-            <DropdownItem icon={<LibraryIcon className="!w-5 !h-5" />}>
+            <DropdownItem icon={<LibraryIcon className="w-5! h-5!" />}>
               Library
             </DropdownItem>
-            <DropdownItem icon={<AffiliateIcon className="!w-5 !h-5" />}>
+            <DropdownItem icon={<AffiliateIcon className="w-5! h-5!" />}>
               Affiliate
             </DropdownItem>
-            <DropdownItem icon={<Languages className="!w-5 !h-5" />}>
+            <DropdownItem icon={<Languages className="w-5! h-5!" />}>
               Language
             </DropdownItem>
             <div className="relative">
@@ -525,9 +525,9 @@ export default function Sidebar({ className = "" }: SidebarProps) {
                 }}
                 className="w-full flex items-center gap-3 px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors text-left"
               >
-                <Moon className="!w-5 !h-5" />
+                <Moon className="w-5! h-5!" />
                 <span>Theme</span>
-                <ChevronRight className="!w-4 !h-4 ml-auto" />
+                <ChevronRight className="w-4! h-4! ml-auto" />
               </button>
               {showThemeMenu && (
                 <div
@@ -542,10 +542,10 @@ export default function Sidebar({ className = "" }: SidebarProps) {
                       }}
                       className="w-full flex items-center gap-3 px-4 py-2 text-sm hover:bg-muted transition-colors"
                     >
-                      <Sun className="!w-5 !h-5" />
+                      <Sun className="w-5! h-5!" />
                       <span>Light</span>
                       {theme === "light" && (
-                        <Check className="!w-4 !h-4 ml-auto" />
+                        <Check className="w-4! h-4! ml-auto" />
                       )}
                     </button>
                     <button
@@ -555,10 +555,10 @@ export default function Sidebar({ className = "" }: SidebarProps) {
                       }}
                       className="w-full flex items-center gap-3 px-4 py-2 text-sm hover:bg-muted transition-colors"
                     >
-                      <Moon className="!w-5 !h-5" />
+                      <Moon className="w-5! h-5!" />
                       <span>Dark</span>
                       {theme === "dark" && (
-                        <Check className="!w-4 !h-4 ml-auto" />
+                        <Check className="w-4! h-4! ml-auto" />
                       )}
                     </button>
                     <button
@@ -568,10 +568,10 @@ export default function Sidebar({ className = "" }: SidebarProps) {
                       }}
                       className="w-full flex items-center gap-3 px-4 py-2 text-sm hover:bg-muted transition-colors"
                     >
-                      <Monitor className="!w-5 !h-5" />
+                      <Monitor className="w-5! h-5!" />
                       <span>System</span>
                       {theme === "system" && (
-                        <Check className="!w-4 !h-4 ml-auto" />
+                        <Check className="w-4! h-4! ml-auto" />
                       )}
                     </button>
                   </div>
@@ -579,13 +579,13 @@ export default function Sidebar({ className = "" }: SidebarProps) {
               )}
             </div>
             <DropdownDivider />
-            <DropdownItem icon={<SettingIcon className="!w-5 !h-5" />}>
+            <DropdownItem icon={<SettingIcon className="w-5! h-5!" />}>
               Account setting
             </DropdownItem>
-            <DropdownItem icon={<ShieldQuestionIcon className="!w-5 !h-5" />}>
+            <DropdownItem icon={<ShieldQuestionIcon className="w-5! h-5!" />}>
               <Link href={"/intranet/me/tasks"}>Help center</Link>
             </DropdownItem>
-            <DropdownItem icon={<LogoutIcon className="!w-5 !h-5" />}>
+            <DropdownItem icon={<LogoutIcon className="w-5! h-5!" />}>
               <Link href={"/intranet/auth"}>Logout</Link>
             </DropdownItem>
           </DropdownMenu>

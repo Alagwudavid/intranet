@@ -83,7 +83,7 @@ export default function CommunityNavInfo() {
               className="flex items-center gap-1"
             >
               {index === 0 && (
-                <div className="relative w-5 h-5 rounded overflow-hidden bg-background flex-shrink-0">
+                <div className="relative w-5 h-5 rounded overflow-hidden bg-background shrink-0">
                   <Image
                     src="/assets/user-1.png"
                     alt="Community"
@@ -103,7 +103,7 @@ export default function CommunityNavInfo() {
                 {breadcrumb.name}
               </Link>
               {index < breadcrumbs.length - 1 && (
-                <ChevronRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
+                <ChevronRight className="w-4 h-4 text-muted-foreground shrink-0" />
               )}
             </div>
           ))}

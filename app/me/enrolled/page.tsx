@@ -204,7 +204,7 @@ function EnrolledPage() {
                   className="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer border border-gray-100 dark:border-gray-600"
                 >
                   {/* Time */}
-                  <div className="flex-shrink-0 text-center">
+                  <div className="shrink-0 text-center">
                     <div className="text-sm font-semibold text-gray-900 dark:text-white">
                       {classItem.time.split(" - ")[0]}
                     </div>
@@ -255,7 +255,7 @@ function EnrolledPage() {
                   </div>
 
                   {/* Status Indicator */}
-                  <div className="flex-shrink-0">
+                  <div className="shrink-0">
                     <div className="w-2 h-2 rounded-full bg-green-500"></div>
                   </div>
                 </div>
@@ -345,7 +345,7 @@ function ClassCard({
         <div className="flex-1">
           <div className="flex flex-row gap-4 p-3">
             <div
-              className={`w-14 h-14 rounded-lg bg-gradient-to-br ${classItem.color} flex items-center justify-center p-2 text-center`}
+              className={`w-14 h-14 rounded-lg bg-linear-to-br ${classItem.color} flex items-center justify-center p-2 text-center`}
             >
               <div className="text-white font-bold text-base">
                 {classItem.courseCode}
@@ -445,7 +445,7 @@ function ClassCard({
         <div className="flex items-center gap-6">
           {/* Icon */}
           <div
-            className={`w-16 h-16 rounded-lg bg-gradient-to-br ${classItem.color} flex items-center justify-center p-2 flex-shrink-0`}
+            className={`w-16 h-16 rounded-lg bg-linear-to-br ${classItem.color} flex items-center justify-center p-2 shrink-0`}
           >
             <div className="text-center">
               <div className="text-white font-bold text-lg">
@@ -469,7 +469,7 @@ function ClassCard({
         </div>
 
         {/* Action Buttons */}
-        <div className="flex-shrink-0 flex items-end gap-2">
+        <div className="shrink-0 flex items-end gap-2">
           <Tooltip label="Tasks" position="top">
             <button
               onClick={() => onAction("profile", classItem.courseCode)}
