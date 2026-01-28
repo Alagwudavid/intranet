@@ -188,7 +188,7 @@ export function FeaturesGridSection() {
                             title={feature.title}
                             description={feature.description}
                             textColor={feature.textColor}
-                            resizeImage={feature.resizeImage}
+                            // resizeImage={feature.resizeImage}
                         />
                     ))}
                 </div>
