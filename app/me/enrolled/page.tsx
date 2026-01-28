@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import Tooltip from "@/components/ui/tooltip";
-import SearchBar from "../components/search-bar";
+import SearchBar from "@/app/components/search-bar";
 
 interface Class {
   id: string;
