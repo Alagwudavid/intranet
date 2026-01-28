@@ -273,7 +273,6 @@ function EnrolledPage() {
           <SearchBar
             maxWidth="max-w-md"
             placeholder="Search classes..."
-            showShortcut={false}
           />
           <div className="flex items-center gap-2 bg-white border border-gray-200 rounded-xl p-1">
             <button
