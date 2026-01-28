@@ -270,10 +270,7 @@ function EnrolledPage() {
 
         {/* Search and View Toggle */}
         <div className="mb-8 flex justify-between items-center gap-4">
-          <SearchBar
-            maxWidth="max-w-md"
-            placeholder="Search classes..."
-          />
+          <SearchBar maxWidth="max-w-md" placeholder="Search classes..." />
           <div className="flex items-center gap-2 bg-white border border-gray-200 rounded-xl p-1">
             <button
               onClick={() => setViewMode("grid")}
