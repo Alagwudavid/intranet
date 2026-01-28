@@ -486,9 +486,9 @@ export default function Sidebar({ className = "" }: SidebarProps) {
                         height={40}
                         className="rounded-full"
                       />
-                    ) : (
+                    ) : Icon ? (
                       <Icon className="w-6 h-6" />
-                    )}
+                    ) : null}
                   </Link>
                 </Tooltip>
               );
