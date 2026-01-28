@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import Navbar from "../components/navbar";
-import Sidebar from "../components/sidebar";
+import Navbar from "@/app/components/navbar";
+import Sidebar from "@/app/components/sidebar";
 
 export const metadata: Metadata = {
   title: "Courses | Bitroot intranet",

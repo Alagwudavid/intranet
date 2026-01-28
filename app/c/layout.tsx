@@ -2,7 +2,7 @@
 
 import { Metadata } from "next";
 import Navbar from "../components/navbar";
-import Sidebar from "../components/sidebar";
+import Sidebar from "@/app/components/sidebar";
 import Footer from "../components/footer";
 import { TabNav } from "@/components/ui/tab-nav";
 import SideMenu from "./components/sidemenu";
