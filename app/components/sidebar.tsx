@@ -461,40 +461,6 @@ export default function Sidebar({ className = "" }: SidebarProps) {
                         </Link>
                     </Tooltip> */}
 
-          {/* <div className="w-10 h-px bg-muted mb-4"></div> */}
-
-          {/* Navigation Icons */}
-          <div className="flex flex-col gap-1 mb-4">
-            {navigationItems.map((item) => {
-              const Icon = item.icon;
-              const isActive = pathname === item.href;
-              return (
-                <Tooltip key={item.href} label={item.label}>
-                  <Link
-                    href={item.href}
-                    className={`relative w-12 h-12 flex items-center justify-center ${item.isProfile ? "rounded-full overflow-hidden" : "rounded-xl"} transition-all hover:bg-muted ${
-                      isActive
-                        ? "bg-primary text-white hover:text-muted-foreground"
-                        : "text-foreground"
-                    }`}
-                  >
-                    {item.isProfile ? (
-                      <Image
-                        src="/assets/user-1.png"
-                        alt="User profile image"
-                        width={40}
-                        height={40}
-                        className="rounded-full"
-                      />
-                    ) : Icon ? (
-                      <Icon className="w-6 h-6" />
-                    ) : null}
-                  </Link>
-                </Tooltip>
-              );
-            })}
-          </div>
-
           {/* More Options */}
           <DropdownMenu
             trigger={
@@ -594,15 +560,6 @@ export default function Sidebar({ className = "" }: SidebarProps) {
 
           {/* Community Icons */}
           <div className="flex flex-col gap-3">
-            {/* Pin Communities Button */}
-            {/* <Tooltip label="New"> */}
-            <Link
-              href={"/app/communitiy"}
-              className="w-12 h-12 flex items-center justify-center rounded-full bg-muted hover:bg-gray-200 text-muted-foreground hover:text-gray-900 transition-all"
-            >
-              <Plus className="w-6 h-6" />
-            </Link>
-            {/* </Tooltip> */}
             {communities.map((community) => (
               <Tooltip key={community.id} label={community.name}>
                 <button className="relative w-12 h-12 flex items-center justify-center rounded-xl border transition-all duration-200 group cursor-pointer">
@@ -625,164 +582,51 @@ export default function Sidebar({ className = "" }: SidebarProps) {
                 </button>
               </Tooltip>
             ))}
+            <Tooltip label="New">
+              <Link
+                href={"/app/communitiy"}
+                className="w-12 h-12 flex items-center justify-center rounded-full bg-muted hover:bg-gray-200 text-muted-foreground hover:text-gray-900 transition-all"
+              >
+                <Plus className="w-6 h-6" />
+              </Link>
+            </Tooltip>
+          </div>
+          
+          {/* <div className="w-10 h-px bg-muted mb-4"></div> */}
+          
+          {/* Navigation Icons */}
+          <div className="hidden flex flex-col gap-1 mb-4">
+            {navigationItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = pathname === item.href;
+              return (
+                <Tooltip key={item.href} label={item.label}>
+                  <Link
+                    href={item.href}
+                    className={`relative w-12 h-12 flex items-center justify-center ${item.isProfile ? "rounded-full overflow-hidden" : "rounded-xl"} transition-all hover:bg-muted ${
+                      isActive
+                        ? "bg-primary text-white hover:text-muted-foreground"
+                        : "text-foreground"
+                    }`}
+                  >
+                    {item.isProfile ? (
+                      <Image
+                        src="/assets/user-1.png"
+                        alt="User profile image"
+                        width={40}
+                        height={40}
+                        className="rounded-full"
+                      />
+                    ) : Icon ? (
+                      <Icon className="w-6 h-6" />
+                    ) : null}
+                  </Link>
+                </Tooltip>
+              );
+            })}
           </div>
         </div>
       </aside>
-
-      {/* Mobile Bottom Navigation */}
-      {/* <nav className="lg:hidden fixed bottom-0 left-0 right-0 bg-background border-t z-50 pb-safe">
-                <div className="flex items-center justify-around px-2 py-2 max-w-screen-xl mx-auto">
-                    Navigation Buttons
-                    {mobileNavItems.map((item) => {
-                        const Icon = item.icon;
-                        const isActive = pathname === item.href;
-                        return (
-                            <Link
-                                key={item.href}
-                                href={item.href}
-                                className="flex flex-col items-center justify-center gap-1 flex-1 relative group"
-                            >
-                                <div className={`w-10 h-10 flex items-center justify-center ${item.isProfile ? 'rounded-full overflow-hidden' : 'rounded-xl'} transition-all ${isActive ? 'bg-primary text-white' : 'text-muted-foreground'}
-                                    ${!item.isProfile && !isActive ? '' : ''}`}>
-                                    {item.isProfile ? (
-                                        <Image
-                                            src="/assets/user-1.png"
-                                            alt="User profile image"
-                                            width={40}
-                                            height={40}
-                                        />
-                                    ) : (
-                                        <Icon className="w-6 h-6" />
-                                    )}
-                                </div>
-                            </Link>
-                        );
-                    })}
-
-                    More Button
-                    <div className="relative flex-1">
-                        <button
-                            onClick={() => setShowMoreMenu(!showMoreMenu)}
-                            className="flex flex-col items-center justify-center gap-1 w-full"
-                        >
-                            <div className={`w-10 h-10 flex items-center justify-center rounded-xl transition-all ${showMoreMenu ? 'bg-primary text-white' : 'text-muted-foreground bg-muted'
-                                }`}>
-                                <MenuIcon className="w-6 h-6" />
-                            </div>
-                        </button>
-
-                        More Menu Dropdown
-                        {showMoreMenu && (
-                            <>
-                                Backdrop
-                                <div
-                                    className="fixed inset-0 bg-black/20 z-40"
-                                    onClick={() => setShowMoreMenu(false)}
-                                />
-                                Menu
-                                <div className="absolute bottom-full right-0 mb-2 w-56 bg-background rounded-xl shadow-lg border overflow-hidden z-50 animate-in slide-in-from-bottom-2">
-                                    <div className="py-2 max-h-[60vh] overflow-y-auto">
-                                        {moreMenuItems.map((item, index) => {
-                                            const Icon = item.icon;
-                                            const isActive = pathname === item.href;
-                                            return (
-                                                <Link
-                                                    key={item.href}
-                                                    href={item.href}
-                                                    onClick={() => setShowMoreMenu(false)}
-                                                    className={`flex items-center gap-3 px-4 py-3 hover:bg-muted transition-colors ${isActive ? 'bg-primary/10 text-primary' : 'text-foreground'
-                                                        }`}
-                                                >
-                                                    <Icon className="w-5 h-5" />
-                                                    <span className="text-sm font-medium">{item.label}</span>
-                                                </Link>
-                                            );
-                                        })}
-                                        <div className="relative">
-                                            <button
-                                                onClick={() => setShowMobileThemeMenu(!showMobileThemeMenu)}
-                                                className={`flex items-center gap-3 px-4 py-3 hover:bg-muted transition-colors w-full ${showMobileThemeMenu ? 'bg-primary/10 text-primary' : 'text-foreground'
-                                                    }`}
-                                            >
-                                                <Moon className="w-5 h-5" />
-                                                <span className="text-sm font-medium">Theme</span>
-                                                <ChevronRight className={`w-4 h-4 ml-auto transition-transform ${showMobileThemeMenu ? 'rotate-90' : ''}`} />
-                                            </button>
-                                            {showMobileThemeMenu && (
-                                                <div className="bg-muted/50 py-1">
-                                                    <button
-                                                        onClick={() => {
-                                                            setTheme('light');
-                                                            setShowMobileThemeMenu(false);
-                                                            setShowMoreMenu(false);
-                                                        }}
-                                                        className="w-full flex items-center gap-3 px-8 py-2 text-sm hover:bg-muted transition-colors"
-                                                    >
-                                                        <Sun className="!w-4 !h-4" />
-                                                        <span>Light</span>
-                                                        {theme === 'light' && <Check className="!w-4 !h-4 ml-auto" />}
-                                                    </button>
-                                                    <button
-                                                        onClick={() => {
-                                                            setTheme('dark');
-                                                            setShowMobileThemeMenu(false);
-                                                            setShowMoreMenu(false);
-                                                        }}
-                                                        className="w-full flex items-center gap-3 px-8 py-2 text-sm hover:bg-muted transition-colors"
-                                                    >
-                                                        <Moon className="!w-4 !h-4" />
-                                                        <span>Dark</span>
-                                                        {theme === 'dark' && <Check className="!w-4 !h-4 ml-auto" />}
-                                                    </button>
-                                                    <button
-                                                        onClick={() => {
-                                                            setTheme('system');
-                                                            setShowMobileThemeMenu(false);
-                                                            setShowMoreMenu(false);
-                                                        }}
-                                                        className="w-full flex items-center gap-3 px-8 py-2 text-sm hover:bg-muted transition-colors"
-                                                    >
-                                                        <Monitor className="!w-4 !h-4" />
-                                                        <span>System</span>
-                                                        {theme === 'system' && <Check className="!w-4 !h-4 ml-auto" />}
-                                                    </button>
-                                                </div>
-                                            )}
-                                        </div>
-                                        <div className="h-px bg-border mx-3 my-2" />
-                                        <Link
-                                            href="/intranet/auth"
-                                            onClick={() => setShowMoreMenu(false)}
-                                            className="flex items-center gap-3 px-4 py-3 hover:bg-muted transition-colors"
-                                        >
-                                            <SettingIcon className="w-6 h-6" />
-                                            <span className="text-sm font-medium">Account setting</span>
-                                        </Link>
-                                        <Link
-                                            href="/intranet/auth"
-                                            onClick={() => setShowMoreMenu(false)}
-                                            className="flex items-center gap-3 px-4 py-3 hover:bg-muted transition-colors"
-                                        >
-                                            <ShieldQuestionIcon className="w-6 h-6" />
-                                            <span className="text-sm font-medium">Help Center</span>
-                                        </Link>
-                                        <Link
-                                            href="/intranet/auth"
-                                            onClick={() => setShowMoreMenu(false)}
-                                            className="flex items-center gap-3 px-4 py-3 hover:bg-muted transition-colors"
-                                        >
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
-                                                <path fillRule="evenodd" d="M7.5 3.75A1.5 1.5 0 0 0 6 5.25v13.5a1.5 1.5 0 0 0 1.5 1.5h6a1.5 1.5 0 0 0 1.5-1.5V15a.75.75 0 0 1 1.5 0v3.75a3 3 0 0 1-3 3h-6a3 3 0 0 1-3-3V5.25a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3V9A.75.75 0 0 1 15 9V5.25a1.5 1.5 0 0 0-1.5-1.5h-6Zm10.72 4.72a.75.75 0 0 1 1.06 0l3 3a.75.75 0 0 1 0 1.06l-3 3a.75.75 0 1 1-1.06-1.06l1.72-1.72H9a.75.75 0 0 1 0-1.5h10.94l-1.72-1.72a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
-                                            </svg>
-                                            <span className="text-sm font-medium">Logout</span>
-                                        </Link>
-                                    </div>
-                                </div>
-                            </>
-                        )}
-                    </div>
-                </div>
-            </nav> */}
     </>
   );
 }

@@ -100,7 +100,7 @@ export default function ClassroomPage() {
                 <h2 className="text-xl font-semibold">Classroom</h2>
                 <p className="text-muted-foreground">Access your courses and learning materials.</p>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
                     {courses.map((course) => (
                         <CourseCard
                             key={course.id}

@@ -16,10 +16,14 @@ import {
   Info,
   Puzzle,
   Users,
+  EllipsisVertical,
+  ChevronDown,
+  Briefcase,
+  Settings2,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import SearchBar from "./search-bar";
 
@@ -157,7 +161,7 @@ const ExpandIcon = (props: React.SVGProps<SVGSVGElement>) => {
   );
 };
 export default function Navbar() {
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  // const [isProfileOpen, setIsProfileOpen] = useState(false);
   const pathname = usePathname();
   const isInCommunity = pathname?.startsWith("/c/");
 
@@ -170,218 +174,175 @@ export default function Navbar() {
     return lastSegment || "home";
   };
 
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const profileRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target as Node)
+      ) {
+        setIsMobileMenuOpen(false);
+      }
+      if (
+        profileRef.current &&
+        !profileRef.current.contains(event.target as Node)
+      ) {
+        setIsProfileOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
     <nav className="sticky top-0 left-0 right-0 pl-20 px-2 z-header bg-background border-b">
       <div className="max-w-full mx-auto px-4">
-        <div className="flex items-center justify-between h-14">
-          <div className="text-sm font-medium text-muted-foreground px-2 py-1 rounded-md bg-muted/50 capitalize">
-            {getRouteName()}
+        <div className="flex items-center justify-between h-16">
+          <div className="flex flex-shrink-0 items-center gap-2">
+                <div className="flex rounded-lg overflow-hidden">
+                    <img
+                        src={"/assets/user-1.png"}
+                        alt="User profile image"
+                        className="w-10 h-10 rounded-lg object-cover"
+                    />
+                </div>
+                <div className="flex items-center justify-between gap-3">
+                    <div className="flex flex-col">
+                        <h1 className="text-lg font-bold text-foreground">
+                            Intranet community
+                        </h1>
+                        <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                            <span className="text-green-500">1,002 online</span>
+                            •
+                            <span>210,200 members</span>
+                        </div>
+                    </div>
+                    <div className="w-10 h-10 rounded-full hover:bg-muted text-muted-foreground flex items-center justify-center cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" width={24} height={24} viewBox="0 0 24 24"><path fill="currentColor" d="m12 19.15l3.875-3.875q.3-.3.7-.3t.7.3t.3.713t-.3.712l-3.85 3.875q-.575.575-1.425.575t-1.425-.575L6.7 16.7q-.3-.3-.288-.712t.313-.713t.713-.3t.712.3zm0-14.3L8.15 8.7q-.3.3-.7.288t-.7-.288q-.3-.3-.312-.712t.287-.713l3.85-3.85Q11.15 2.85 12 2.85t1.425.575l3.85 3.85q.3.3.288.713t-.313.712q-.3.275-.7.288t-.7-.288z"></path></svg>
+                    </div>
+                </div>
           </div>
-          <SearchBar
+          {/* <SearchBar
             isInCommunity={isInCommunity}
             communityName="Intranet"
             communityLink="/intranet/c/general"
-          />
+          /> */}
           <div className="flex items-center space-x-1 md:space-x-3 ml-2">
             {/* Chat */}
             <Link
               href="/intranet/chat"
-              className="relative p-2.5 text-foreground hover:bg-muted rounded-full transition-colors cursor-pointer"
+              className="flex items-center gap-1 relative text-base text-foreground hover:text-muted-foreground transition-colors cursor-pointer"
             >
-              <ChatIcon className="w-6 h-6" />
-              <span className="absolute -top-1 -right-1 w-5 h-5 bg-primary text-primary-foreground text-xs font-bold rounded-full flex items-center justify-center border-2 border-background">
-                3
-              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 lg:w-7 lg:h-7" width={24} height={24} viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9h8m-8 4h6m4-9a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-5l-5 3v-3H6a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3z"></path></svg>
+              <span className="w-2.5 h-2.5 bg-primary rounded-full absolute top-0 right-0" />
             </Link>
-            {/* Activity/Notification */}
             <Link
               href="/intranet/notification"
-              className="relative p-2.5 text-foreground hover:bg-muted rounded-full transition-colors cursor-pointer"
+              className="flex items-center gap-1 relative p-2 text-foreground hover:bg-muted rounded-full transition-colors cursor-pointer"
             >
-              <Bell className="w-6 h-6" />
-              <span className="absolute -top-1 -right-1 w-5 h-5 bg-primary text-primary-foreground text-xs font-bold rounded-full flex items-center justify-center border-2 border-background">
-                5
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" width={24} height={24} viewBox="0 0 24 24"><path fill="currentColor" fillRule="evenodd" d="M12 1.25A7.75 7.75 0 0 0 4.25 9v.704a3.53 3.53 0 0 1-.593 1.958L2.51 13.385c-1.334 2-.316 4.718 2.003 5.35q1.133.309 2.284.523l.002.005C7.567 21.315 9.622 22.75 12 22.75s4.433-1.435 5.202-3.487l.002-.005a29 29 0 0 0 2.284-.523c2.319-.632 3.337-3.35 2.003-5.35l-1.148-1.723a3.53 3.53 0 0 1-.593-1.958V9A7.75 7.75 0 0 0 12 1.25m3.376 18.287a28.5 28.5 0 0 1-6.753 0c.711 1.021 1.948 1.713 3.377 1.713s2.665-.692 3.376-1.713M5.75 9a6.25 6.25 0 1 1 12.5 0v.704c0 .993.294 1.964.845 2.79l1.148 1.723a2.02 2.02 0 0 1-1.15 3.071a26.96 26.96 0 0 1-14.187 0a2.02 2.02 0 0 1-1.15-3.07l1.15-1.724a5.03 5.03 0 0 0 .844-2.79z" clipRule="evenodd"></path></svg>
+              <span className="w-fit h-5 px-1.5 bg-primary text-primary-foreground text-xs font-bold rounded-full flex items-center justify-center">
+                5+
               </span>
             </Link>
-            {/* Cart */}
-            <button className="relative p-2.5 text-foreground hover:bg-background rounded-full transition-colors cursor-pointer">
-              {/* <ShoppingCart className="w-5 h-5" /> */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill="currentColor"
-                  fillRule="evenodd"
-                  d="M3.018 3.068L3.395 4.5L4.58 9.005a3 3 0 0 0 4.186 1.948l4.518-2.14A3 3 0 0 0 15 6.102V5a2 2 0 0 0-2-2H4.556l-.15-.535A2 2 0 0 0 2.48 1H.75a.75.75 0 0 0 0 1.5h1.73a.5.5 0 0 1 .482.366zm5.106 6.53l4.518-2.14a1.5 1.5 0 0 0 .858-1.356V5a.5.5 0 0 0-.5-.5H4.946L6.03 8.624a1.5 1.5 0 0 0 2.093.973M12 14.75a1.75 1.75 0 1 0 0-3.5a1.75 1.75 0 0 0 0 3.5M4.75 13a1.75 1.75 0 1 1-3.5 0a1.75 1.75 0 0 1 3.5 0"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
-              {/* <span className="absolute bottom-1 -right-1 w-5 h-5 bg-blue-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
-                                0
-                            </span> */}
-            </button>
-            {/* Notifications */}
-            {/* <button className="relative p-2.5 text-foreground hover:bg-background rounded-full transition-colors cursor-pointer">
-                            <Inbox className="w-5 h-5" />
-                            <span className="absolute bottom-1 -right-1 w-5 h-5 bg-blue-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
-                                0
-                            </span>
-                        </button> */}
-            <div className="hidden">
-              {/* Login Button */}
-              <Link
-                href="/intranet/auth"
-                className="w-10 h-10 ml-2 bg-muted text-muted-foreground rounded-full flex items-center justify-center cursor-pointer hover:bg-primary hover:text-primary-foreground transition-all"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width={24}
-                  height={24}
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M10.47 8.47a.75.75 0 0 1 1.06 0l3 3a.75.75 0 0 1 0 1.06l-3 3a.75.75 0 1 1-1.06-1.06l1.72-1.72H4a.75.75 0 0 1 0-1.5h8.19l-1.72-1.72a.75.75 0 0 1 0-1.06"
-                  ></path>
-                  <path
-                    fill="currentColor"
-                    d="M11.768 3.25h2.464c.813 0 1.469 0 2 .043c.546.045 1.026.14 1.47.366a3.75 3.75 0 0 1 1.64 1.639c.226.444.32.924.365 1.47c.043.531.043 1.187.043 2v6.464c0 .813 0 1.469-.043 2c-.045.546-.14 1.026-.366 1.47a3.75 3.75 0 0 1-1.639 1.64c-.444.226-.924.32-1.47.365c-.531.043-1.187.043-2 .043h-2.464c-.813 0-1.469 0-2-.043c-.546-.045-1.026-.14-1.47-.366a3.75 3.75 0 0 1-1.64-1.639c-.226-.444-.32-.924-.365-1.47c-.043-.531-.043-1.187-.043-2V15a.75.75 0 0 1 1.5 0v.2c0 .852 0 1.447.038 1.91c.037.453.107.714.207.912c.216.423.56.767.984.983c.197.1.458.17.912.207c.462.037 1.056.038 1.909.038h2.4c.853 0 1.447 0 1.91-.038c.453-.038.714-.107.912-.207a2.25 2.25 0 0 0 .983-.983c.1-.198.17-.459.207-.913c.037-.462.038-1.057.038-1.909V8.8c0-.852 0-1.447-.038-1.91c-.038-.453-.107-.714-.207-.911a2.25 2.25 0 0 0-.983-.984c-.198-.1-.459-.17-.913-.207c-.462-.037-1.057-.038-1.909-.038h-2.4c-.853 0-1.447 0-1.91.038c-.453.037-.714.107-.911.207a2.25 2.25 0 0 0-.984.984c-.1.197-.17.458-.207.912c-.037.462-.038 1.057-.038 1.909V9a.75.75 0 0 1-1.5 0v-.232c0-.813 0-1.469.043-2c.045-.546.14-1.026.366-1.47a3.75 3.75 0 0 1 1.639-1.64c.444-.226.924-.32 1.47-.365c.531-.043 1.187-.043 2-.043"
-                  ></path>
-                </svg>
-              </Link>
-
-              {/* Profile Avatar */}
-              <div className="relative ml-2 hidden">
+            {/* Profile Dropdown */}
+              <div ref={profileRef} className="relative">
                 <button
                   onClick={() => setIsProfileOpen(!isProfileOpen)}
-                  className="w-10 h-10 bg-muted rounded-full flex items-center justify-center cursor-pointer hover:ring-2 hover:ring-blue-400 transition-all"
+                  className="flex items-center p-2 text-base font-medium bg-muted text-muted-foreground rounded-full hover:bg-muted/90 transition-colors cursor-pointer"
                 >
-                  <User className="w-6 h-6 text-foreground" />
+                  <User className="w-6 h-6" />
                 </button>
-
-                {/* Dropdown Menu */}
                 {isProfileOpen && (
-                  <>
-                    {/* Backdrop */}
-                    <div
-                      className="fixed inset-0 z-40"
-                      onClick={() => setIsProfileOpen(false)}
-                    />
-
-                    {/* Dropdown */}
-                    <div className="absolute right-0 mt-4 w-72 bg-background border rounded-lg shadow-lg z-50 overflow-hidden">
+                  <div className="absolute right-0 mt-2 w-80 bg-background rounded-3xl border shadow-lg overflow-hidden" style={{zIndex: 60}}>
+                    <div className="p-4">
                       {/* Profile Header */}
-                      <div className="p-4 border-b">
-                        <div className="flex flex-col gap-3">
-                          <div className="relative w-full">
-                            <div className="w-full h-22 p-4 bg-muted rounded-xl"></div>
+                      <div className="flex flex-row items-center justify-between gap-3 mb-6">
+                        <div className="flex flex-row items-center gap-3">
+                          <div className="w-15 h-15 bg-muted rounded-full flex items-center justify-center">
+                            <User className="w-10 h-10 text-muted-foreground" />
                           </div>
-                          <div className="flex flex-row gap-4">
-                            <div className="w-12 h-12 bg-muted border-4 rounded-full flex items-center justify-center">
-                              <User className="w-7 h-7 text-foreground" />
-                            </div>
-                            <div>
-                              <div className="font-semibold text-foreground line-clamp-1">
-                                Multicademy
-                              </div>
-                              <div className="text-xs text-muted-foreground line-clamp-1">
-                                @multicademy
-                              </div>
-                            </div>
+                          <div className="flex flex-col">
+                            <h3 className="font-semibold text-lg">Example user</h3>
+                            <span className="font-semibold text-muted-foreground text-sm">
+                              @example_user
+                            </span>
                           </div>
                         </div>
-                      </div>
-
-                      {/* Amp up your profile */}
-                      <div className="p-2 border-b">
-                        <div className="text-xs font-medium text-amber-500 rounded-md p-1 px-2 bg-amber-200 flex flex-row gap-2">
-                          <Info className="w-4 h-4" />
-                          <span>Access all features with premium</span>
-                        </div>
-                        <div className="grid grid-cols-3 gap-2 mt-2">
-                          <button className="flex flex-col items-center justify-center gap-1.5 px-3 py-1.5 bg-muted hover:bg-muted/80 rounded-lg text-xs font-medium transition-colors cursor-pointer">
-                            <Crown className="size-6" />
-                            <span className="text-xs">Premium</span>
-                          </button>
-                          <button className="flex flex-col items-center justify-center gap-1.5 px-3 py-1.5 bg-muted hover:bg-muted/80 rounded-lg text-xs font-medium transition-colors cursor-pointer">
-                            <VaultIcon className="size-6" />
-                            <span className="text-xs">Vault</span>
-                          </button>
-                          <button className="flex flex-col items-center justify-center gap-1.5 px-3 py-1.5 bg-muted hover:bg-muted/80 rounded-lg text-xs font-medium transition-colors cursor-pointer">
-                            <ShoppingCart className="size-6" />
-                            <span className="text-xs">Cart</span>
-                          </button>
-                          <button className="flex flex-col items-center justify-center gap-1.5 px-3 py-1.5 bg-muted hover:bg-muted/80 rounded-lg text-xs font-medium transition-colors cursor-pointer">
-                            <WhiteBoardIcon className="size-6" />
-                            <span className="text-xs">Whiteboard</span>
-                          </button>
-                          <button className="flex flex-col items-center justify-center gap-1.5 px-3 py-1.5 bg-muted hover:bg-muted/80 rounded-lg text-xs font-medium transition-colors cursor-pointer">
-                            <Puzzle className="size-6" />
-                            <span className="text-xs">Trivia</span>
-                          </button>
-                          <button className="flex flex-col items-center justify-center gap-1.5 px-3 py-1.5 bg-muted hover:bg-muted/80 rounded-lg text-xs font-medium transition-colors cursor-pointer">
-                            <ProfileCardIcon className="size-6" />
-                            <span className="text-xs">Profile page</span>
-                          </button>
+                        <div className="w-10 h-10 rounded-lg text-foreground hover:text-muted-foreground flex items-center justify-center cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" width={24} height={24} viewBox="0 0 24 24"><path fill="currentColor" d="M13.685 5.25h.03a.75.75 0 0 1 0 1.5c-1.292 0-2.275 0-3.058.063c-.785.063-1.283.183-1.636.371a3.94 3.94 0 0 0-1.677 1.764c-.19.394-.304.88-.363 1.638c-.06.764-.06 1.738-.06 3.094v.11l1.12-1.12a.75.75 0 0 1 1.06 1.06l-2.4 2.4a.75.75 0 0 1-1.086-.027l-2.171-2.4a.75.75 0 0 1 1.112-1.006l.865.956v-.005c0-1.317 0-2.35.065-3.179c.066-.844.202-1.542.509-2.176a5.44 5.44 0 0 1 2.319-2.431c.625-.335 1.37-.476 2.224-.544c.85-.068 1.891-.068 3.147-.068m4.162 2.4a.75.75 0 0 1 .538.247l2.171 2.4a.75.75 0 0 1-1.112 1.006l-.865-.956v.005c0 1.317 0 2.35-.065 3.179c-.066.844-.201 1.542-.509 2.176a5.44 5.44 0 0 1-2.319 2.431c-.625.335-1.37.476-2.224.544c-.85.068-1.891.068-3.146.068h-.03a.75.75 0 0 1 0-1.5c1.291 0 2.274 0 3.057-.063c.785-.063 1.283-.183 1.636-.372a3.94 3.94 0 0 0 1.677-1.763c.19-.394.304-.88.363-1.638c.06-.764.06-1.738.06-3.094v-.11l-1.12 1.12a.75.75 0 0 1-1.06-1.06l2.4-2.4a.75.75 0 0 1 .548-.22"></path></svg>
                         </div>
                       </div>
 
                       {/* Menu Items */}
-                      <div className="p-1">
+                      <div className="">
                         <Link
-                          href="/intranet/profile"
-                          className="w-full flex items-center justify-between text-foreground px-3 py-2.5 hover:bg-muted transition-colors group rounded-lg cursor-pointer"
+                          href="/dashboard/setting"
                           onClick={() => setIsProfileOpen(false)}
+                          className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors"
                         >
-                          <div className="flex items-center gap-2">
-                            <SquarePen className="w-4 h-4 text-muted-foreground" />
-                            <span className="text-sm text-foreground">
-                              Edit Profile
-                            </span>
-                          </div>
-                          {/* <span className="text-[10px] font-bold bg-red-500 text-white px-1.5 py-0.5 rounded">NEW</span> */}
+                          <Briefcase className="w-5 h-5" />
+                          <span>Dashboard</span>
                         </Link>
-                        <button className="w-full flex items-center justify-between text-foreground px-3 py-2.5 hover:bg-muted transition-colors group rounded-lg cursor-pointer">
-                          <div className="flex items-center gap-2">
-                            <Bolt className="w-4 h-4 text-muted-foreground" />
-                            <span className="text-sm text-foreground">
-                              Account setting
-                            </span>
-                          </div>
-                          <span className="text-[10px] font-bold bg-red-500 text-white px-1.5 py-0.5 rounded">
-                            VOID
-                          </span>
-                        </button>
                         <Link
-                          href="/intranet/profile"
-                          className="w-full flex items-center justify-between text-foreground px-3 py-2.5 hover:bg-muted transition-colors group rounded-lg cursor-pointer"
+                          href="/dashboard"
                           onClick={() => setIsProfileOpen(false)}
+                          className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors"
                         >
-                          <div className="flex items-center gap-2">
-                            <Users className="w-4 h-4 text-muted-foreground" />
-                            <span className="text-sm text-foreground">
-                              Create team
-                            </span>
-                          </div>
-                          <span className="text-[10px] font-bold bg-red-500 text-white px-1.5 py-0.5 rounded">
-                            VOID
-                          </span>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="w-5 h-5"
+                            width={24}
+                            height={24}
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="m8.962 18.91l.464-.588zM12 5.5l-.54.52a.75.75 0 0 0 1.08 0zm3.038 13.41l.465.59zm-5.612-.588C7.91 17.127 6.253 15.96 4.938 14.48C3.65 13.028 2.75 11.335 2.75 9.137h-1.5c0 2.666 1.11 4.7 2.567 6.339c1.43 1.61 3.254 2.9 4.68 4.024zM2.75 9.137c0-2.15 1.215-3.954 2.874-4.713c1.612-.737 3.778-.541 5.836 1.597l1.08-1.04C10.1 2.444 7.264 2.025 5 3.06C2.786 4.073 1.25 6.425 1.25 9.137zM8.497 19.5c.513.404 1.063.834 1.62 1.16s1.193.59 1.883.59v-1.5c-.31 0-.674-.12-1.126-.385c-.453-.264-.922-.628-1.448-1.043zm7.006 0c1.426-1.125 3.25-2.413 4.68-4.024c1.457-1.64 2.567-3.673 2.567-6.339h-1.5c0 2.198-.9 3.891-2.188 5.343c-1.315 1.48-2.972 2.647-4.488 3.842zM22.75 9.137c0-2.712-1.535-5.064-3.75-6.077c-2.264-1.035-5.098-.616-7.54 1.92l1.08 1.04c2.058-2.137 4.224-2.333 5.836-1.596c1.659.759 2.874 2.562 2.874 4.713zm-8.176 9.185c-.526.415-.995.779-1.448 1.043s-.816.385-1.126.385v1.5c.69 0 1.326-.265 1.883-.59c.558-.326 1.107-.756 1.62-1.16z"
+                            ></path>
+                          </svg>
+                          <span>Wishlist</span>
                         </Link>
-                        <button className="w-full flex items-center justify-between text-red-500 px-3 py-2.5 hover:bg-red-200 transition-colors group rounded-lg cursor-pointer">
-                          <div className="flex items-center gap-2">
-                            <LogOut className="w-4 h-4" />
-                            <span className="text-sm">Log-out</span>
-                          </div>
+                        <Link
+                          href="/dashboard"
+                          onClick={() => setIsProfileOpen(false)}
+                          className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" width={24} height={24} viewBox="0 0 24 24"><path fill="currentColor" d="M13.09 20H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h16c1.11 0 2 .89 2 2v7.81c-.88-.51-1.91-.81-3-.81c-3.31 0-6 2.69-6 6c0 .34.04.67.09 1M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
+                          <span>Subscriptions</span>
+                        </Link>
+                        <Link
+                          href="/dashboard/setting"
+                          onClick={() => setIsProfileOpen(false)}
+                          className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors"
+                        >
+                          <Settings2 className="w-5 h-5" />
+                          <span>Settings</span>
+                        </Link>
+                      </div>
+
+                      <div className="border-t mt-4 pt-4">
+                        <button
+                          onClick={() => {
+                            setIsProfileOpen(false);
+                            // Add sign out logic here
+                          }}
+                          className="flex items-center gap-3 px-3 py-2.5 w-full rounded-lg hover:bg-muted transition-colors text-left"
+                        >
+                          <LogOut className="w-5 h-5" />
+                          <span>Sign Out</span>
                         </button>
                       </div>
                     </div>
-                  </>
+                  </div>
                 )}
               </div>
-            </div>
           </div>
         </div>
       </div>
