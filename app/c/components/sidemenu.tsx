@@ -110,6 +110,13 @@ const RulesIcon = (props: React.SVGProps<SVGSVGElement>) => (
     ></path>
   </svg>
 );
+const CupIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    {...props} xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24"><path fill="currentColor" d="M22 8.162v.073c0 .86 0 1.291-.207 1.643s-.584.561-1.336.98l-.793.44c.546-1.848.729-3.834.796-5.532l.01-.221l.002-.052c.651.226 1.017.395 1.245.711c.283.393.283.915.283 1.958m-20 0v.073c0 .86 0 1.291.207 1.643s.584.561 1.336.98l.794.44c-.547-1.848-.73-3.834-.797-5.532l-.01-.221l-.001-.052c-.652.226-1.018.395-1.246.711C2 6.597 2 7.12 2 8.162"></path><path fill="currentColor" fillRule="evenodd" d="M12 2c1.784 0 3.253.157 4.377.347c1.139.192 1.708.288 2.184.874s.45 1.219.4 2.485c-.172 4.349-1.11 9.78-6.211 10.26V19.5h1.43a1 1 0 0 1 .98.804l.19.946H18a.75.75 0 0 1 0 1.5H6a.75.75 0 0 1 0-1.5h2.65l.19-.946a1 1 0 0 1 .98-.804h1.43v-3.534c-5.1-.48-6.038-5.912-6.21-10.26c-.051-1.266-.076-1.9.4-2.485c.475-.586 1.044-.682 2.183-.874A26.4 26.4 0 0 1 12 2m.952 4.199l-.098-.176C12.474 5.34 12.284 5 12 5s-.474.34-.854 1.023l-.098.176c-.108.194-.162.29-.246.354c-.085.064-.19.088-.4.135l-.19.044c-.738.167-1.107.25-1.195.532s.164.577.667 1.165l.13.152c.143.167.215.25.247.354s.021.215 0 .438l-.02.203c-.076.785-.114 1.178.115 1.352c.23.174.576.015 1.267-.303l.178-.082c.197-.09.295-.135.399-.135s.202.045.399.135l.178.082c.691.319 1.037.477 1.267.303s.191-.567.115-1.352l-.02-.203c-.021-.223-.032-.334 0-.438s.104-.187.247-.354l.13-.152c.503-.588.755-.882.667-1.165c-.088-.282-.457-.365-1.195-.532l-.19-.044c-.21-.047-.315-.07-.4-.135c-.084-.064-.138-.16-.246-.354" clipRule="evenodd"></path></svg>
+);
+const LibraryIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg {...props} xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24"><path fill="currentColor" d="M22 14v-2.202c0-2.632 0-3.949-.77-4.804a3 3 0 0 0-.224-.225C20.151 6 18.834 6 16.202 6h-.374c-1.153 0-1.73 0-2.268-.153a4 4 0 0 1-.848-.352C12.224 5.224 11.816 4.815 11 4l-.55-.55c-.274-.274-.41-.41-.554-.53a4 4 0 0 0-2.18-.903C7.53 2 7.336 2 6.95 2c-.883 0-1.324 0-1.692.07A4 4 0 0 0 2.07 5.257C2 5.626 2 6.068 2 6.95V14c0 3.771 0 5.657 1.172 6.828S6.229 22 10 22h4c3.771 0 5.657 0 6.828-1.172S22 17.771 22 14" opacity={0.5}></path><path fill="currentColor" d="M12.25 10a.75.75 0 0 1 .75-.75h5a.75.75 0 0 1 0 1.5h-5a.75.75 0 0 1-.75-.75"></path></svg>
+);
 export default function SideMenu({
   leaderboard = [],
   showOnMobile = false,
@@ -190,7 +197,7 @@ export default function SideMenu({
 
         <div className="hidden flex flex-col border-b pb-4 px-4">
           <h1 className="text-foreground mb-1">Rate this community</h1>
-          <div className="flex items-center gap-1 text-sm text-muted-foreground">
+          <div className="flex items-center gap-1 text-base text-muted-foreground">
             <div className="flex rounded-full w-6 h-6 overflow-hidden mr-2">
               <img
                 src={"/assets/user-1.png"}
@@ -219,7 +226,7 @@ export default function SideMenu({
             onClick={() => setIsCommunityOpen(!isCommunityOpen)}
             className="flex items-center justify-between gap-3 mt-2 cursor-pointer"
           >
-            <h1 className="flex items-center gap-1 text-sm text-muted-foreground">
+            <h1 className="flex items-center gap-1 text-base text-muted-foreground">
               <ChevronDown
                 className={`size-5 transition-transform ${isCommunityOpen ? "" : "-rotate-90"}`}
               />
@@ -228,7 +235,7 @@ export default function SideMenu({
           </div>
           {isCommunityOpen && (
             <>
-              <div className="rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-sm cursor-pointer p-1.5 px-2.5">
+              <div className="rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width={20}
@@ -240,7 +247,21 @@ export default function SideMenu({
                       d="M13 0c-1.7 0-3 1.3-3 3v6c0 1.7 1.3 3 3 3h6l4 4v-4c1.7 0 3-1.3 3-3V3c0-1.7-1.3-3-3-3zm4.188 3h1.718l1.688 6h-1.5l-.407-1.5h-1.5L16.813 9H15.5zM18 4c-.1.4-.212.888-.313 1.188l-.28 1.312h1.187l-.282-1.313C18.113 4.888 18 4.4 18 4M3 10c-1.7 0-3 1.3-3 3v6c0 1.7 1.3 3 3 3v4l4-4h6c1.7 0 3-1.3 3-3v-6h-3c-1.9 0-3.406-1.3-3.906-3zm4.594 2.906c1.7 0 2.5 1.4 2.5 3c0 1.4-.481 2.288-1.281 2.688c.4.2.874.306 1.374.406l-.374 1c-.7-.2-1.426-.512-2.126-.813c-.1-.1-.275-.093-.375-.093C6.112 18.994 5 18 5 16c0-1.7.994-3.094 2.594-3.094m0 1.094c-.8 0-1.188.9-1.188 2c0 1.2.388 2 1.188 2s1.218-.9 1.218-2s-.418-2-1.218-2"
                     ></path>
                 </svg>
-                <span>Chat</span>
+                <span>Discussions</span>
+              </div>
+              <div className="rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width={20}
+                    height={20}
+                    viewBox="0 0 26 26"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M13 0c-1.7 0-3 1.3-3 3v6c0 1.7 1.3 3 3 3h6l4 4v-4c1.7 0 3-1.3 3-3V3c0-1.7-1.3-3-3-3zm4.188 3h1.718l1.688 6h-1.5l-.407-1.5h-1.5L16.813 9H15.5zM18 4c-.1.4-.212.888-.313 1.188l-.28 1.312h1.187l-.282-1.313C18.113 4.888 18 4.4 18 4M3 10c-1.7 0-3 1.3-3 3v6c0 1.7 1.3 3 3 3v4l4-4h6c1.7 0 3-1.3 3-3v-6h-3c-1.9 0-3.406-1.3-3.906-3zm4.594 2.906c1.7 0 2.5 1.4 2.5 3c0 1.4-.481 2.288-1.281 2.688c.4.2.874.306 1.374.406l-.374 1c-.7-.2-1.426-.512-2.126-.813c-.1-.1-.275-.093-.375-.093C6.112 18.994 5 18 5 16c0-1.7.994-3.094 2.594-3.094m0 1.094c-.8 0-1.188.9-1.188 2c0 1.2.388 2 1.188 2s1.218-.9 1.218-2s-.418-2-1.218-2"
+                    ></path>
+                </svg>
+                <span>Question & answers</span>
               </div>
             </>
           )}
@@ -249,7 +270,7 @@ export default function SideMenu({
             onClick={() => setIsLearningOpen(!isLearningOpen)}
             className="flex items-center justify-between gap-3 mt-2 cursor-pointer"
           >
-            <h1 className="flex items-center gap-1 text-sm text-muted-foreground">
+            <h1 className="flex items-center gap-1 text-base text-muted-foreground">
               <ChevronDown
                 className={`size-5 transition-transform ${isLearningOpen ? "" : "-rotate-90"}`}
               />
@@ -260,7 +281,7 @@ export default function SideMenu({
             <>
               <Link
                 href="/c/classroom"
-                className={`rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-sm cursor-pointer p-1.5 px-2.5 ${pathname === "/c/classroom" ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""}`}
+                className={`rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5 ${pathname === "/c/classroom" ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""}`}
               >
                 
                 <ClassroomIcon className={`size-5 ${pathname === "/c/classroom" ? "text-primary-foreground" : "text-muted-foreground"}`} />
@@ -268,10 +289,17 @@ export default function SideMenu({
               </Link>
               <Link
                 href="/c/calendar"
-                className={`rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-sm cursor-pointer p-1.5 px-2.5 ${pathname === "/c/calendar" ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""}`}
+                className={`rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5 ${pathname === "/c/calendar" ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""}`}
               >
                 <CalendarDays className={`size-5 ${pathname === "/c/calendar" ? "text-primary-foreground" : "text-muted-foreground"}`} />
                 <span>Calendar</span>
+              </Link>
+              <Link
+                href="/c/library"
+                className={`rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5 ${pathname === "/c/library" ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""}`}
+              >
+                <LibraryIcon className={`size-5 ${pathname === "/c/library" ? "text-primary-foreground" : "text-muted-foreground"}`} />
+                <span>Library</span>
               </Link>
             </>
           )}
@@ -280,7 +308,7 @@ export default function SideMenu({
             onClick={() => setIsResourcesOpen(!isResourcesOpen)}
             className="flex items-center justify-between gap-3 mt-2 cursor-pointer"
           >
-            <h1 className="flex items-center gap-1 text-sm text-muted-foreground">
+            <h1 className="flex items-center gap-1 text-base text-muted-foreground">
               <ChevronDown
                 className={`size-5 transition-transform ${isResourcesOpen ? "" : "-rotate-90"}`}
               />
@@ -291,43 +319,35 @@ export default function SideMenu({
             <>
               <Link
                 href="/c/shop"
-                className={`rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-sm cursor-pointer p-1.5 px-2.5 ${pathname === "/c/shop" ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""}`}
+                className={`rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5 ${pathname === "/c/shop" ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""}`}
               >
                 <ShoppingBag className={`size-5 ${pathname === "/c/shop" ? "text-primary-foreground" : "text-muted-foreground"}`} />
                 <span>Shop</span>
               </Link>
               <Link
                 href="/c/members"
-                className={`rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-sm cursor-pointer p-1.5 px-2.5 ${pathname === "/c/members" ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""}`}
+                className={`rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5 ${pathname === "/c/members" ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""}`}
               >
                 <Users className={`size-5 ${pathname === "/c/members" ? "text-primary-foreground" : "text-muted-foreground"}`} />
                 <span>Members</span>
               </Link>
               <Link
-                href="/c/leaderboard"
-                className={`rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-sm cursor-pointer p-1.5 px-2.5 ${pathname === "/c/leaderboard" ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""}`}
+                href="/c/membership"
+                className={`rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5 ${pathname === "/c/membership" ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""}`}
               >
-                <svg
-                    className={`size-5 ${pathname === "/c/leaderboard" ? "text-primary-foreground" : "text-muted-foreground"}`}
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={24}
-                    height={24}
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      fill="none"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.5}
-                      d="M15 21H9v-8.4a.6.6 0 0 1 .6-.6h4.8a.6.6 0 0 1 .6.6zm5.4 0H15v-2.9a.6.6 0 0 1 .6-.6h4.8a.6.6 0 0 1 .6.6v2.3a.6.6 0 0 1-.6.6M9 21v-4.9a.6.6 0 0 0-.6-.6H3.6a.6.6 0 0 0-.6.6v4.3a.6.6 0 0 0 .6.6zm1.806-15.887l.909-1.927a.312.312 0 0 1 .57 0l.91 1.927l2.032.311c.261.04.365.376.176.568l-1.47 1.5l.347 2.118c.044.272-.228.48-.462.351l-1.818-1l-1.818 1c-.233.128-.506-.079-.462-.351l.347-2.118l-1.47-1.5c-.19-.192-.085-.528.175-.568z"
-                    ></path>
-                  </svg>
+                <Users className={`size-5 ${pathname === "/c/membership" ? "text-primary-foreground" : "text-muted-foreground"}`} />
+                <span>Membership</span>
+              </Link>
+              <Link
+                href="/c/leaderboard"
+                className={`rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5 ${pathname === "/c/leaderboard" ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""}`}
+              >
+                <CupIcon className={`size-5 ${pathname === "/c/leaderboard" ? "text-primary-foreground" : "text-muted-foreground"}`} />
                 <span>Leaderboard</span>
               </Link>
               <Link
                 href="/c/about"
-                className={`rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-sm cursor-pointer p-1.5 px-2.5 ${pathname === "/c/about" ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""}`}
+                className={`rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5 ${pathname === "/c/about" ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""}`}
               >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -343,13 +363,13 @@ export default function SideMenu({
                   </svg>
                 <span>About</span>
               </Link>
-              {/* <div className="rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-sm cursor-pointer p-1.5 px-2.5">
+              {/* <div className="rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5">
                                 <div className="w-7 h-7 rounded-lg bg-muted text-muted-foreground flex items-center justify-center cursor-pointer">
                                     <RulesIcon className="size-5" />
                                 </div>
                                 <span>Moderation</span>
                             </div>
-                            <div className="rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-sm cursor-pointer p-1.5 px-2.5">
+                            <div className="rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5">
                                 <div className="w-7 h-7 rounded-lg bg-muted text-muted-foreground flex items-center justify-center cursor-pointer">
                                     <RulesIcon className="size-5" />
                                 </div>
@@ -361,26 +381,26 @@ export default function SideMenu({
           {/* <div
                         onClick={() => setWikiOpen(!isWikiOpen)}
                         className="flex items-center justify-between gap-3 mt-2 cursor-pointer">
-                        <h1 className="flex items-center text-sm text-muted-foreground">
+                        <h1 className="flex items-center text-base text-muted-foreground">
                             <ChevronDown className={`size-5 transition-transform ${isWikiOpen ? '' : '-rotate-90'}`} />
                             Wiki
                         </h1>
                     </div>
                     {isWikiOpen && (
                         <>
-                            <div className="rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-sm cursor-pointer p-1.5 px-2.5">
+                            <div className="rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5">
                                 <div className="w-7 h-7 rounded-lg bg-muted text-muted-foreground flex items-center justify-center cursor-pointer">
                                     <RulesIcon className="size-5" />
                                 </div>
                                 <span>Rules and regulations</span>
                             </div>
-                            <div className="rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-sm cursor-pointer p-1.5 px-2.5">
+                            <div className="rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5">
                                 <div className="w-7 h-7 rounded-lg bg-muted text-muted-foreground flex items-center justify-center cursor-pointer">
                                     <RulesIcon className="size-5" />
                                 </div>
                                 <span>Moderation</span>
                             </div>
-                            <div className="rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-sm cursor-pointer p-1.5 px-2.5">
+                            <div className="rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5">
                                 <div className="w-7 h-7 rounded-lg bg-muted text-muted-foreground flex items-center justify-center cursor-pointer">
                                     <RulesIcon className="size-5" />
                                 </div>

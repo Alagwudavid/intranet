@@ -104,6 +104,7 @@ const LearnIcon = (props: React.SVGProps<SVGSVGElement>) => (
     </g>
   </svg>
 );
+
 const TasksIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     {...props}
@@ -124,6 +125,7 @@ const TasksIcon = (props: React.SVGProps<SVGSVGElement>) => (
     </g>
   </svg>
 );
+
 const CourseIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     {...props}
@@ -138,6 +140,7 @@ const CourseIcon = (props: React.SVGProps<SVGSVGElement>) => (
     ></path>
   </svg>
 );
+
 const LibraryIcon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
@@ -157,6 +160,7 @@ const LibraryIcon = (props: React.SVGProps<SVGSVGElement>) => {
     </svg>
   );
 };
+
 const CertificateIcon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
@@ -177,6 +181,7 @@ const CertificateIcon = (props: React.SVGProps<SVGSVGElement>) => {
     </svg>
   );
 };
+
 const MenuIcon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
@@ -197,6 +202,7 @@ const MenuIcon = (props: React.SVGProps<SVGSVGElement>) => {
     </svg>
   );
 };
+
 const HomeIcon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
@@ -216,6 +222,7 @@ const HomeIcon = (props: React.SVGProps<SVGSVGElement>) => {
     </svg>
   );
 };
+
 const PinIcon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
@@ -232,6 +239,7 @@ const PinIcon = (props: React.SVGProps<SVGSVGElement>) => {
     </svg>
   );
 };
+
 const SettingIcon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
@@ -248,6 +256,7 @@ const SettingIcon = (props: React.SVGProps<SVGSVGElement>) => {
     </svg>
   );
 };
+
 const LogoutIcon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
@@ -265,6 +274,7 @@ const LogoutIcon = (props: React.SVGProps<SVGSVGElement>) => {
     </svg>
   );
 };
+
 const AffiliateIcon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
@@ -378,6 +388,12 @@ const DashboardIcon = (props: React.SVGProps<SVGSVGElement>) => {
   );
 };
 
+const MoreAcademiesIcon = (props: React.SVGProps<SVGSVGElement>) => {
+  return (
+    <svg {...props} xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 20.25h4.25a4 4 0 0 0 4-4v-2.5M12 20.25H7.75a4 4 0 0 1-4-4V12M12 20.25V15a3 3 0 0 0-3-3H3.75m0 0V7.75a4 4 0 0 1 4-4h2.5m3.5 0h5.5c.276 0 .526.112.707.293m.293 6.207v-5.5a1 1 0 0 0-.293-.707M13.75 10.25l5.5-5.5l.707-.707"></path></svg>
+  );
+};
+
 // Desktop sidebar navigation items
 const navigationItems = [
   { icon: HomeIcon, label: "Home", href: "/home" },
@@ -449,114 +465,134 @@ export default function Sidebar({ className = "" }: SidebarProps) {
     <>
       {/* Desktop Sidebar */}
       <aside
-        className={`flex fixed left-0 top-0 min-h-page h-full w-20 bg-background flex-col items-center py-2 overflow-y-auto overflow-x-clip hide-scrollbar z-sidebar ${className} border-r`}
+        className={`flex fixed left-0 top-0 min-h-page h-full w-20 bg-muted flex-col items-center py-2 overflow-y-auto overflow-x-clip hide-scrollbar z-sidebar ${className} border-r border-r-background`}
       >
-        <div className="flex flex-col items-center w-full py-2">
-          {/* <Tooltip label={"Intranet"}>
-                        <Link
-                            href="/intranet/c"
-                            className={`w-12 h-12 flex items-center justify-center rounded-xl transition-all`}
-                        >
-                            <LogoIcon className="w-6 h-6" />
-                        </Link>
-                    </Tooltip> */}
-
-          {/* More Options */}
-          <DropdownMenu
-            trigger={
-              <Tooltip label="Menu">
-                <button className="w-12 h-12 flex items-center justify-center rounded-xl bg-muted text-foreground transition-all mb-6 cursor-pointer">
-                  <MenuIcon className="w-6 h-6" />
-                </button>
-              </Tooltip>
-            }
-          >
-            <DropdownItem icon={<AppsIcon className="w-5! h-5!" />}>
-              Apps & toolkit
-            </DropdownItem>
-            <DropdownItem icon={<LibraryIcon className="w-5! h-5!" />}>
-              Library
-            </DropdownItem>
-            <DropdownItem icon={<AffiliateIcon className="w-5! h-5!" />}>
-              Affiliate
-            </DropdownItem>
-            <DropdownItem icon={<Languages className="w-5! h-5!" />}>
-              Language
-            </DropdownItem>
-            <div className="relative">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setShowThemeMenu(!showThemeMenu);
-                }}
-                className="w-full flex items-center gap-3 px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors text-left"
-              >
-                <Moon className="w-5! h-5!" />
-                <span>Theme</span>
-                <ChevronRight className="w-4! h-4! ml-auto" />
-              </button>
-              {showThemeMenu && (
-                <div
-                  className="absolute left-full top-0 ml-1 w-48 bg-background rounded-xl shadow-lg border overflow-hidden z-50"
-                  onClick={(e) => e.stopPropagation()}
+        <div className="flex flex-col items-center w-full py-2 space-y-3">
+          <div className="space-y-2">
+            {/* More Options */}
+            {/* <DropdownMenu
+              trigger={
+                <Tooltip label="Menu">
+                  <button className="w-12 h-12 flex items-center justify-center rounded-xl bg-background text-foreground transition-all mb-6 cursor-pointer">
+                    <MenuIcon className="w-6 h-6" />
+                  </button>
+                </Tooltip>
+              }
+            >
+              <DropdownItem icon={<AppsIcon className="w-5! h-5!" />}>
+                Apps & toolkit
+              </DropdownItem>
+              <DropdownItem icon={<LibraryIcon className="w-5! h-5!" />}>
+                Library
+              </DropdownItem>
+              <DropdownItem icon={<AffiliateIcon className="w-5! h-5!" />}>
+                Affiliate
+              </DropdownItem>
+              <DropdownItem icon={<Languages className="w-5! h-5!" />}>
+                Language
+              </DropdownItem>
+              <div className="relative">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowThemeMenu(!showThemeMenu);
+                  }}
+                  className="w-full flex items-center gap-3 px-4 py-2 text-sm text-foreground hover:bg-background transition-colors text-left"
                 >
-                  <div className="py-2">
-                    <button
-                      onClick={() => {
-                        setTheme("light");
-                        setShowThemeMenu(false);
-                      }}
-                      className="w-full flex items-center gap-3 px-4 py-2 text-sm hover:bg-muted transition-colors"
-                    >
-                      <Sun className="w-5! h-5!" />
-                      <span>Light</span>
-                      {theme === "light" && (
-                        <Check className="w-4! h-4! ml-auto" />
-                      )}
-                    </button>
-                    <button
-                      onClick={() => {
-                        setTheme("dark");
-                        setShowThemeMenu(false);
-                      }}
-                      className="w-full flex items-center gap-3 px-4 py-2 text-sm hover:bg-muted transition-colors"
-                    >
-                      <Moon className="w-5! h-5!" />
-                      <span>Dark</span>
-                      {theme === "dark" && (
-                        <Check className="w-4! h-4! ml-auto" />
-                      )}
-                    </button>
-                    <button
-                      onClick={() => {
-                        setTheme("system");
-                        setShowThemeMenu(false);
-                      }}
-                      className="w-full flex items-center gap-3 px-4 py-2 text-sm hover:bg-muted transition-colors"
-                    >
-                      <Monitor className="w-5! h-5!" />
-                      <span>System</span>
-                      {theme === "system" && (
-                        <Check className="w-4! h-4! ml-auto" />
-                      )}
-                    </button>
+                  <Moon className="w-5! h-5!" />
+                  <span>Theme</span>
+                  <ChevronRight className="w-4! h-4! ml-auto" />
+                </button>
+                {showThemeMenu && (
+                  <div
+                    className="absolute left-full top-0 ml-1 w-48 bg-muted rounded-xl shadow-lg border overflow-hidden z-50"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <div className="py-2">
+                      <button
+                        onClick={() => {
+                          setTheme("light");
+                          setShowThemeMenu(false);
+                        }}
+                        className="w-full flex items-center gap-3 px-4 py-2 text-sm hover:bg-background transition-colors"
+                      >
+                        <Sun className="w-5! h-5!" />
+                        <span>Light</span>
+                        {theme === "light" && (
+                          <Check className="w-4! h-4! ml-auto" />
+                        )}
+                      </button>
+                      <button
+                        onClick={() => {
+                          setTheme("dark");
+                          setShowThemeMenu(false);
+                        }}
+                        className="w-full flex items-center gap-3 px-4 py-2 text-sm hover:bg-background transition-colors"
+                      >
+                        <Moon className="w-5! h-5!" />
+                        <span>Dark</span>
+                        {theme === "dark" && (
+                          <Check className="w-4! h-4! ml-auto" />
+                        )}
+                      </button>
+                      <button
+                        onClick={() => {
+                          setTheme("system");
+                          setShowThemeMenu(false);
+                        }}
+                        className="w-full flex items-center gap-3 px-4 py-2 text-sm hover:bg-background transition-colors"
+                      >
+                        <Monitor className="w-5! h-5!" />
+                        <span>System</span>
+                        {theme === "system" && (
+                          <Check className="w-4! h-4! ml-auto" />
+                        )}
+                      </button>
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
-            <DropdownDivider />
-            <DropdownItem icon={<SettingIcon className="w-5! h-5!" />}>
-              Account setting
-            </DropdownItem>
-            <DropdownItem icon={<ShieldQuestionIcon className="w-5! h-5!" />}>
-              <Link href={"/intranet/me/tasks"}>Help center</Link>
-            </DropdownItem>
-            <DropdownItem icon={<LogoutIcon className="w-5! h-5!" />}>
-              <Link href={"/intranet/auth"}>Logout</Link>
-            </DropdownItem>
-          </DropdownMenu>
+                )}
+              </div>
+              <DropdownDivider />
+              <DropdownItem icon={<SettingIcon className="w-5! h-5!" />}>
+                Account setting
+              </DropdownItem>
+              <DropdownItem icon={<ShieldQuestionIcon className="w-5! h-5!" />}>
+                <Link href={"/intranet/me/tasks"}>Help center</Link>
+              </DropdownItem>
+              <DropdownItem icon={<LogoutIcon className="w-5! h-5!" />}>
+                <Link href={"/intranet/auth"}>Logout</Link>
+              </DropdownItem>
+            </DropdownMenu> */}
 
-          <div className="w-10 h-px bg-muted mb-4"></div>
+            <Tooltip label="New">
+              <Link
+                href={"/app/community"}
+                className="w-12 h-12 flex items-center justify-center rounded-xl bg-background text-foreground transition-all cursor-pointer"
+              >
+                <MoreAcademiesIcon className="w-8 h-8" />
+              </Link>
+            </Tooltip> 
+
+            <Tooltip label="New">
+              <Link
+                href={"/app/community"}
+                className="w-12 h-12 flex items-center justify-center rounded-full bg-background hover:bg-gray-200 text-background-foreground hover:text-gray-900 transition-all"
+              >
+                <Plus className="w-6 h-6" />
+              </Link>
+            </Tooltip>            
+          </div>
+          {/* <Tooltip label={"Intranet"}>
+              <Link
+                  href="/intranet/c"
+                  className={`w-12 h-12 flex items-center justify-center rounded-xl transition-all`}
+              >
+                  <LogoIcon className="w-6 h-6" />
+              </Link>
+          </Tooltip> */}
+
+          
+          <div className="w-10 h-[2px] rounded bg-border dark:bg-background mb-4"></div>
 
           {/* Community Icons */}
           <div className="flex flex-col gap-3">
@@ -575,24 +611,16 @@ export default function Sidebar({ className = "" }: SidebarProps) {
                     />
                   </div>
                   {community.notifications > 0 && (
-                    <span className="absolute -top-1 -right-1 w-6 h-6 bg-primary text-primary-foreground text-xs font-bold rounded-full flex items-center justify-center border-2 border-background">
+                    <span className="absolute -top-1 -right-1 w-6 h-6 bg-primary text-primary-foreground text-xs font-bold rounded-full flex items-center justify-center border-2 border-muted">
                       {community.notifications}
                     </span>
                   )}
                 </button>
               </Tooltip>
             ))}
-            <Tooltip label="New">
-              <Link
-                href={"/app/communitiy"}
-                className="w-12 h-12 flex items-center justify-center rounded-full bg-muted hover:bg-gray-200 text-muted-foreground hover:text-gray-900 transition-all"
-              >
-                <Plus className="w-6 h-6" />
-              </Link>
-            </Tooltip>
           </div>
           
-          {/* <div className="w-10 h-px bg-muted mb-4"></div> */}
+          {/* <div className="w-10 h-px bg-background mb-4"></div> */}
           
           {/* Navigation Icons */}
           <div className="hidden flex flex-col gap-1 mb-4">
@@ -603,9 +631,9 @@ export default function Sidebar({ className = "" }: SidebarProps) {
                 <Tooltip key={item.href} label={item.label}>
                   <Link
                     href={item.href}
-                    className={`relative w-12 h-12 flex items-center justify-center ${item.isProfile ? "rounded-full overflow-hidden" : "rounded-xl"} transition-all hover:bg-muted ${
+                    className={`relative w-12 h-12 flex items-center justify-center ${item.isProfile ? "rounded-full overflow-hidden" : "rounded-xl"} transition-all hover:bg-background ${
                       isActive
-                        ? "bg-primary text-white hover:text-muted-foreground"
+                        ? "bg-primary text-white hover:text-background-foreground"
                         : "text-foreground"
                     }`}
                   >

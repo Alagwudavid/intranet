@@ -63,9 +63,9 @@ export default function HomeLayout({
       {/* Main layout container */}
       <div className="h-[calc(100vh-3.5rem)] flex flex-col overflow-hidden pl-20">
         {/* InfoNav - Fixed height 32px */}
-        <div className="h-8 shrink-0">
+        {/* <div className="h-8 shrink-0">
           <CommunityNavInfo />
-        </div>
+        </div> */}
 
         {/* Content area - Remaining height with 3 columns */}
         <div className="flex flex-1 overflow-hidden">
@@ -80,11 +80,11 @@ export default function HomeLayout({
           </div>
 
           {/* Right Bar - Fixed width 288px with internal scroll - Conditionally rendered */}
-          {isRightbarVisible && (
+          {/* {isRightbarVisible && (
             <div className="w-72 shrink-0 hidden lg:block">
               <Rightbar />
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </>

@@ -160,6 +160,36 @@ const ExpandIcon = (props: React.SVGProps<SVGSVGElement>) => {
     </svg>
   );
 };
+
+
+const DashboardIcon = (props: React.SVGProps<SVGSVGElement>) => {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+    >
+      <g fill="none" stroke="currentColor" strokeWidth={1}>
+        <rect
+          width={18.5}
+          height={18.5}
+          x={2.75}
+          y={2.75}
+          strokeWidth={1.5}
+          rx={6}
+        ></rect>
+        <path
+          strokeLinecap="round"
+          strokeWidth={1.6}
+          d="M7.672 16.222v-5.099m4.451 5.099V7.778m4.205 8.444V9.82"
+        ></path>
+      </g>
+    </svg>
+  );
+};
+
 export default function Navbar() {
   // const [isProfileOpen, setIsProfileOpen] = useState(false);
   const pathname = usePathname();
@@ -287,7 +317,7 @@ export default function Navbar() {
                           onClick={() => setIsProfileOpen(false)}
                           className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors"
                         >
-                          <Briefcase className="w-5 h-5" />
+                          <DashboardIcon className="w-5 h-5" />
                           <span>Dashboard</span>
                         </Link>
                         <Link
