@@ -161,7 +161,6 @@ const ExpandIcon = (props: React.SVGProps<SVGSVGElement>) => {
   );
 };
 
-
 const DashboardIcon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
@@ -185,6 +184,30 @@ const DashboardIcon = (props: React.SVGProps<SVGSVGElement>) => {
           strokeWidth={1.6}
           d="M7.672 16.222v-5.099m4.451 5.099V7.778m4.205 8.444V9.82"
         ></path>
+      </g>
+    </svg>
+  );
+};
+const AppsIcon = (props: React.SVGProps<SVGSVGElement>) => {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="size-6"
+    >
+      <g
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.5"
+      >
+        <rect width="6.5" height="6.5" x="3.75" y="3.75" rx="2" />
+        <path d="M15.586 3.818a2 2 0 0 1 2.828 0l1.768 1.768a2 2 0 0 1 0 2.828l-1.768 1.768a2 2 0 0 1-2.828 0l-1.768-1.768a2 2 0 0 1 0-2.828z" />
+        <rect width="6.5" height="6.5" x="3.75" y="13.75" rx="1.5" />
+        <rect width="6.5" height="6.5" x="13.75" y="13.75" rx="2" />
       </g>
     </svg>
   );
@@ -235,144 +258,230 @@ export default function Navbar() {
       <div className="max-w-full mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex flex-shrink-0 items-center gap-2">
-                <div className="flex rounded-lg overflow-hidden">
-                    <img
-                        src={"/assets/user-1.png"}
-                        alt="User profile image"
-                        className="w-10 h-10 rounded-lg object-cover"
-                    />
+            <div className="flex rounded-lg overflow-hidden">
+              <img
+                src={"/assets/user-1.png"}
+                alt="User profile image"
+                className="w-10 h-10 rounded-lg object-cover"
+              />
+            </div>
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex flex-col">
+                <h1 className="text-lg font-bold text-foreground">
+                  Intranet{" "}
+                  {pathname?.startsWith("/c")
+                    ? "Community"
+                    : pathname?.startsWith("/school")
+                      ? "School"
+                      : "home"}
+                </h1>
+                <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                  <span className="text-green-500">1,002 online</span>•
+                  <span>210,200 members</span>
                 </div>
-                <div className="flex items-center justify-between gap-3">
-                    <div className="flex flex-col">
-                        <h1 className="text-lg font-bold text-foreground">
-                            Intranet community
-                        </h1>
-                        <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                            <span className="text-green-500">1,002 online</span>
-                            •
-                            <span>210,200 members</span>
-                        </div>
-                    </div>
-                    <div className="w-10 h-10 rounded-full hover:bg-muted text-muted-foreground flex items-center justify-center cursor-pointer">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" width={24} height={24} viewBox="0 0 24 24"><path fill="currentColor" d="m12 19.15l3.875-3.875q.3-.3.7-.3t.7.3t.3.713t-.3.712l-3.85 3.875q-.575.575-1.425.575t-1.425-.575L6.7 16.7q-.3-.3-.288-.712t.313-.713t.713-.3t.712.3zm0-14.3L8.15 8.7q-.3.3-.7.288t-.7-.288q-.3-.3-.312-.712t.287-.713l3.85-3.85Q11.15 2.85 12 2.85t1.425.575l3.85 3.85q.3.3.288.713t-.313.712q-.3.275-.7.288t-.7-.288z"></path></svg>
-                    </div>
-                </div>
+              </div>
+              <div className="w-10 h-10 rounded-lg hover:bg-muted text-muted-foreground flex items-center justify-center cursor-pointer">
+                <EllipsisVertical className="w-6 h-6" />
+              </div>
+            </div>
           </div>
-          {/* <SearchBar
-            isInCommunity={isInCommunity}
-            communityName="Intranet"
-            communityLink="/intranet/c/general"
-          /> */}
+          <div className="flex items-center gap-3">
+            <Link
+              href="/c"
+              className={`w-full px-4 py-2 rounded-full text-base text-center font-medium transition-colors 
+                ${
+                  pathname?.startsWith("/c")
+                    ? "text-muted-foreground bg-muted hover:bg-muted/80 hover:text-foreground"
+                    : "bg-background text-foreground hover:bg-muted/80 hover:text-muted-foreground"
+                }`}
+            >
+              Community
+            </Link>
+            <Link
+              href="/school"
+              className={`w-full px-4 py-2 rounded-full text-base text-center font-medium transition-colors 
+                ${
+                  pathname?.startsWith("/school")
+                    ? "text-muted-foreground bg-muted hover:bg-muted/80 hover:text-foreground"
+                    : "bg-background text-foreground hover:bg-muted/80 hover:text-muted-foreground"
+                }`}
+            >
+              School
+            </Link>
+          </div>
           <div className="flex items-center space-x-1 md:space-x-3 ml-2">
             {/* Chat */}
             <Link
               href="/intranet/chat"
               className="flex items-center gap-1 relative text-base text-foreground hover:text-muted-foreground transition-colors cursor-pointer"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 lg:w-7 lg:h-7" width={24} height={24} viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9h8m-8 4h6m4-9a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-5l-5 3v-3H6a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3z"></path></svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-6 h-6 lg:w-7 lg:h-7"
+                width={24}
+                height={24}
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 9h8m-8 4h6m4-9a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-5l-5 3v-3H6a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3z"
+                ></path>
+              </svg>
               <span className="w-2.5 h-2.5 bg-primary rounded-full absolute top-0 right-0" />
             </Link>
             <Link
               href="/intranet/notification"
               className="flex items-center gap-1 relative p-2 text-foreground hover:bg-muted rounded-full transition-colors cursor-pointer"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" width={24} height={24} viewBox="0 0 24 24"><path fill="currentColor" fillRule="evenodd" d="M12 1.25A7.75 7.75 0 0 0 4.25 9v.704a3.53 3.53 0 0 1-.593 1.958L2.51 13.385c-1.334 2-.316 4.718 2.003 5.35q1.133.309 2.284.523l.002.005C7.567 21.315 9.622 22.75 12 22.75s4.433-1.435 5.202-3.487l.002-.005a29 29 0 0 0 2.284-.523c2.319-.632 3.337-3.35 2.003-5.35l-1.148-1.723a3.53 3.53 0 0 1-.593-1.958V9A7.75 7.75 0 0 0 12 1.25m3.376 18.287a28.5 28.5 0 0 1-6.753 0c.711 1.021 1.948 1.713 3.377 1.713s2.665-.692 3.376-1.713M5.75 9a6.25 6.25 0 1 1 12.5 0v.704c0 .993.294 1.964.845 2.79l1.148 1.723a2.02 2.02 0 0 1-1.15 3.071a26.96 26.96 0 0 1-14.187 0a2.02 2.02 0 0 1-1.15-3.07l1.15-1.724a5.03 5.03 0 0 0 .844-2.79z" clipRule="evenodd"></path></svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-6 h-6"
+                width={24}
+                height={24}
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  fillRule="evenodd"
+                  d="M12 1.25A7.75 7.75 0 0 0 4.25 9v.704a3.53 3.53 0 0 1-.593 1.958L2.51 13.385c-1.334 2-.316 4.718 2.003 5.35q1.133.309 2.284.523l.002.005C7.567 21.315 9.622 22.75 12 22.75s4.433-1.435 5.202-3.487l.002-.005a29 29 0 0 0 2.284-.523c2.319-.632 3.337-3.35 2.003-5.35l-1.148-1.723a3.53 3.53 0 0 1-.593-1.958V9A7.75 7.75 0 0 0 12 1.25m3.376 18.287a28.5 28.5 0 0 1-6.753 0c.711 1.021 1.948 1.713 3.377 1.713s2.665-.692 3.376-1.713M5.75 9a6.25 6.25 0 1 1 12.5 0v.704c0 .993.294 1.964.845 2.79l1.148 1.723a2.02 2.02 0 0 1-1.15 3.071a26.96 26.96 0 0 1-14.187 0a2.02 2.02 0 0 1-1.15-3.07l1.15-1.724a5.03 5.03 0 0 0 .844-2.79z"
+                  clipRule="evenodd"
+                ></path>
+              </svg>
               <span className="w-fit h-5 px-1.5 bg-primary text-primary-foreground text-xs font-bold rounded-full flex items-center justify-center">
                 5+
               </span>
             </Link>
             {/* Profile Dropdown */}
-              <div ref={profileRef} className="relative">
-                <button
-                  onClick={() => setIsProfileOpen(!isProfileOpen)}
-                  className="flex items-center p-2 text-base font-medium bg-muted text-muted-foreground rounded-full hover:bg-muted/90 transition-colors cursor-pointer"
+            <div ref={profileRef} className="relative">
+              <button
+                onClick={() => setIsProfileOpen(!isProfileOpen)}
+                className="flex items-center p-2 text-base font-medium bg-muted text-muted-foreground rounded-full hover:bg-muted/90 transition-colors cursor-pointer"
+              >
+                <User className="w-6 h-6" />
+              </button>
+              {isProfileOpen && (
+                <div
+                  className="absolute right-0 mt-2 w-80 bg-background rounded-3xl border shadow-lg overflow-hidden"
+                  style={{ zIndex: 60 }}
                 >
-                  <User className="w-6 h-6" />
-                </button>
-                {isProfileOpen && (
-                  <div className="absolute right-0 mt-2 w-80 bg-background rounded-3xl border shadow-lg overflow-hidden" style={{zIndex: 60}}>
-                    <div className="p-4">
-                      {/* Profile Header */}
-                      <div className="flex flex-row items-center justify-between gap-3 mb-6">
-                        <div className="flex flex-row items-center gap-3">
-                          <div className="w-15 h-15 bg-muted rounded-full flex items-center justify-center">
-                            <User className="w-10 h-10 text-muted-foreground" />
-                          </div>
-                          <div className="flex flex-col">
-                            <h3 className="font-semibold text-lg">Example user</h3>
-                            <span className="font-semibold text-muted-foreground text-sm">
-                              @example_user
-                            </span>
-                          </div>
+                  <div className="p-4">
+                    {/* Profile Header */}
+                    <div className="flex flex-row items-center justify-between gap-3 mb-6">
+                      <div className="flex flex-row items-center gap-3">
+                        <div className="w-15 h-15 bg-muted rounded-full flex items-center justify-center">
+                          <User className="w-10 h-10 text-muted-foreground" />
                         </div>
-                        <div className="w-10 h-10 rounded-lg text-foreground hover:text-muted-foreground flex items-center justify-center cursor-pointer">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" width={24} height={24} viewBox="0 0 24 24"><path fill="currentColor" d="M13.685 5.25h.03a.75.75 0 0 1 0 1.5c-1.292 0-2.275 0-3.058.063c-.785.063-1.283.183-1.636.371a3.94 3.94 0 0 0-1.677 1.764c-.19.394-.304.88-.363 1.638c-.06.764-.06 1.738-.06 3.094v.11l1.12-1.12a.75.75 0 0 1 1.06 1.06l-2.4 2.4a.75.75 0 0 1-1.086-.027l-2.171-2.4a.75.75 0 0 1 1.112-1.006l.865.956v-.005c0-1.317 0-2.35.065-3.179c.066-.844.202-1.542.509-2.176a5.44 5.44 0 0 1 2.319-2.431c.625-.335 1.37-.476 2.224-.544c.85-.068 1.891-.068 3.147-.068m4.162 2.4a.75.75 0 0 1 .538.247l2.171 2.4a.75.75 0 0 1-1.112 1.006l-.865-.956v.005c0 1.317 0 2.35-.065 3.179c-.066.844-.201 1.542-.509 2.176a5.44 5.44 0 0 1-2.319 2.431c-.625.335-1.37.476-2.224.544c-.85.068-1.891.068-3.146.068h-.03a.75.75 0 0 1 0-1.5c1.291 0 2.274 0 3.057-.063c.785-.063 1.283-.183 1.636-.372a3.94 3.94 0 0 0 1.677-1.763c.19-.394.304-.88.363-1.638c.06-.764.06-1.738.06-3.094v-.11l-1.12 1.12a.75.75 0 0 1-1.06-1.06l2.4-2.4a.75.75 0 0 1 .548-.22"></path></svg>
+                        <div className="flex flex-col">
+                          <h3 className="font-semibold text-lg">
+                            Example user
+                          </h3>
+                          <span className="font-semibold text-muted-foreground text-sm">
+                            @example_user
+                          </span>
                         </div>
                       </div>
-
-                      {/* Menu Items */}
-                      <div className="">
-                        <Link
-                          href="/dashboard/setting"
-                          onClick={() => setIsProfileOpen(false)}
-                          className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors"
+                      <div className="w-10 h-10 rounded-lg text-foreground hover:text-muted-foreground flex items-center justify-center cursor-pointer">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-8 h-8"
+                          width={24}
+                          height={24}
+                          viewBox="0 0 24 24"
                         >
-                          <DashboardIcon className="w-5 h-5" />
-                          <span>Dashboard</span>
-                        </Link>
-                        <Link
-                          href="/dashboard"
-                          onClick={() => setIsProfileOpen(false)}
-                          className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="w-5 h-5"
-                            width={24}
-                            height={24}
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              fill="currentColor"
-                              d="m8.962 18.91l.464-.588zM12 5.5l-.54.52a.75.75 0 0 0 1.08 0zm3.038 13.41l.465.59zm-5.612-.588C7.91 17.127 6.253 15.96 4.938 14.48C3.65 13.028 2.75 11.335 2.75 9.137h-1.5c0 2.666 1.11 4.7 2.567 6.339c1.43 1.61 3.254 2.9 4.68 4.024zM2.75 9.137c0-2.15 1.215-3.954 2.874-4.713c1.612-.737 3.778-.541 5.836 1.597l1.08-1.04C10.1 2.444 7.264 2.025 5 3.06C2.786 4.073 1.25 6.425 1.25 9.137zM8.497 19.5c.513.404 1.063.834 1.62 1.16s1.193.59 1.883.59v-1.5c-.31 0-.674-.12-1.126-.385c-.453-.264-.922-.628-1.448-1.043zm7.006 0c1.426-1.125 3.25-2.413 4.68-4.024c1.457-1.64 2.567-3.673 2.567-6.339h-1.5c0 2.198-.9 3.891-2.188 5.343c-1.315 1.48-2.972 2.647-4.488 3.842zM22.75 9.137c0-2.712-1.535-5.064-3.75-6.077c-2.264-1.035-5.098-.616-7.54 1.92l1.08 1.04c2.058-2.137 4.224-2.333 5.836-1.596c1.659.759 2.874 2.562 2.874 4.713zm-8.176 9.185c-.526.415-.995.779-1.448 1.043s-.816.385-1.126.385v1.5c.69 0 1.326-.265 1.883-.59c.558-.326 1.107-.756 1.62-1.16z"
-                            ></path>
-                          </svg>
-                          <span>Wishlist</span>
-                        </Link>
-                        <Link
-                          href="/dashboard"
-                          onClick={() => setIsProfileOpen(false)}
-                          className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors"
-                        >
-                          <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" width={24} height={24} viewBox="0 0 24 24"><path fill="currentColor" d="M13.09 20H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h16c1.11 0 2 .89 2 2v7.81c-.88-.51-1.91-.81-3-.81c-3.31 0-6 2.69-6 6c0 .34.04.67.09 1M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
-                          <span>Subscriptions</span>
-                        </Link>
-                        <Link
-                          href="/dashboard/setting"
-                          onClick={() => setIsProfileOpen(false)}
-                          className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors"
-                        >
-                          <Settings2 className="w-5 h-5" />
-                          <span>Settings</span>
-                        </Link>
-                      </div>
-
-                      <div className="border-t mt-4 pt-4">
-                        <button
-                          onClick={() => {
-                            setIsProfileOpen(false);
-                            // Add sign out logic here
-                          }}
-                          className="flex items-center gap-3 px-3 py-2.5 w-full rounded-lg hover:bg-muted transition-colors text-left"
-                        >
-                          <LogOut className="w-5 h-5" />
-                          <span>Sign Out</span>
-                        </button>
+                          <path
+                            fill="currentColor"
+                            d="M13.685 5.25h.03a.75.75 0 0 1 0 1.5c-1.292 0-2.275 0-3.058.063c-.785.063-1.283.183-1.636.371a3.94 3.94 0 0 0-1.677 1.764c-.19.394-.304.88-.363 1.638c-.06.764-.06 1.738-.06 3.094v.11l1.12-1.12a.75.75 0 0 1 1.06 1.06l-2.4 2.4a.75.75 0 0 1-1.086-.027l-2.171-2.4a.75.75 0 0 1 1.112-1.006l.865.956v-.005c0-1.317 0-2.35.065-3.179c.066-.844.202-1.542.509-2.176a5.44 5.44 0 0 1 2.319-2.431c.625-.335 1.37-.476 2.224-.544c.85-.068 1.891-.068 3.147-.068m4.162 2.4a.75.75 0 0 1 .538.247l2.171 2.4a.75.75 0 0 1-1.112 1.006l-.865-.956v.005c0 1.317 0 2.35-.065 3.179c-.066.844-.201 1.542-.509 2.176a5.44 5.44 0 0 1-2.319 2.431c-.625.335-1.37.476-2.224.544c-.85.068-1.891.068-3.146.068h-.03a.75.75 0 0 1 0-1.5c1.291 0 2.274 0 3.057-.063c.785-.063 1.283-.183 1.636-.372a3.94 3.94 0 0 0 1.677-1.763c.19-.394.304-.88.363-1.638c.06-.764.06-1.738.06-3.094v-.11l-1.12 1.12a.75.75 0 0 1-1.06-1.06l2.4-2.4a.75.75 0 0 1 .548-.22"
+                          ></path>
+                        </svg>
                       </div>
                     </div>
+
+                    {/* Menu Items */}
+                    <div className="">
+                      <Link
+                        href="/dashboard/setting"
+                        onClick={() => setIsProfileOpen(false)}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors"
+                      >
+                        <DashboardIcon className="w-5 h-5" />
+                        <span>Dashboard</span>
+                      </Link>
+                      <Link
+                        href="/dashboard"
+                        onClick={() => setIsProfileOpen(false)}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors"
+                      >
+                        <AppsIcon className="w-5 h-5" />
+                        <span>Apps & tools</span>
+                      </Link>
+                      <Link
+                        href="/dashboard"
+                        onClick={() => setIsProfileOpen(false)}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-5 h-5"
+                          width={24}
+                          height={24}
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="m8.962 18.91l.464-.588zM12 5.5l-.54.52a.75.75 0 0 0 1.08 0zm3.038 13.41l.465.59zm-5.612-.588C7.91 17.127 6.253 15.96 4.938 14.48C3.65 13.028 2.75 11.335 2.75 9.137h-1.5c0 2.666 1.11 4.7 2.567 6.339c1.43 1.61 3.254 2.9 4.68 4.024zM2.75 9.137c0-2.15 1.215-3.954 2.874-4.713c1.612-.737 3.778-.541 5.836 1.597l1.08-1.04C10.1 2.444 7.264 2.025 5 3.06C2.786 4.073 1.25 6.425 1.25 9.137zM8.497 19.5c.513.404 1.063.834 1.62 1.16s1.193.59 1.883.59v-1.5c-.31 0-.674-.12-1.126-.385c-.453-.264-.922-.628-1.448-1.043zm7.006 0c1.426-1.125 3.25-2.413 4.68-4.024c1.457-1.64 2.567-3.673 2.567-6.339h-1.5c0 2.198-.9 3.891-2.188 5.343c-1.315 1.48-2.972 2.647-4.488 3.842zM22.75 9.137c0-2.712-1.535-5.064-3.75-6.077c-2.264-1.035-5.098-.616-7.54 1.92l1.08 1.04c2.058-2.137 4.224-2.333 5.836-1.596c1.659.759 2.874 2.562 2.874 4.713zm-8.176 9.185c-.526.415-.995.779-1.448 1.043s-.816.385-1.126.385v1.5c.69 0 1.326-.265 1.883-.59c.558-.326 1.107-.756 1.62-1.16z"
+                          ></path>
+                        </svg>
+                        <span>Wishlist</span>
+                      </Link>
+                      <Link
+                        href="/dashboard"
+                        onClick={() => setIsProfileOpen(false)}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-5 h-5"
+                          width={24}
+                          height={24}
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M13.09 20H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h16c1.11 0 2 .89 2 2v7.81c-.88-.51-1.91-.81-3-.81c-3.31 0-6 2.69-6 6c0 .34.04.67.09 1M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"
+                          ></path>
+                        </svg>
+                        <span>Subscriptions</span>
+                      </Link>
+                      <Link
+                        href="/dashboard/setting"
+                        onClick={() => setIsProfileOpen(false)}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors"
+                      >
+                        <Settings2 className="w-5 h-5" />
+                        <span>Settings</span>
+                      </Link>
+                    </div>
+
+                    <div className="border-t mt-4 pt-4">
+                      <button
+                        onClick={() => {
+                          setIsProfileOpen(false);
+                          // Add sign out logic here
+                        }}
+                        className="flex items-center gap-3 px-3 py-2.5 w-full rounded-lg hover:bg-muted transition-colors text-left"
+                      >
+                        <LogOut className="w-5 h-5" />
+                        <span>Sign Out</span>
+                      </button>
+                    </div>
                   </div>
-                )}
-              </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

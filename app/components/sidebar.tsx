@@ -566,7 +566,7 @@ export default function Sidebar({ className = "" }: SidebarProps) {
 
             <Tooltip label="New">
               <Link
-                href={"/app/community"}
+                href={"/community"}
                 className="w-12 h-12 flex items-center justify-center rounded-xl bg-background text-foreground transition-all cursor-pointer"
               >
                 <MoreAcademiesIcon className="w-8 h-8" />
@@ -575,7 +575,7 @@ export default function Sidebar({ className = "" }: SidebarProps) {
 
             <Tooltip label="New">
               <Link
-                href={"/app/community"}
+                href={"/discover"}
                 className="w-12 h-12 flex items-center justify-center rounded-full bg-background hover:bg-gray-200 text-background-foreground hover:text-gray-900 transition-all"
               >
                 <Plus className="w-6 h-6" />

@@ -3,6 +3,7 @@
 import { Search, SlidersHorizontal } from 'lucide-react';
 import { useState } from 'react';
 import CategoryNavigation from '@/components/category-navigation';
+import Link from 'next/link';
 
 interface Community {
     id: number;
@@ -117,19 +118,25 @@ function DiscoverPage() {
         <div className="">
             <div className="max-w-7xl mx-auto p-4">
                 {/* Search Section */}
-                {/* <div className="mb-8">
-                    <h1 className="text-3xl font-bold text-center mb-6">Find new communities on Bitroot</h1>
+                <div className="py-20 max-w-xl mx-auto space-y-6 text-center">
+                    <h1 className="text-3xl font-bold text-center">Find Schools</h1>
+                    <div className='flex items-center justify-center gap-2'>
+                        <span>or</span>
+                        <Link href="/intranet/new-school" className="text-primary font-medium hover:underline">
+                            Create your school
+                        </Link>
+                    </div>
                     <div className="relative max-w-2xl mx-auto">
                         <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
                         <input
                             type="text"
-                            placeholder="Try searching for a game, an esports team, or an artist"
+                            placeholder="Type school name here ..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className="w-full pl-12 pr-4 py-3 bg-muted border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                         />
                     </div>
-                </div> */}
+                </div>
 
                 {/* Category Navigation */}
                 <CategoryNavigation onCategoryChange={setSelectedCategory} />

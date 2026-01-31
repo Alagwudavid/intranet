@@ -1,9 +1,8 @@
 import { Metadata } from "next";
 import { Suspense } from "react";
-import Navbar from "@/app/components/navbar";
+import {Navbar} from "./components/navbar";
 import Sidebar from "@/app/components/sidebar";
 import Footer from "../components/footer";
-import DiscoverSidenav from "./components/discover-sidenav";
 
 export const metadata: Metadata = {
   title: "Discover Communities | Bitroot intranet",

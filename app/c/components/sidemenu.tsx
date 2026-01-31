@@ -23,6 +23,7 @@ import {
   Users,
   EllipsisVertical,
 } from "lucide-react";
+import SearchBar from "@/app/components/search-bar";
 
 interface LeaderboardUser {
   id: string;
@@ -117,6 +118,25 @@ const CupIcon = (props: React.SVGProps<SVGSVGElement>) => (
 const LibraryIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg {...props} xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24"><path fill="currentColor" d="M22 14v-2.202c0-2.632 0-3.949-.77-4.804a3 3 0 0 0-.224-.225C20.151 6 18.834 6 16.202 6h-.374c-1.153 0-1.73 0-2.268-.153a4 4 0 0 1-.848-.352C12.224 5.224 11.816 4.815 11 4l-.55-.55c-.274-.274-.41-.41-.554-.53a4 4 0 0 0-2.18-.903C7.53 2 7.336 2 6.95 2c-.883 0-1.324 0-1.692.07A4 4 0 0 0 2.07 5.257C2 5.626 2 6.068 2 6.95V14c0 3.771 0 5.657 1.172 6.828S6.229 22 10 22h4c3.771 0 5.657 0 6.828-1.172S22 17.771 22 14" opacity={0.5}></path><path fill="currentColor" d="M12.25 10a.75.75 0 0 1 .75-.75h5a.75.75 0 0 1 0 1.5h-5a.75.75 0 0 1-.75-.75"></path></svg>
 );
+
+const RandomIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    {...props} xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 256 256"><path fill="currentColor" d="M224 84h-43.8l7.61-41.85a12 12 0 0 0-23.62-4.3L155.8 84h-39.6l7.61-41.85a12 12 0 1 0-23.62-4.3L91.8 84H48a12 12 0 0 0 0 24h39.44l-7.27 40H32a12 12 0 0 0 0 24h43.8l-7.61 41.85a12 12 0 0 0 9.66 14A11.4 11.4 0 0 0 80 228a12 12 0 0 0 11.8-9.86l8.4-46.14h39.6l-7.61 41.85a12 12 0 0 0 9.66 14a11.4 11.4 0 0 0 2.16.2a12 12 0 0 0 11.8-9.86L164.2 172H208a12 12 0 0 0 0-24h-39.44l7.27-40H224a12 12 0 0 0 0-24m-79.83 64h-39.61l7.27-40h39.61Z"></path></svg>
+);
+
+const MembershipIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg {...props} xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}><path d="M9 14c0 1.657 2.686 3 6 3s6-1.343 6-3s-2.686-3-6-3s-6 1.343-6 3"></path><path d="M9 14v4c0 1.656 2.686 3 6 3s6-1.344 6-3v-4M3 6c0 1.072 1.144 2.062 3 2.598s4.144.536 6 0S15 7.072 15 6s-1.144-2.062-3-2.598s-4.144-.536-6 0S3 4.928 3 6"></path><path d="M3 6v10c0 .888.772 1.45 2 2"></path><path d="M3 11c0 .888.772 1.45 2 2"></path></g></svg>
+);
+
+const CoursesIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg {...props} xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24"><path fill="currentColor" d="M4 8H2v12a2 2 0 0 0 2 2h12v-2H4z"></path><path fill="currentColor" d="M20 2H8a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2m-9 12V6l7 4z"></path></svg>
+);
+
+const EventIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg {...props} xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 16 16"><path fill="currentColor" d="M6 7.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5zm0 3a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5zM7.5 7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5m1 3h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5M10 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"></path><path fill="currentColor" fillRule="evenodd" d="M4.5 0a.5.5 0 0 1 .5.5V1h6V.5a.5.5 0 0 1 1 0V1c1.66 0 3 1.34 3 3v8c0 1.66-1.34 3-3 3H4c-1.66 0-3-1.34-3-3V4c0-1.66 1.34-3 3-3V.5a.5.5 0 0 1 .5-.5M14 4v1H2V4c0-1.1.895-2 2-2v.5a.5.5 0 0 0 1 0V2h6v.5a.5.5 0 0 0 1 0V2c1.1 0 2 .895 2 2M2 12V6h12v6c0 1.1-.895 2-2 2H4c-1.1 0-2-.895-2-2" clipRule="evenodd"></path></svg>
+);
+
+
 export default function SideMenu({
   leaderboard = [],
   showOnMobile = false,
@@ -192,10 +212,12 @@ export default function SideMenu({
   };
 
   return (
-    <div className="h-full w-full bg-background border-r overflow-y-auto custom-scrollbar">
-      <div className="space-y-2">
-
-        <div className="hidden flex flex-col border-b pb-4 px-4">
+    <div className="relative h-full w-full bg-background border-r">
+      <div className="h-full pb-20 overflow-y-auto custom-scrollbar">
+        <div className="p-4">
+          <SearchBar />
+        </div>
+        <div className="hidden flex flex-col border-b pb-4 px-">
           <h1 className="text-foreground mb-1">Rate this community</h1>
           <div className="flex items-center gap-1 text-base text-muted-foreground">
             <div className="flex rounded-full w-6 h-6 overflow-hidden mr-2">
@@ -236,17 +258,7 @@ export default function SideMenu({
           {isCommunityOpen && (
             <>
               <div className="rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={20}
-                    height={20}
-                    viewBox="0 0 26 26"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M13 0c-1.7 0-3 1.3-3 3v6c0 1.7 1.3 3 3 3h6l4 4v-4c1.7 0 3-1.3 3-3V3c0-1.7-1.3-3-3-3zm4.188 3h1.718l1.688 6h-1.5l-.407-1.5h-1.5L16.813 9H15.5zM18 4c-.1.4-.212.888-.313 1.188l-.28 1.312h1.187l-.282-1.313C18.113 4.888 18 4.4 18 4M3 10c-1.7 0-3 1.3-3 3v6c0 1.7 1.3 3 3 3v4l4-4h6c1.7 0 3-1.3 3-3v-6h-3c-1.9 0-3.406-1.3-3.906-3zm4.594 2.906c1.7 0 2.5 1.4 2.5 3c0 1.4-.481 2.288-1.281 2.688c.4.2.874.306 1.374.406l-.374 1c-.7-.2-1.426-.512-2.126-.813c-.1-.1-.275-.093-.375-.093C6.112 18.994 5 18 5 16c0-1.7.994-3.094 2.594-3.094m0 1.094c-.8 0-1.188.9-1.188 2c0 1.2.388 2 1.188 2s1.218-.9 1.218-2s-.418-2-1.218-2"
-                    ></path>
-                </svg>
+                <RandomIcon className={"size-5 text-muted-foreground"} />
                 <span>Discussions</span>
               </div>
               <div className="rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5">
@@ -266,7 +278,7 @@ export default function SideMenu({
             </>
           )}
 
-          <div
+          {/* <div
             onClick={() => setIsLearningOpen(!isLearningOpen)}
             className="flex items-center justify-between gap-3 mt-2 cursor-pointer"
           >
@@ -284,15 +296,15 @@ export default function SideMenu({
                 className={`rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5 ${pathname === "/c/classroom" ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""}`}
               >
                 
-                <ClassroomIcon className={`size-5 ${pathname === "/c/classroom" ? "text-primary-foreground" : "text-muted-foreground"}`} />
-                <span>Classroom</span>
+                <CoursesIcon className={`size-5 ${pathname === "/c/classroom" ? "text-primary-foreground" : "text-muted-foreground"}`} />
+                <span>Courses</span>
               </Link>
               <Link
                 href="/c/calendar"
                 className={`rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5 ${pathname === "/c/calendar" ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""}`}
               >
-                <CalendarDays className={`size-5 ${pathname === "/c/calendar" ? "text-primary-foreground" : "text-muted-foreground"}`} />
-                <span>Calendar</span>
+                <EventIcon className={`size-5 ${pathname === "/c/calendar" ? "text-primary-foreground" : "text-muted-foreground"}`} />
+                <span>Events</span>
               </Link>
               <Link
                 href="/c/library"
@@ -302,7 +314,7 @@ export default function SideMenu({
                 <span>Library</span>
               </Link>
             </>
-          )}
+          )} */}
 
           <div
             onClick={() => setIsResourcesOpen(!isResourcesOpen)}
@@ -318,6 +330,20 @@ export default function SideMenu({
           {isResourcesOpen && (
             <>
               <Link
+                href="/c/calendar"
+                className={`rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5 ${pathname === "/c/calendar" ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""}`}
+              >
+                <EventIcon className={`size-5 ${pathname === "/c/calendar" ? "text-primary-foreground" : "text-muted-foreground"}`} />
+                <span>Events</span>
+              </Link>
+              <Link
+                href="/c/library"
+                className={`rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5 ${pathname === "/c/library" ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""}`}
+              >
+                <LibraryIcon className={`size-5 ${pathname === "/c/library" ? "text-primary-foreground" : "text-muted-foreground"}`} />
+                <span>Library</span>
+              </Link>
+              <Link
                 href="/c/shop"
                 className={`rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5 ${pathname === "/c/shop" ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""}`}
               >
@@ -330,13 +356,6 @@ export default function SideMenu({
               >
                 <Users className={`size-5 ${pathname === "/c/members" ? "text-primary-foreground" : "text-muted-foreground"}`} />
                 <span>Members</span>
-              </Link>
-              <Link
-                href="/c/membership"
-                className={`rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5 ${pathname === "/c/membership" ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""}`}
-              >
-                <Users className={`size-5 ${pathname === "/c/membership" ? "text-primary-foreground" : "text-muted-foreground"}`} />
-                <span>Membership</span>
               </Link>
               <Link
                 href="/c/leaderboard"
@@ -363,52 +382,14 @@ export default function SideMenu({
                   </svg>
                 <span>About</span>
               </Link>
-              {/* <div className="rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5">
-                                <div className="w-7 h-7 rounded-lg bg-muted text-muted-foreground flex items-center justify-center cursor-pointer">
-                                    <RulesIcon className="size-5" />
-                                </div>
-                                <span>Moderation</span>
-                            </div>
-                            <div className="rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5">
-                                <div className="w-7 h-7 rounded-lg bg-muted text-muted-foreground flex items-center justify-center cursor-pointer">
-                                    <RulesIcon className="size-5" />
-                                </div>
-                                <span>Faq</span>
-                            </div> */}
             </>
           )}
-
-          {/* <div
-                        onClick={() => setWikiOpen(!isWikiOpen)}
-                        className="flex items-center justify-between gap-3 mt-2 cursor-pointer">
-                        <h1 className="flex items-center text-base text-muted-foreground">
-                            <ChevronDown className={`size-5 transition-transform ${isWikiOpen ? '' : '-rotate-90'}`} />
-                            Wiki
-                        </h1>
-                    </div>
-                    {isWikiOpen && (
-                        <>
-                            <div className="rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5">
-                                <div className="w-7 h-7 rounded-lg bg-muted text-muted-foreground flex items-center justify-center cursor-pointer">
-                                    <RulesIcon className="size-5" />
-                                </div>
-                                <span>Rules and regulations</span>
-                            </div>
-                            <div className="rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5">
-                                <div className="w-7 h-7 rounded-lg bg-muted text-muted-foreground flex items-center justify-center cursor-pointer">
-                                    <RulesIcon className="size-5" />
-                                </div>
-                                <span>Moderation</span>
-                            </div>
-                            <div className="rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5">
-                                <div className="w-7 h-7 rounded-lg bg-muted text-muted-foreground flex items-center justify-center cursor-pointer">
-                                    <RulesIcon className="size-5" />
-                                </div>
-                                <span>Faq</span>
-                            </div>
-                        </>
-                    )} */}
         </div>
+      </div>
+      <div className="flex items-center p-3 border-t absolute bottom-0 w-full bg-background">
+          <Link href="/c/membership" className="w-full px-5 py-2.5 text-primary-foreground bg-primary hover:bg-primary/80 rounded-full text-lg text-center font-medium transition-colors">
+              Join community
+          </Link>
       </div>
     </div>
   );

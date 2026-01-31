@@ -147,7 +147,7 @@ const CourseCard = ({
   );
 };
 
-function HomePage() {
+function SchoolPage() {
   const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
@@ -268,7 +268,7 @@ function HomePage() {
                 Suggestions
               </h2>
               <button
-                onClick={() => router.push("/home/suggestions")}
+                onClick={() => router.push("/School/suggestions")}
                 className="text-sm font-semibold text-foreground hover:text-primary transition-colors"
               >
                 See all
@@ -499,4 +499,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default SchoolPage;

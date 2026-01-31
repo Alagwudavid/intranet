@@ -62,7 +62,7 @@ function MembershipPage() {
           {membershipTiers.map((tier) => (
             <div
               key={tier.id}
-              className={`relative bg-card border rounded-lg overflow-hidden transition-all hover:shadow-lg ${
+              className={`relative h-fit bg-card rounded-lg overflow-hidden transition-all shadow-primary hover:shadow-lg ${
                 tier.recommended ? "border-primary shadow-md" : "border"
               }`}
             >
@@ -75,8 +75,8 @@ function MembershipPage() {
 
               {/* Image */}
               {tier.image ? (
-                <div className="w-full h-48 bg-muted flex items-center justify-center">
-                  <div className="text-muted-foreground text-4xl font-bold">{tier.name}</div>
+                <div className="w-full h-48 bg-muted flex items-center justify-center p-6">
+                  <div className="text-muted-foreground text-4xl font-bold text-center">{tier.name}</div>
                 </div>
               ) : (
                 <div className="w-full h-48 bg-muted"></div>
