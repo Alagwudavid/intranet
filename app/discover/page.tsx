@@ -144,60 +144,65 @@ function DiscoverPage() {
                 {/* Communities Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                     {filteredCommunities.map((community) => (
-                        <div
+                        <Link
                             key={community.id}
-                            className="bg-background rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer border"
-                        >
-                            {/* Rank Badge */}
-                            <div className="relative p-1.5">
-                                <div className="bg-muted rounded-2xl overflow-hidden aspect-[3/1]">
-                                    <div className="w-full h-full flex items-center justify-center overflow-hidden">
+                            href={"/c"}
+                         >
+                            <div
+                                className="bg-background rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer border"
+                            >
+                                {/* Rank Badge */}
+                                <div className="relative p-1.5">
+                                    <div className="bg-muted rounded-2xl overflow-hidden aspect-[3/1]">
+                                        <div className="w-full h-full flex items-center justify-center overflow-hidden">
+                                            <img
+                                                src={community.image}
+                                                alt={community.name}
+                                                className="w-full h-44 object-cover"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="flex border-5 border-background rounded-full absolute left-5 -bottom-7">
                                         <img
-                                            src={community.image}
+                                            src={community.avatar}
                                             alt={community.name}
-                                            className="w-full h-44 object-cover"
+                                            className="w-20 h-20 rounded-full object-cover"
                                         />
                                     </div>
                                 </div>
-                                <div className="flex border-5 border-background rounded-full absolute left-5 -bottom-7">
-                                    <img
-                                        src={community.avatar}
-                                        alt={community.name}
-                                        className="w-20 h-20 rounded-full object-cover"
-                                    />
-                                </div>
-                            </div>
 
-                            {/* Content */}
-                            <div className="p-4 md:px-6">
-                                {/* Avatar and Name */}
-                                <div className="flex flex-col mt-5 mb-3">
-                                    <h3 className="font-semibold text-foreground text-lg leading-tight">
-                                        {community.name}
-                                    </h3>
-                                    <p className="font-semibold text-muted-foreground text-sm leading-tight">
-                                        @_username
+                                {/* Content */}
+                                <div className="p-4 md:px-6">
+                                    {/* Avatar and Name */}
+                                    <div className="flex flex-col mt-5 mb-3">
+                                        <h3 className="font-semibold text-foreground text-lg leading-tight">
+                                            {community.name}
+                                        </h3>
+                                        <p className="font-semibold text-muted-foreground text-sm leading-tight">
+                                            @_username
+                                        </p>
+                                    </div>
+
+                                    {/* Description */}
+                                    <p className="text-foreground text-sm mb-4 line-clamp-3">
+                                        {community.description}
                                     </p>
-                                </div>
 
-                                {/* Description */}
-                                <p className="text-foreground text-sm mb-4 line-clamp-3">
-                                    {community.description}
-                                </p>
-
-                                {/* Footer Info */}
-                                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                                    <span className="font-medium">{community.privacy}</span>
-                                    <span>•</span>
-                                    <span>{community.members}</span>
-                                    <span>•</span>
-                                    <span className={`font-medium ${community.price === 'Free' ? 'text-green-600' : 'text-foreground'
-                                        }`}>
-                                        {community.price}
-                                    </span>
+                                    {/* Footer Info */}
+                                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                        <span className="font-medium">{community.privacy}</span>
+                                        <span>•</span>
+                                        <span>{community.members}</span>
+                                        <span>•</span>
+                                        <span className={`font-medium ${community.price === 'Free' ? 'text-green-600' : 'text-foreground'
+                                            }`}>
+                                            {community.price}
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
+                        
                     ))}
                 </div>
 

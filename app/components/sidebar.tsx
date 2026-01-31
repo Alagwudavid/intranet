@@ -598,7 +598,7 @@ export default function Sidebar({ className = "" }: SidebarProps) {
           <div className="flex flex-col gap-3">
             {communities.map((community) => (
               <Tooltip key={community.id} label={community.name}>
-                <button className="relative w-12 h-12 flex items-center justify-center rounded-xl border transition-all duration-200 group cursor-pointer">
+                <Link href={"/c"} className="relative w-12 h-12 flex items-center justify-center rounded-xl border transition-all duration-200 group cursor-pointer">
                   <div
                     className={`w-full h-full flex items-center justify-center rounded-xl transition-all ${community.color} overflow-hidden`}
                   >
@@ -615,7 +615,7 @@ export default function Sidebar({ className = "" }: SidebarProps) {
                       {community.notifications}
                     </span>
                   )}
-                </button>
+                </Link>
               </Tooltip>
             ))}
           </div>
