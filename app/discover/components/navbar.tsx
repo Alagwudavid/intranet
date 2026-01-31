@@ -52,7 +52,7 @@ const IntranetIcon = (props: React.SVGProps<SVGSVGElement>) => {
       style={{
         shapeRendering: "geometricPrecision",
         textRendering: "geometricPrecision",
-        imageRendering: "optimizeQuality",
+        // imageRendering: "optimizeQuality",
         fillRule: "evenodd",
         clipRule: "evenodd",
       }}
