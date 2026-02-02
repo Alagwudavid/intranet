@@ -38,16 +38,7 @@ export default function CourseOverviewPage() {
     }
 
     return (
-        <div className="max-w-7xl mx-auto p-8">
-            {/* Back Button */}
-            <button
-                onClick={() => router.back()}
-                className="flex items-center gap-2 bg-muted/70 text-muted-foreground hover:bg-muted mb-6 p-2 rounded-lg cursor-pointer"
-            >
-                <ArrowLeft className="w-5 h-5" />
-                Back
-            </button>
-
+        <div className="w-full mx-auto p-4">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Main Content */}
                 <div className="lg:col-span-2 space-y-8">
@@ -636,7 +627,7 @@ export default function CourseOverviewPage() {
 
                 {/* Sidebar - Desktop Position */}
                 <div className="hidden lg:block lg:col-span-1">
-                    <div className='space-y-2 sticky top-6'>
+                    <div className='space-y-2 sticky top-0 pt-8'>
                         <div className="relative aspect-video bg-muted overflow-hidden rounded-2xl mb-6">
                             <img
                                 src={course.image}

@@ -102,13 +102,12 @@ const CourseCard = ({
             {[...Array(5)].map((_, i) => (
               <svg
                 key={i}
-                className={`w-4 h-4 ${
-                  i < Math.floor(course.rating)
+                className={`w-4 h-4 ${i < Math.floor(course.rating)
                     ? "text-yellow-500 fill-yellow-500"
                     : i < course.rating
                       ? "text-yellow-500 fill-yellow-500 opacity-50"
                       : "text-gray-300"
-                }`}
+                  }`}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
@@ -156,7 +155,7 @@ function SchoolPage() {
   const [showMoreTrending, setShowMoreTrending] = useState(false);
 
   const handleCourseClick = (courseSlug: string) => {
-    router.push(`/course/${courseSlug}`);
+    router.push(`/school/course/${courseSlug}`);
   };
 
   const filteredCourses = courses.filter((course) => {
