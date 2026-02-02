@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-    /* Bitroot Color Scheme */
+    /* Intranet Color Scheme */
     --background: 255 255 255;
     --foreground: 15 23 42;
     --card: 255 255 255;
@@ -189,6 +189,14 @@
 
 .min-h-page {
     min-height: calc(100vh - 56px);
+}
+
+.min-h-main {
+    min-height: calc(100vh - 16px);
+}
+
+.h-main {
+    height: calc(100vh - 8px);
 }
 
 .min-h-infopage {

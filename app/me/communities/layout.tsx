@@ -3,7 +3,7 @@ import Navbar from '../../components/navbar';
 import Sidebar from '../../components/sidebar';
 
 export const metadata: Metadata = {
-    title: 'My Communities | Bitroot intranet',
+    title: 'My Communities | Intranet web',
     description: 'Your communities and groups',
 };
 

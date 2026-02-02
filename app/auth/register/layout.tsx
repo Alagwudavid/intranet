@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Register | Bitroot intranet',
+    title: 'Register | Intranet web',
 };
 
 export default function RegisterLayout({

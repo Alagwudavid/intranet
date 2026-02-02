@@ -3,7 +3,7 @@ import Navbar from "@/app/components/navbar";
 import Sidebar from "@/app/components/sidebar";
 
 export const metadata: Metadata = {
-  title: "Vault | Bitroot intranet",
+  title: "Vault | Intranet web",
   description: "Your saved content and bookmarks",
 };
 

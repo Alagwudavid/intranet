@@ -4,7 +4,7 @@ import Sidebar from "@/app/components/sidebar";
 import Footer from "../components/footer";
 
 export const metadata: Metadata = {
-  title: "My Account | Bitroot intranet",
+  title: "My Account | Intranet web",
   description: "Your personal account dashboard",
 };
 

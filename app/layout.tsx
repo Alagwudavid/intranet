@@ -3,8 +3,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Intranet - Bitroot",
-  description: "Bitroot Intranet Application",
+  title: "Intranet - Intranet",
+  description: "Intranet web Application",
 };
 
 export default function IntranetLayout({

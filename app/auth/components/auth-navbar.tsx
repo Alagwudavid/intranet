@@ -35,7 +35,7 @@ export default function AuthNavbar() {
                         <HomeIcon className="w-8 h-8" />
                     </div>
                     <span className="text-2xl font-bold">
-                        <span className="text-foreground">Bitroot</span>
+                        <span className="text-foreground">Intranet</span>
                         <span className="text-primary">Auth</span>
                     </span>
                 </Link>

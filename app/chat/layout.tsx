@@ -3,7 +3,7 @@ import Navbar from "@/app/components/navbar";
 import Sidebar from "@/app/components/sidebar";
 
 export const metadata: Metadata = {
-  title: "Chat | Bitroot intranet",
+  title: "Chat | Intranet web",
   description: "Connect and chat with your community",
 };
 

@@ -3,7 +3,7 @@ import Navbar from '../../components/navbar';
 import Sidebar from '../../components/sidebar';
 
 export const metadata: Metadata = {
-    title: 'My Certificates | Bitroot intranet',
+    title: 'My Certificates | Intranet web',
     description: 'Your earned certificates',
 };
 

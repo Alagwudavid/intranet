@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Authentication | Bitroot intranet',
+    title: 'Authentication | Intranet web',
     description: 'Sign in or create your account',
 };
 

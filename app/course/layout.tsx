@@ -4,7 +4,7 @@ import Sidebar from "@/app/components/sidebar";
 import Footer from "../components/footer";
 
 export const metadata: Metadata = {
-  title: "Course - Bitroot",
+  title: "Course - Intranet",
   description: "Course details and overview",
 };
 

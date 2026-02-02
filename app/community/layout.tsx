@@ -4,7 +4,7 @@ import Sidebar from "@/app/components/sidebar";
 import Footer from "../components/footer";
 
 export const metadata: Metadata = {
-  title: "Community | Bitroot intranet",
+  title: "Community | Intranet web",
   description: "Your community hub and activities",
 };
 

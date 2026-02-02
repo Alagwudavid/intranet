@@ -4,7 +4,7 @@ import Sidebar from "@/app/components/sidebar";
 import Footer from "../components/footer";
 
 export const metadata: Metadata = {
-  title: "Calendar | Bitroot intranet",
+  title: "Calendar | Intranet web",
   description: "Manage your schedule and events",
 };
 

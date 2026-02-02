@@ -3,7 +3,7 @@ import Navbar from '../../components/navbar';
 import Sidebar from '../../components/sidebar';
 
 export const metadata: Metadata = {
-    title: 'Account setting | Bitroot intranet',
+    title: 'Account setting | Intranet web',
     description: 'Your to-do list and tasks',
 };
 

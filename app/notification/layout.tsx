@@ -4,7 +4,7 @@ import Sidebar from "@/app/components/sidebar";
 import Footer from "../components/footer";
 
 export const metadata: Metadata = {
-  title: "Notifications | Bitroot intranet",
+  title: "Notifications | Intranet web",
   description: "View your notifications and activity",
 };
 

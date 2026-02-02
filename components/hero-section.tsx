@@ -61,7 +61,7 @@ export function HeroSection() {
               >
                 <Image
                   src="/logo.png"
-                  alt="Bitroot Logo"
+                  alt="Intranet Logo"
                   width={32}
                   height={32}
                   className="w-12 h-12"

@@ -465,7 +465,7 @@ export default function Sidebar({ className = "" }: SidebarProps) {
     <>
       {/* Desktop Sidebar */}
       <aside
-        className={`flex fixed left-0 top-0 min-h-page h-full w-20 bg-muted flex-col items-center py-2 overflow-y-auto overflow-x-clip hide-scrollbar z-sidebar ${className} border-r border-r-background`}
+        className={`flex fixed left-0 top-0 min-h-page h-full w-20 bg-muted flex-col items-center py-2 overflow-y-auto overflow-x-clip hide-scrollbar z-sidebar ${className}`}
       >
         <div className="flex flex-col items-center w-full py-2 space-y-3">
           <div className="space-y-2">

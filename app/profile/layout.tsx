@@ -4,7 +4,7 @@ import Sidebar from "@/app/components/sidebar";
 import Footer from "../components/footer";
 
 export const metadata: Metadata = {
-  title: "Profile | Bitroot intranet",
+  title: "Profile | Intranet web",
   description: "Manage your profile and settings",
 };
 

@@ -3,7 +3,7 @@ import Navbar from "@/app/components/navbar";
 import Sidebar from "@/app/components/sidebar";
 
 export const metadata: Metadata = {
-  title: "Quiz | Bitroot intranet",
+  title: "Quiz | Intranet web",
   description: "Take quizzes and test your knowledge",
 };
 

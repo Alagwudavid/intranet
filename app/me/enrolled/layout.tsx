@@ -3,7 +3,7 @@ import Navbar from '../../components/navbar';
 import Sidebar from '../../components/sidebar';
 
 export const metadata: Metadata = {
-    title: 'Enrolled Classes | Bitroot intranet',
+    title: 'Enrolled Classes | Intranet web',
     description: 'Your enrolled classes',
 };
 

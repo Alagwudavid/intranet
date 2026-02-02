@@ -3,7 +3,7 @@ import Navbar from "@/app/components/navbar";
 import Sidebar from "@/app/components/sidebar";
 
 export const metadata: Metadata = {
-  title: "Room | Bitroot intranet",
+  title: "Room | Intranet web",
   description: "Join video rooms and live sessions",
 };
 

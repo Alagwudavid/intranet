@@ -72,7 +72,7 @@ const features = [
     {
         image: "/assets/replays.png",
         title: "Courses & live replays",
-        description: "Sell courses & webinar replays that your learners can watch directly on Bitroot.",
+        description: "Sell courses & webinar replays that your learners can watch directly on Intranet.",
         textColor: "text-green-600"
     },
     {
@@ -174,7 +174,7 @@ export function FeaturesGridSection() {
             </div>
             <div className="text-center mb-12 sm:mb-16">
                 <h2 className="text-3xl sm:text-4xl font-bold mb-3">What we offer.</h2>
-                <p className="text-muted-foreground text-lg">Bitroot makes learning easy and interactive with peers and the community.</p>
+                <p className="text-muted-foreground text-lg">Intranet makes learning easy and interactive with peers and the community.</p>
             </div>
 
             {/* Grid Layout */}
@@ -188,7 +188,7 @@ export function FeaturesGridSection() {
                             title={feature.title}
                             description={feature.description}
                             textColor={feature.textColor}
-                            // resizeImage={feature.resizeImage}
+                        // resizeImage={feature.resizeImage}
                         />
                     ))}
                 </div>

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Archive | Bitroot intranet',
+    title: 'Archive | Intranet web',
 };
 
 export default function ArchiveLayout({
