@@ -9,6 +9,8 @@ import SideMenu from "./components/sidemenu";
 import CommunityNavInfo from "./components/community-nav-info";
 import Rightbar from "./components/rightbar";
 import { useState, useEffect } from "react";
+import AppContent from "../components/app-content";
+import FooterMini from "../components/footer-mini";
 
 const tabs = [
   { id: "general", label: "General", href: "/c/general" },
@@ -53,40 +55,15 @@ export default function HomeLayout({
       );
   }, []);
   return (
-    <>
-      {/* Sidebar - Global fixed position */}
+    <div className="w-full h-screen flex items-center gap-0 bg-muted">
       <Sidebar />
-
-      {/* Navbar - Sticky at top with pl-20 for sidebar */}
-      <Navbar />
-
-      {/* Main layout container */}
-      <div className="h-[calc(100vh-3.5rem)] flex flex-col overflow-hidden pl-20">
-        {/* InfoNav - Fixed height 32px */}
-        {/* <div className="h-8 shrink-0">
-          <CommunityNavInfo />
-        </div> */}
-
-        {/* Content area - Remaining height with 3 columns */}
-        <div className="flex flex-1 overflow-hidden">
-          {/* Left Menu - Fixed width 320px with internal scroll */}
-          <div className="w-80 shrink-0">
-            <SideMenu />
-          </div>
-
-          {/* Main Content - Flexible width with internal scroll */}
-          <div className="flex-1 overflow-y-auto custom-scrollbar min-w-96">
-            {children}
-          </div>
-
-          {/* Right Bar - Fixed width 288px with internal scroll - Conditionally rendered */}
-          {/* {isRightbarVisible && (
-            <div className="w-72 shrink-0 hidden lg:block">
-              <Rightbar />
-            </div>
-          )} */}
-        </div>
+      <div className="flex-1 flex flex-col w-[calc(100%-88px)] h-screen relative bg-muted pr-2">
+        <AppContent>
+          <Navbar />
+          {children}
+        </AppContent>
+        <FooterMini />
       </div>
-    </>
+    </div>
   );
 }

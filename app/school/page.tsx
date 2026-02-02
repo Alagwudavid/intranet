@@ -156,7 +156,7 @@ function SchoolPage() {
   const [showMoreTrending, setShowMoreTrending] = useState(false);
 
   const handleCourseClick = (courseSlug: string) => {
-    router.push(`/intranet/course/${courseSlug}`);
+    router.push(`/course/${courseSlug}`);
   };
 
   const filteredCourses = courses.filter((course) => {
