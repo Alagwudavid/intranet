@@ -51,13 +51,6 @@ export default function SideCurriculum({className}: sideCurriculumProps) {
     { type: "image" as const, src: course?.image || "" },
   ];
 
-  // Get coach information from course data
-  const coach = course ? {
-    name: course.instructor,
-    image: course.instructorImage
-  } : null;
-
-
   return (
     <section className={`space-y-4 relative ${className}`}>
       <div className="bg-background overflow-hidden py-4 max-md:sticky top-0">
@@ -82,31 +75,10 @@ export default function SideCurriculum({className}: sideCurriculumProps) {
                 onClick={() => setModule1Open(!module1Open)}
                 className="w-full bg-background cursor-pointer p-4 flex items-start gap-3 transition-colors"
               >
-                <div className="shrink-0 mt-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-5 h-5 text-muted-foreground"
-                    width={24}
-                    height={24}
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      fill="currentColor"
-                      fillRule="evenodd"
-                      d="M7 7c0-2.762 2.238-5 5-5s5 2.238 5 5v3h.4c.88 0 1.6.72 1.6 1.6v7c0 1.32-1.08 2.4-2.4 2.4H7.4C6.08 21 5 19.92 5 18.6v-7c0-.88.72-1.6 1.6-1.6H7zm8 0v3H9V7c0-1.658 1.342-3 3-3s3 1.342 3 3m-3 5.25a1.75 1.75 0 0 0-.75 3.332V18a.75.75 0 0 0 1.5 0v-2.418A1.75 1.75 0 0 0 12 12.25"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
                 <div className="flex-1 text-left">
                   <h3 className="font-semibold text-foreground mb-2">
                     Lorem ipsum
                   </h3>
-                  <div className="flex items-center gap-4">
-                    <span className="text-xs text-primary bg-muted font-semibold p-1 px-2 rounded-lg">
-                      Self-paced
-                    </span>
-                  </div>
                 </div>
                 <svg
                   className={`w-5 h-5 text-muted-foreground transition-transform shrink-0 ${module1Open ? "rotate-180" : ""}`}
@@ -151,7 +123,22 @@ export default function SideCurriculum({className}: sideCurriculumProps) {
                         The basics: demo video
                       </span>
                     </div>
-                    <div className="flex items-center gap-1.5">23:01</div>
+                    <div className="flex items-center gap-1.5">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-4 h-4 text-muted-foreground"
+                        width={24}
+                        height={24}
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="currentColor"
+                          fillRule="evenodd"
+                          d="M7 7c0-2.762 2.238-5 5-5s5 2.238 5 5v3h.4c.88 0 1.6.72 1.6 1.6v7c0 1.32-1.08 2.4-2.4 2.4H7.4C6.08 21 5 19.92 5 18.6v-7c0-.88.72-1.6 1.6-1.6H7zm8 0v3H9V7c0-1.658 1.342-3 3-3s3 1.342 3 3m-3 5.25a1.75 1.75 0 0 0-.75 3.332V18a.75.75 0 0 0 1.5 0v-2.418A1.75 1.75 0 0 0 12 12.25"
+                          clipRule="evenodd"
+                        ></path>
+                      </svg>
+                    </div>
                   </li>
                   <li className="flex items-center justify-between gap-1.5 hover:bg-muted text-muted-foreground px-2 py-1 rounded">
                     <div className="flex items-center gap-1.5">
@@ -250,11 +237,6 @@ export default function SideCurriculum({className}: sideCurriculumProps) {
                   <h3 className="font-semibold text-foreground mb-1">
                     Demo session
                   </h3>
-                  <div className="flex items-center gap-4">
-                    <span className="text-xs text-primary bg-muted font-semibold p-1 px-2 rounded-lg">
-                      1:1 Session
-                    </span>
-                  </div>
                 </div>
                 <svg
                   className={`w-5 h-5 text-muted-foreground transition-transform shrink-0 ${module2Open ? "rotate-180" : ""}`}
@@ -369,11 +351,6 @@ export default function SideCurriculum({className}: sideCurriculumProps) {
                   <h3 className="font-semibold text-foreground mb-2">
                     Mind map
                   </h3>
-                  <div className="flex items-center gap-4">
-                    <span className="text-xs text-primary bg-muted font-semibold p-1 px-2 rounded-lg">
-                      Self-paced
-                    </span>
-                  </div>
                 </div>
                 <svg
                   className={`w-5 h-5 text-muted-foreground transition-transform shrink-0 ${module3Open ? "rotate-180" : ""}`}
@@ -475,9 +452,6 @@ export default function SideCurriculum({className}: sideCurriculumProps) {
                   <h3 className="font-semibold text-foreground mb-1">
                     Projects & Certification
                   </h3>
-                  <span className="text-xs text-primary bg-muted font-semibold p-1 px-2 rounded-lg">
-                    Compulsory
-                  </span>
                 </div>
                 <svg
                   className={`w-5 h-5 text-muted-foreground transition-transform shrink-0 ${module4Open ? "rotate-180" : ""}`}
@@ -509,7 +483,7 @@ export default function SideCurriculum({className}: sideCurriculumProps) {
                     <h4 className="text-sm font-semibold text-foreground mb-3">
                       Capstone Projects
                     </h4>
-                    <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-3">
+                    <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-3">
                       {/* Project 1 */}
                       <div className="">
                         <div className="flex flex-col items-center gap-3">
@@ -557,32 +531,6 @@ export default function SideCurriculum({className}: sideCurriculumProps) {
                             </h5>
                             <span className="text-xs text-muted-foreground">
                               📊 Hard
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Project 3 */}
-                      <div className="">
-                        <div className="flex flex-col items-center gap-3">
-                          <div className="bg-muted p-2 rounded-lg shrink-0 w-30 h-30">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="w-4 h-4 text-purple-600"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                fill="currentColor"
-                                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zm4 18H6V4h7v5h5z"
-                              ></path>
-                            </svg>
-                          </div>
-                          <div className="flex flex-col items-center">
-                            <h5 className="text-sm font-semibold text-center text-foreground mb-1">
-                              Final Capstone Project
-                            </h5>
-                            <span className="text-xs text-muted-foreground">
-                              📊 Professional
                             </span>
                           </div>
                         </div>
@@ -646,7 +594,7 @@ export default function SideCurriculum({className}: sideCurriculumProps) {
                             has successfully completed
                           </p>
                           <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 mb-3">
-                            {course.title}
+                            Demo course
                           </p>
                           <div className="flex justify-center gap-8 pt-2  border-blue-200 dark:border-blue-800">
                             <div className="text-center">

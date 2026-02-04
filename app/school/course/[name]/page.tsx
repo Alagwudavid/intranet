@@ -40,12 +40,6 @@ export default function CourseOverviewPage() {
   const [isDetailsExpanded, setIsDetailsExpanded] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Curriculum accordion states - Modules and Chapters
-  const [module1Open, setModule1Open] = useState(false);
-  const [module2Open, setModule2Open] = useState(false);
-  const [module3Open, setModule3Open] = useState(false);
-  const [module4Open, setModule4Open] = useState(false);
-
   const course = foundCourse;
   const PreviewPageBgSrc = typeof PreviewPageBg === 'string' ? PreviewPageBg : PreviewPageBg.src;
 
@@ -67,51 +61,6 @@ export default function CourseOverviewPage() {
     name: course.instructor,
     image: course.instructorImage
   } : null;
-
-  // Calculate installment price and duration
-  const getInstallmentDetails = () => {
-    if (!course) return { price: "", duration: "" };
-
-    const priceMatch = course.price.match(/\$([\d.]+)/);
-    const price = priceMatch ? parseFloat(priceMatch[1]) : 0;
-
-    // Divide by 3 for installments
-    const installmentPrice = (price / 3).toFixed(2);
-
-    // Extract duration from price string
-    const durationMatch = course.price.match(/•\s*(.+)$/);
-    let durationText = durationMatch ? durationMatch[1].trim() : "";
-    if (durationText.includes("month")) {
-      const monthMatch = durationText.match(/(\d+)\s*months?/);
-      if (monthMatch) {
-        const months = parseInt(monthMatch[1]);
-        const installmentMonths = Math.ceil(months / 3);
-        durationText = `${installmentMonths} month${installmentMonths > 1 ? "s" : ""}`;
-      }
-    } else if (durationText.includes("week")) {
-      const weekMatch = durationText.match(/(\d+)\s*weeks?/);
-      if (weekMatch) {
-        const weeks = parseInt(weekMatch[1]);
-        const installmentWeeks = Math.ceil(weeks / 3);
-        durationText = `${installmentWeeks} week${installmentWeeks > 1 ? "s" : ""}`;
-      }
-    }
-
-    return { price: `$${installmentPrice}`, duration: durationText };
-  };
-
-  const installmentDetails = getInstallmentDetails();
-  // Check if price is numeric (can accept installments)
-  const acceptsInstallmentPayment = course?.price.match(/\$[\d.]+/) ? true : false;
-
-  const displayPrice =
-    paymentType === "installment" && acceptsInstallmentPayment
-      ? installmentDetails.price
-      : course?.price.split('•')[0].trim() || course?.price;
-  const displayDuration =
-    paymentType === "installment" && acceptsInstallmentPayment
-      ? installmentDetails.duration
-      : (course?.price.match(/•\s*(.+)$/) ? course?.price.match(/•\s*(.+)$/)?.[1].trim() : "");
 
   if (!course) {
     return (
@@ -223,7 +172,7 @@ export default function CourseOverviewPage() {
                   <img
                     src={mediaItems[currentSlide].src}
                     alt={course.title}
-                    className="w-full h-full object-contain mx-auto"
+                    className="w-3xl h-full object-contain mx-auto"
                   />
                 )}
 
