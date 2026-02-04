@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/app/components/navbar";
 import Sidebar from "@/app/components/sidebar";
 import FooterMini from "@/app/components/footer-mini";
+import SpecialNavbar from "../components/special-navbar";
 
 export const metadata: Metadata = {
   title: "Course - Intranet",
@@ -15,6 +16,7 @@ export default function CourseLayout({
 }) {
   return (
     <>
+      <SpecialNavbar />
       {children}
     </>
   );

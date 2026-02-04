@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import CategoryNavigation from "@/components/category-navigation";
 import { courses, type Course } from "@/data/courses";
+import Navbar from "../components/navbar";
 
 const PremiumIcon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
@@ -182,7 +183,8 @@ function SchoolPage() {
     : trendingCourses.slice(0, 4);
 
   return (
-    <div className="">
+    <>
+      <Navbar />
       <div className="max-w-7xl mx-auto p-4">
         {/* Category Navigation */}
         <CategoryNavigation onCategoryChange={setSelectedCategory} />
@@ -494,7 +496,7 @@ function SchoolPage() {
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 }
 

@@ -58,9 +58,19 @@ export default function HomeLayout({
     <div className="w-full h-screen flex items-center gap-0 bg-muted">
       <Sidebar />
       <div className="flex-1 flex flex-col w-[calc(100%-88px)] h-screen relative bg-muted pr-2">
-        <AppContent>
+        <AppContent className="gap-0!">
           <Navbar />
-          {children}
+          <div className="flex flex-1 overflow-hidden">
+            {/* Left Menu - Fixed width 320px with internal scroll */}
+            <div className="w-80 shrink-0">
+              <SideMenu />
+            </div>
+
+            {/* Main Content - Flexible width with internal scroll */}
+            <div className="flex-1 overflow-y-auto custom-scrollbar min-w-96">
+              {children}
+            </div>
+          </div>
         </AppContent>
         <FooterMini />
       </div>

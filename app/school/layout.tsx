@@ -18,7 +18,7 @@ export default function HomeLayout({
       <Sidebar />
       <div className="flex-1 flex flex-col w-[calc(100%-88px)] h-screen relative bg-muted pr-2">
         <AppContent>
-          <SpecialNavbar />
+          {/* <Navbar /> */}
           {children}
         </AppContent>
         <FooterMini />
