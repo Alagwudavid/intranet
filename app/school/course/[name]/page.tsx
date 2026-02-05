@@ -81,7 +81,7 @@ export default function CourseOverviewPage() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto h-full grid grid-cols-1 md:grid-cols-3 gap-3">
+    <div className="max-w-7xl mx-auto w-full h-full grid grid-cols-1 md:grid-cols-3 gap-3">
         {/* Sidebar - Desktop Position */}
         <div className="hidden md:block md:col-span-1 p-4">
           <div className="space-y-2 sticky top-0">
