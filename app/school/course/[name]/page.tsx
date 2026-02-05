@@ -81,140 +81,115 @@ export default function CourseOverviewPage() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto p-4 xl:p-8">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* Main Content */}
-        <div className="md:col-span-2 space-y-8 relative">
-                  <div className="space-y-2 mb-6">
-          <div className="flex flex-col gap-2 items-start">
-            {/* Event Title */}
-            <h1 className="text-lg lg:text-2xl font-bold text-foreground">
-              {course.title}
-            </h1>
-            <div className="flex items-center flex-wrap gap-4">
-              <p className="text-foreground flex items-center gap-1">
-                <Heart className="w-4 h-4" />
-                {course.reviews}
-              </p>
-              <span className="text-muted-foreground">•</span>
-              <p className="text-foreground flex items-center gap-1">
-                <Users className="w-4 h-4" />
-                2.1k learners
-              </p>
-              <span className="text-muted-foreground">•</span>
-              <div className="flex items-center gap-2">
-                <img
-                  src={coach?.image}
-                  alt={coach?.name}
-                  className="w-6 h-6 rounded-lg object-cover"
-                />
-                <p className="font-semibold text-foreground line-clamp-1">
-                  by {coach?.name}
-                </p>
-              </div>
-            </div>
+    <div className="max-w-7xl mx-auto h-full grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Sidebar - Desktop Position */}
+        <div className="hidden md:block md:col-span-1 p-4">
+          <div className="space-y-2 sticky top-0">
+            <SideCurriculum />
           </div>
         </div>
-          {/* Media Carousel */}
-          <div className="relative h-auto w-full">
-            <div className="relative h-[410px] w-full border overflow-hidden rounded-2xl group">
-              {/* Blurred Background */}
-              <div
-                className="absolute inset-0 bg-no-repeat bg-center bg-cover"
-                style={{
-                  backgroundImage: `url("${course?.image}")`,
-                  filter: "blur(20px)",
-                  transform: "scale(1.1)",
-                }}
-              />
+        {/* Main Content */}
+        <div className="md:col-span-2 space-y-8 relative p-4">
+            {/* Media Carousel */}
+            <div className="relative h-auto w-full">
+              <div className="relative h-[410px] w-full border overflow-hidden rounded-2xl group">
+                {/* Blurred Background */}
+                <div
+                  className="absolute inset-0 bg-no-repeat bg-center bg-cover"
+                  style={{
+                    backgroundImage: `url("${course?.image}")`,
+                    filter: "blur(20px)",
+                    transform: "scale(1.1)",
+                  }}
+                />
 
-              {/* Content Layer */}
-              <div className="relative h-full w-full flex items-center justify-center">
-                {mediaItems[currentSlide].type === "video" ? (
-                  <>
-                    <video
-                      id="course-intro-video"
-                      className="w-full h-full object-cover"
-                      poster={mediaItems[currentSlide].poster}
-                      preload="metadata"
-                    >
-                      <source
-                        src={mediaItems[currentSlide].src}
-                        type="video/mp4"
-                      />
-                      Your browser does not support the video tag.
-                    </video>
+                {/* Content Layer */}
+                <div className="relative h-full w-full flex items-center justify-center">
+                  {mediaItems[currentSlide].type === "video" ? (
+                    <>
+                      <video
+                        id="course-intro-video"
+                        className="w-full h-full object-cover"
+                        poster={mediaItems[currentSlide].poster}
+                        preload="metadata"
+                      >
+                        <source
+                          src={mediaItems[currentSlide].src}
+                          type="video/mp4"
+                        />
+                        Your browser does not support the video tag.
+                      </video>
+                      <button
+                        onClick={() => {
+                          const video = document.getElementById(
+                            "course-intro-video",
+                          ) as HTMLVideoElement;
+                          if (video) {
+                            if (isPlaying) {
+                              video.pause();
+                              setIsPlaying(false);
+                            } else {
+                              video.play();
+                              setIsPlaying(true);
+                            }
+                          }
+                        }}
+                        className="absolute bottom-5 left-5 z-20 flex items-center justify-center bg-white/90 hover:bg-white p-2.5 rounded-full cursor-pointer transition-all shadow-lg group-hover:scale-110"
+                      >
+                        {isPlaying ? (
+                          <Pause className="w-6 h-6 text-primary fill-primary" />
+                        ) : (
+                          <Play className="w-6 h-6 text-primary fill-primary" />
+                        )}
+                      </button>
+                    </>
+                  ) : (
+                    <img
+                      src={mediaItems[currentSlide].src}
+                      alt={course.title}
+                      className="w-3xl h-full object-contain mx-auto"
+                    />
+                  )}
+
+                  {/* Navigation Buttons */}
+                  {currentSlide > 0 && (
                     <button
                       onClick={() => {
-                        const video = document.getElementById(
-                          "course-intro-video",
-                        ) as HTMLVideoElement;
-                        if (video) {
-                          if (isPlaying) {
-                            video.pause();
-                            setIsPlaying(false);
-                          } else {
-                            video.play();
-                            setIsPlaying(true);
-                          }
-                        }
+                        setCurrentSlide(currentSlide - 1);
+                        setIsPlaying(false);
                       }}
-                      className="absolute bottom-5 left-5 z-20 flex items-center justify-center bg-white/90 hover:bg-white p-2.5 rounded-full cursor-pointer transition-all shadow-lg group-hover:scale-110"
+                      className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center bg-white/90 hover:bg-white p-3 rounded-full cursor-pointer transition-all shadow-lg"
                     >
-                      {isPlaying ? (
-                        <Pause className="w-6 h-6 text-primary fill-primary" />
-                      ) : (
-                        <Play className="w-6 h-6 text-primary fill-primary" />
-                      )}
+                      <ArrowLeft className="w-5 h-5 text-gray-800" />
                     </button>
-                  </>
-                ) : (
-                  <img
-                    src={mediaItems[currentSlide].src}
-                    alt={course.title}
-                    className="w-3xl h-full object-contain mx-auto"
-                  />
-                )}
+                  )}
+                  {currentSlide < mediaItems.length - 1 && (
+                    <button
+                      onClick={() => {
+                        setCurrentSlide(currentSlide + 1);
+                        setIsPlaying(false);
+                      }}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center bg-white/90 hover:bg-white p-3 rounded-full cursor-pointer transition-all shadow-lg rotate-180"
+                    >
+                      <ArrowLeft className="w-5 h-5 text-gray-800" />
+                    </button>
+                  )}
 
-                {/* Navigation Buttons */}
-                {currentSlide > 0 && (
-                  <button
-                    onClick={() => {
-                      setCurrentSlide(currentSlide - 1);
-                      setIsPlaying(false);
-                    }}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center bg-white/90 hover:bg-white p-3 rounded-full cursor-pointer transition-all shadow-lg"
-                  >
-                    <ArrowLeft className="w-5 h-5 text-gray-800" />
-                  </button>
-                )}
-                {currentSlide < mediaItems.length - 1 && (
-                  <button
-                    onClick={() => {
-                      setCurrentSlide(currentSlide + 1);
-                      setIsPlaying(false);
-                    }}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center bg-white/90 hover:bg-white p-3 rounded-full cursor-pointer transition-all shadow-lg rotate-180"
-                  >
-                    <ArrowLeft className="w-5 h-5 text-gray-800" />
-                  </button>
-                )}
-
-                {/* Slide Counter */}
-                <div className="absolute top-4 right-4 z-20 bg-black/60 text-white px-3 py-1.5 rounded-full text-sm font-medium">
-                  {currentSlide + 1} / {mediaItems.length}
+                  {/* Slide Counter */}
+                  <div className="absolute top-4 right-4 z-20 bg-black/60 text-white px-3 py-1.5 rounded-full text-sm font-medium">
+                    {currentSlide + 1} / {mediaItems.length}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          {/* <TabNav tabs={tabs} /> */}
-          <div className="md:hidden">
-            <div className="space-y-2 mb-6">
-              <SideCurriculum className="pt-0"/>
+            {/* <TabNav tabs={tabs} /> */}
+            <div className="md:hidden">
+              <div className="space-y-2 mb-6">
+                <SideCurriculum className="pt-0"/>
+              </div>
             </div>
-          </div>
           {/* Course Details Section */}
-          <section id="curriculum-tab" className="">
+          <section id="details-tab" className="">
             <h2 className="text-2xl font-bold text-foreground mb-4">
               About This Event
             </h2>
@@ -416,14 +391,6 @@ export default function CourseOverviewPage() {
             </button>
           </section>
         </div>
-
-        {/* Sidebar - Desktop Position */}
-        <div className="hidden md:block md:col-span-1">
-          <div className="space-y-2 sticky top-0">
-            <SideCurriculum className="pt-14"/>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

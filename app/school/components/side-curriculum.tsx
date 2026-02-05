@@ -52,21 +52,47 @@ export default function SideCurriculum({className}: sideCurriculumProps) {
   ];
 
   return (
-    <section className={`space-y-4 relative ${className}`}>
-      <div className="bg-background overflow-hidden py-4 max-md:sticky top-0">
-        <div className="flex flex-col space-y-2">
-          <div className="flex items-center gap-2">
-            <button className="w-full bg-foreground hover:bg-purple-500 text-background py-3 rounded-lg font-semibold hover:opacity-90 transition-colors cursor-pointer">
-              Start learning
-            </button>
-            <button className="flex items-center justify-center w-14 h-full bg-background text-foreground py-3 rounded-lg font-semibold border border-border hover:cursor-pointer transition-colors">
-             <Bookmark className="w-5 h-5" />
-            </button>
-          </div>
-        </div>
-      </div>
+    <section className={`space-y-4 relative h-full ${className}`}>
+            <div className="space-y-2 mb-6">
+              <div className="flex flex-col gap-2 items-start">
+                {/* Event Title */}
+                <h1 className="text-lg lg:text-xl font-bold text-foreground">
+                  {course?.title}
+                </h1>
+                <div className="flex items-center flex-wrap gap-4">
+                  <p className="text-foreground flex items-center gap-1">
+                    <Heart className="w-4 h-4" />
+                    {course?.reviews}
+                  </p>
+                  <span className="text-muted-foreground">•</span>
+                  <p className="text-foreground flex items-center gap-1">
+                    <Users className="w-4 h-4" />
+                    2.1k learners
+                  </p>
+                  <span className="text-muted-foreground">•</span>
+                  {/* <div className="flex items-center gap-2">
+                    <img
+                      src={coach?.image}
+                      alt={coach?.name}
+                      className="w-6 h-6 rounded-lg object-cover"
+                    />
+                    <p className="font-semibold text-foreground line-clamp-1">
+                      by {coach?.name}
+                    </p>
+                  </div> */}
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <button className="w-full bg-foreground hover:bg-purple-500 text-background py-3 rounded-lg font-semibold hover:opacity-90 transition-colors cursor-pointer">
+                  Start learning
+                </button>
+                <button className="flex items-center justify-center w-14 h-full bg-background text-foreground py-3 rounded-lg font-semibold border border-border hover:cursor-pointer transition-colors">
+                <Bookmark className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
       {/* Curriculum Section */}
-      <div>
+      <>
         <div className="overflow-hidden">
           <ol className="">
             {/* Module 01 - Writers and stories */}
@@ -97,32 +123,13 @@ export default function SideCurriculum({className}: sideCurriculumProps) {
 
               {/* Chapters for Module 1 */}
               <div
-                className={`space-y-2 pl-8 pr-3 pb-3 transition-all duration-300 ${module1Open ? "block" : "hidden"}`}
+                className={`space-y-2 px-3 pb-3 transition-all duration-300 ${module1Open ? "block" : "hidden"}`}
               >
                 <ul className="w-full gap-3 text-sm list-disc list-inside">
-                  <li className="flex items-center justify-between gap-1.5 hover:bg-muted text-muted-foreground px-2 py-1 rounded">
-                    <div className="flex items-center gap-1.5">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-4 h-4"
-                        width={24}
-                        height={24}
-                        viewBox="0 0 24 24"
-                      >
-                        <g
-                          fill="none"
-                          stroke="currentColor"
-                          strokeLinejoin="round"
-                          strokeWidth={1.5}
-                        >
-                          <path d="M15.538 18.592c-1.107.908-2.75.908-6.038.908c-3.287 0-4.931 0-6.038-.908a4 4 0 0 1-.554-.554C2 16.93 2 15.288 2 12c0-3.287 0-4.931.908-6.038a4 4 0 0 1 .554-.554C4.57 4.5 6.212 4.5 9.5 4.5c3.287 0 4.931 0 6.038.908a4 4 0 0 1 .554.554C17 7.07 17 8.712 17 12c0 3.287 0 4.931-.908 6.038a4 4 0 0 1-.554.554ZM17 13v-2l2.6-3.467a1.333 1.333 0 0 1 2.4.8v7.334a1.333 1.333 0 0 1-2.4.8z"></path>
-                          <path d="M9.5 13.5a1.5 1.5 0 0 0 0-3m0 3a1.5 1.5 0 0 1 0-3m0 3v-3"></path>
-                        </g>
-                      </svg>
-                      <span className="font-medium">
-                        The basics: demo video
-                      </span>
-                    </div>
+                  <li className="flex items-center justify-between gap-1.5 hover:bg-muted text-muted-foreground p-2 rounded">
+                    <span className="font-medium">
+                      The basics: demo video
+                    </span>
                     <div className="flex items-center gap-1.5">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -140,72 +147,62 @@ export default function SideCurriculum({className}: sideCurriculumProps) {
                       </svg>
                     </div>
                   </li>
-                  <li className="flex items-center justify-between gap-1.5 hover:bg-muted text-muted-foreground px-2 py-1 rounded">
+                  <li className="flex items-center justify-between gap-1.5 hover:bg-muted text-muted-foreground p-2 rounded">
+                    <span className="font-medium">The introduction</span>
                     <div className="flex items-center gap-1.5">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="w-4 h-4"
+                        className="w-4 h-4 text-muted-foreground"
                         width={24}
                         height={24}
                         viewBox="0 0 24 24"
                       >
-                        <g
-                          fill="none"
-                          stroke="currentColor"
-                          strokeLinejoin="round"
-                          strokeWidth={1.5}
-                        >
-                          <path d="M15.538 18.592c-1.107.908-2.75.908-6.038.908c-3.287 0-4.931 0-6.038-.908a4 4 0 0 1-.554-.554C2 16.93 2 15.288 2 12c0-3.287 0-4.931.908-6.038a4 4 0 0 1 .554-.554C4.57 4.5 6.212 4.5 9.5 4.5c3.287 0 4.931 0 6.038.908a4 4 0 0 1 .554.554C17 7.07 17 8.712 17 12c0 3.287 0 4.931-.908 6.038a4 4 0 0 1-.554.554ZM17 13v-2l2.6-3.467a1.333 1.333 0 0 1 2.4.8v7.334a1.333 1.333 0 0 1-2.4.8z"></path>
-                          <path d="M9.5 13.5a1.5 1.5 0 0 0 0-3m0 3a1.5 1.5 0 0 1 0-3m0 3v-3"></path>
-                        </g>
+                        <path
+                          fill="currentColor"
+                          fillRule="evenodd"
+                          d="M7 7c0-2.762 2.238-5 5-5s5 2.238 5 5v3h.4c.88 0 1.6.72 1.6 1.6v7c0 1.32-1.08 2.4-2.4 2.4H7.4C6.08 21 5 19.92 5 18.6v-7c0-.88.72-1.6 1.6-1.6H7zm8 0v3H9V7c0-1.658 1.342-3 3-3s3 1.342 3 3m-3 5.25a1.75 1.75 0 0 0-.75 3.332V18a.75.75 0 0 0 1.5 0v-2.418A1.75 1.75 0 0 0 12 12.25"
+                          clipRule="evenodd"
+                        ></path>
                       </svg>
-                      <span className="font-medium">The introduction</span>
                     </div>
-                    <div className="flex items-center gap-1.5">15:00</div>
                   </li>
-                  <li className="flex items-center gap-1.5 hover:bg-muted text-muted-foreground px-2 py-1 rounded">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-4 h-4"
-                      width={24}
-                      height={24}
-                      viewBox="0 0 24 24"
-                    >
-                      <g
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={1.5}
-                      >
-                        <path d="M7.5 3.5c-1.556.047-2.483.22-3.125.862c-.879.88-.879 2.295-.879 5.126v6.506c0 2.832 0 4.247.879 5.127C5.253 22 6.668 22 9.496 22h5c2.829 0 4.243 0 5.121-.88c.88-.879.88-2.294.88-5.126V9.488c0-2.83 0-4.246-.88-5.126c-.641-.642-1.569-.815-3.125-.862"></path>
-                        <path
-                          strokeLinejoin="round"
-                          d="M7.496 3.75c0-.966.784-1.75 1.75-1.75h5.5a1.75 1.75 0 1 1 0 3.5h-5.5a1.75 1.75 0 0 1-1.75-1.75Z"
-                        ></path>
-                        <path strokeLinecap="round" d="M6.5 10h4"></path>
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M13.5 11s.5 0 1 1c0 0 1.588-2.5 3-3"
-                        ></path>
-                        <path strokeLinecap="round" d="M6.5 16h4"></path>
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M13.5 17s.5 0 1 1c0 0 1.588-2.5 3-3"
-                        ></path>
-                      </g>
-                    </svg>
+                  <li className="flex items-center justify-between gap-1.5 hover:bg-muted text-muted-foreground p-2 rounded">
                     <span className="font-medium">Assessment</span>
+                    <div className="flex items-center gap-1.5">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-4 h-4 text-muted-foreground"
+                        width={24}
+                        height={24}
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="currentColor"
+                          fillRule="evenodd"
+                          d="M7 7c0-2.762 2.238-5 5-5s5 2.238 5 5v3h.4c.88 0 1.6.72 1.6 1.6v7c0 1.32-1.08 2.4-2.4 2.4H7.4C6.08 21 5 19.92 5 18.6v-7c0-.88.72-1.6 1.6-1.6H7zm8 0v3H9V7c0-1.658 1.342-3 3-3s3 1.342 3 3m-3 5.25a1.75 1.75 0 0 0-.75 3.332V18a.75.75 0 0 0 1.5 0v-2.418A1.75 1.75 0 0 0 12 12.25"
+                          clipRule="evenodd"
+                        ></path>
+                      </svg>
+                    </div>
                   </li>
-                  <li className="flex items-center gap-1.5 hover:bg-muted text-muted-foreground px-2 py-1 rounded">
-                    <svg
-                      className="w-4 h-4"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z" />
-                    </svg>
+                  <li className="flex items-center justify-between gap-1.5 hover:bg-muted text-muted-foreground p-2 rounded">
                     <span>Notebook examples</span>
+                    <div className="flex items-center gap-1.5">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-4 h-4 text-muted-foreground"
+                        width={24}
+                        height={24}
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="currentColor"
+                          fillRule="evenodd"
+                          d="M7 7c0-2.762 2.238-5 5-5s5 2.238 5 5v3h.4c.88 0 1.6.72 1.6 1.6v7c0 1.32-1.08 2.4-2.4 2.4H7.4C6.08 21 5 19.92 5 18.6v-7c0-.88.72-1.6 1.6-1.6H7zm8 0v3H9V7c0-1.658 1.342-3 3-3s3 1.342 3 3m-3 5.25a1.75 1.75 0 0 0-.75 3.332V18a.75.75 0 0 0 1.5 0v-2.418A1.75 1.75 0 0 0 12 12.25"
+                          clipRule="evenodd"
+                        ></path>
+                      </svg>
+                    </div>
                   </li>
                 </ul>
               </div>
@@ -217,22 +214,6 @@ export default function SideCurriculum({className}: sideCurriculumProps) {
                 onClick={() => setModule2Open(!module2Open)}
                 className="w-full bg-background cursor-pointer p-4 flex items-start gap-3 transition-colors"
               >
-                <div className="shrink-0 mt-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-5 h-5 text-muted-foreground"
-                    width={24}
-                    height={24}
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      fill="currentColor"
-                      fillRule="evenodd"
-                      d="M7 7c0-2.762 2.238-5 5-5s5 2.238 5 5v3h.4c.88 0 1.6.72 1.6 1.6v7c0 1.32-1.08 2.4-2.4 2.4H7.4C6.08 21 5 19.92 5 18.6v-7c0-.88.72-1.6 1.6-1.6H7zm8 0v3H9V7c0-1.658 1.342-3 3-3s3 1.342 3 3m-3 5.25a1.75 1.75 0 0 0-.75 3.332V18a.75.75 0 0 0 1.5 0v-2.418A1.75 1.75 0 0 0 12 12.25"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
                 <div className="flex-1 text-left">
                   <h3 className="font-semibold text-foreground mb-1">
                     Demo session
@@ -254,74 +235,88 @@ export default function SideCurriculum({className}: sideCurriculumProps) {
               </button>
 
               <div
-                className={`space-y-2 pl-8 pr-3 pb-3 transition-all duration-300 ${module2Open ? "block" : "hidden"}`}
+                className={`space-y-2 px-3 pb-3 transition-all duration-300 ${module2Open ? "block" : "hidden"}`}
               >
-                <div className="mt-3 border rounded-lg flex items-center gap-3 text-sm p-3">
-                  <div className="flex flex-col items-center justify-center lg:px-3">
-                    <span className="text-xs text-muted-foreground">
-                      Sun
+                <ul className="w-full gap-3 text-sm list-disc list-inside">
+                  <li className="flex items-center justify-between gap-1.5 hover:bg-muted text-muted-foreground p-2 rounded">
+                    <span className="font-medium">
+                      The basics: demo video
                     </span>
-                    <span className="text-2xl font-bold text-foreground">
-                      07
-                    </span>
-                  </div>
-                  <span className="w-px h-10 bg-border"></span>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1">
-                      <span className="font-medium text-foreground">
-                        Revision of module 01
-                      </span>
+                    <div className="flex items-center gap-1.5">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-4 h-4 text-muted-foreground"
+                        width={24}
+                        height={24}
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="currentColor"
+                          fillRule="evenodd"
+                          d="M7 7c0-2.762 2.238-5 5-5s5 2.238 5 5v3h.4c.88 0 1.6.72 1.6 1.6v7c0 1.32-1.08 2.4-2.4 2.4H7.4C6.08 21 5 19.92 5 18.6v-7c0-.88.72-1.6 1.6-1.6H7zm8 0v3H9V7c0-1.658 1.342-3 3-3s3 1.342 3 3m-3 5.25a1.75 1.75 0 0 0-.75 3.332V18a.75.75 0 0 0 1.5 0v-2.418A1.75 1.75 0 0 0 12 12.25"
+                          clipRule="evenodd"
+                        ></path>
+                      </svg>
                     </div>
-                    <div className="flex items-center gap-2 text-xs">
-                      <span className="text-xs text-purple-400 bg-muted font-semibold p-1 px-2 rounded-lg flex items-center gap-1">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="w-4 h-4 text-purple-500"
-                          width={24}
-                          height={24}
-                          viewBox="0 0 24 24"
-                        >
-                          <g
-                            fill="none"
-                            stroke="currentColor"
-                            strokeLinejoin="round"
-                            strokeWidth={1.5}
-                          >
-                            <path d="M15.538 18.592c-1.107.908-2.75.908-6.038.908c-3.287 0-4.931 0-6.038-.908a4 4 0 0 1-.554-.554C2 16.93 2 15.288 2 12c0-3.287 0-4.931.908-6.038a4 4 0 0 1 .554-.554C4.57 4.5 6.212 4.5 9.5 4.5c3.287 0 4.931 0 6.038.908a4 4 0 0 1 .554.554C17 7.07 17 8.712 17 12c0 3.287 0 4.931-.908 6.038a4 4 0 0 1-.554.554ZM17 13v-2l2.6-3.467a1.333 1.333 0 0 1 2.4.8v7.334a1.333 1.333 0 0 1-2.4.8z"></path>
-                            <path d="M9.5 13.5a1.5 1.5 0 0 0 0-3m0 3a1.5 1.5 0 0 1 0-3m0 3v-3"></path>
-                          </g>
-                        </svg>
-                        Zoom
-                      </span>
-                      <span className="text-xs font-medium text-muted-foreground flex items-center gap-1">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="w-4 h-4"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                        >
-                          <g fill="none">
-                            <circle
-                              cx="12"
-                              cy="12"
-                              r="9"
-                              fill="currentColor"
-                              fillOpacity="0.25"
-                            ></circle>
-                            <path
-                              stroke="currentColor"
-                              // strokeLineCap="round"
-                              d="M5 2.804A6 6 0 0 0 2.804 5M19 2.804A6 6 0 0 1 21.196 5M12 6.5v5.25c0 .138.112.25.25.25h4.25"
-                              strokeWidth="1"
-                            ></path>
-                          </g>
-                        </svg>
-                        02:00 PM EST(Africa/Lagos)
-                      </span>
+                  </li>
+                  <li className="flex items-center justify-between gap-1.5 hover:bg-muted text-muted-foreground p-2 rounded">
+                    <span className="font-medium">The introduction</span>
+                    <div className="flex items-center gap-1.5">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-4 h-4 text-muted-foreground"
+                        width={24}
+                        height={24}
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="currentColor"
+                          fillRule="evenodd"
+                          d="M7 7c0-2.762 2.238-5 5-5s5 2.238 5 5v3h.4c.88 0 1.6.72 1.6 1.6v7c0 1.32-1.08 2.4-2.4 2.4H7.4C6.08 21 5 19.92 5 18.6v-7c0-.88.72-1.6 1.6-1.6H7zm8 0v3H9V7c0-1.658 1.342-3 3-3s3 1.342 3 3m-3 5.25a1.75 1.75 0 0 0-.75 3.332V18a.75.75 0 0 0 1.5 0v-2.418A1.75 1.75 0 0 0 12 12.25"
+                          clipRule="evenodd"
+                        ></path>
+                      </svg>
                     </div>
-                  </div>
-                </div>
+                  </li>
+                  <li className="flex items-center justify-between gap-1.5 hover:bg-muted text-muted-foreground p-2 rounded">
+                    <span className="font-medium">Assessment</span>
+                    <div className="flex items-center gap-1.5">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-4 h-4 text-muted-foreground"
+                        width={24}
+                        height={24}
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="currentColor"
+                          fillRule="evenodd"
+                          d="M7 7c0-2.762 2.238-5 5-5s5 2.238 5 5v3h.4c.88 0 1.6.72 1.6 1.6v7c0 1.32-1.08 2.4-2.4 2.4H7.4C6.08 21 5 19.92 5 18.6v-7c0-.88.72-1.6 1.6-1.6H7zm8 0v3H9V7c0-1.658 1.342-3 3-3s3 1.342 3 3m-3 5.25a1.75 1.75 0 0 0-.75 3.332V18a.75.75 0 0 0 1.5 0v-2.418A1.75 1.75 0 0 0 12 12.25"
+                          clipRule="evenodd"
+                        ></path>
+                      </svg>
+                    </div>
+                  </li>
+                  <li className="flex items-center justify-between gap-1.5 hover:bg-muted text-muted-foreground p-2 rounded">
+                    <span>Notebook examples</span>
+                    <div className="flex items-center gap-1.5">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-4 h-4 text-muted-foreground"
+                        width={24}
+                        height={24}
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="currentColor"
+                          fillRule="evenodd"
+                          d="M7 7c0-2.762 2.238-5 5-5s5 2.238 5 5v3h.4c.88 0 1.6.72 1.6 1.6v7c0 1.32-1.08 2.4-2.4 2.4H7.4C6.08 21 5 19.92 5 18.6v-7c0-.88.72-1.6 1.6-1.6H7zm8 0v3H9V7c0-1.658 1.342-3 3-3s3 1.342 3 3m-3 5.25a1.75 1.75 0 0 0-.75 3.332V18a.75.75 0 0 0 1.5 0v-2.418A1.75 1.75 0 0 0 12 12.25"
+                          clipRule="evenodd"
+                        ></path>
+                      </svg>
+                    </div>
+                  </li>
+                </ul>
               </div>
             </li>
 
@@ -331,22 +326,6 @@ export default function SideCurriculum({className}: sideCurriculumProps) {
                 onClick={() => setModule3Open(!module3Open)}
                 className="w-full bg-background cursor-pointer p-4 flex items-start gap-3 transition-colors"
               >
-                <div className="shrink-0 mt-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-5 h-5 text-muted-foreground"
-                    width={24}
-                    height={24}
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      fill="currentColor"
-                      fillRule="evenodd"
-                      d="M7 7c0-2.762 2.238-5 5-5s5 2.238 5 5v3h.4c.88 0 1.6.72 1.6 1.6v7c0 1.32-1.08 2.4-2.4 2.4H7.4C6.08 21 5 19.92 5 18.6v-7c0-.88.72-1.6 1.6-1.6H7zm8 0v3H9V7c0-1.658 1.342-3 3-3s3 1.342 3 3m-3 5.25a1.75 1.75 0 0 0-.75 3.332V18a.75.75 0 0 0 1.5 0v-2.418A1.75 1.75 0 0 0 12 12.25"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
                 <div className="flex-1 text-left">
                   <h3 className="font-semibold text-foreground mb-2">
                     Mind map
@@ -369,58 +348,86 @@ export default function SideCurriculum({className}: sideCurriculumProps) {
 
               {/* Chapters for Module 1 */}
               <div
-                className={`space-y-2 pl-8 pr-3 pb-3 transition-all duration-300 ${module3Open ? "block" : "hidden"}`}
+                className={`space-y-2 px-3 pb-3 transition-all duration-300 ${module3Open ? "block" : "hidden"}`}
               >
                 <ul className="w-full gap-3 text-sm list-disc list-inside">
-                  <li className="flex items-center justify-between gap-1.5 hover:bg-muted text-muted-foreground px-2 py-1 rounded">
+                  <li className="flex items-center justify-between gap-1.5 hover:bg-muted text-muted-foreground p-2 rounded">
+                    <span className="font-medium">
+                      The basics: demo video
+                    </span>
                     <div className="flex items-center gap-1.5">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="w-4 h-4"
+                        className="w-4 h-4 text-muted-foreground"
                         width={24}
                         height={24}
                         viewBox="0 0 24 24"
                       >
-                        <g
-                          fill="none"
-                          stroke="currentColor"
-                          strokeLinejoin="round"
-                          strokeWidth={1.5}
-                        >
-                          <path d="M15.538 18.592c-1.107.908-2.75.908-6.038.908c-3.287 0-4.931 0-6.038-.908a4 4 0 0 1-.554-.554C2 16.93 2 15.288 2 12c0-3.287 0-4.931.908-6.038a4 4 0 0 1 .554-.554C4.57 4.5 6.212 4.5 9.5 4.5c3.287 0 4.931 0 6.038.908a4 4 0 0 1 .554.554C17 7.07 17 8.712 17 12c0 3.287 0 4.931-.908 6.038a4 4 0 0 1-.554.554ZM17 13v-2l2.6-3.467a1.333 1.333 0 0 1 2.4.8v7.334a1.333 1.333 0 0 1-2.4.8z"></path>
-                          <path d="M9.5 13.5a1.5 1.5 0 0 0 0-3m0 3a1.5 1.5 0 0 1 0-3m0 3v-3"></path>
-                        </g>
+                        <path
+                          fill="currentColor"
+                          fillRule="evenodd"
+                          d="M7 7c0-2.762 2.238-5 5-5s5 2.238 5 5v3h.4c.88 0 1.6.72 1.6 1.6v7c0 1.32-1.08 2.4-2.4 2.4H7.4C6.08 21 5 19.92 5 18.6v-7c0-.88.72-1.6 1.6-1.6H7zm8 0v3H9V7c0-1.658 1.342-3 3-3s3 1.342 3 3m-3 5.25a1.75 1.75 0 0 0-.75 3.332V18a.75.75 0 0 0 1.5 0v-2.418A1.75 1.75 0 0 0 12 12.25"
+                          clipRule="evenodd"
+                        ></path>
                       </svg>
-                      <span className="font-medium">
-                        The intermediate video
-                      </span>
                     </div>
-                    <div className="flex items-center gap-1.5">2:00:00</div>
                   </li>
-                  <li className="flex items-center justify-between gap-1.5 hover:bg-muted text-muted-foreground px-2 py-1 rounded">
+                  <li className="flex items-center justify-between gap-1.5 hover:bg-muted text-muted-foreground p-2 rounded">
+                    <span className="font-medium">The introduction</span>
                     <div className="flex items-center gap-1.5">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="w-4 h-4"
+                        className="w-4 h-4 text-muted-foreground"
                         width={24}
                         height={24}
                         viewBox="0 0 24 24"
                       >
-                        <g
-                          fill="none"
-                          stroke="currentColor"
-                          strokeLinejoin="round"
-                          strokeWidth={1.5}
-                        >
-                          <path d="M15.538 18.592c-1.107.908-2.75.908-6.038.908c-3.287 0-4.931 0-6.038-.908a4 4 0 0 1-.554-.554C2 16.93 2 15.288 2 12c0-3.287 0-4.931.908-6.038a4 4 0 0 1 .554-.554C4.57 4.5 6.212 4.5 9.5 4.5c3.287 0 4.931 0 6.038.908a4 4 0 0 1 .554.554C17 7.07 17 8.712 17 12c0 3.287 0 4.931-.908 6.038a4 4 0 0 1-.554.554ZM17 13v-2l2.6-3.467a1.333 1.333 0 0 1 2.4.8v7.334a1.333 1.333 0 0 1-2.4.8z"></path>
-                          <path d="M9.5 13.5a1.5 1.5 0 0 0 0-3m0 3a1.5 1.5 0 0 1 0-3m0 3v-3"></path>
-                        </g>
+                        <path
+                          fill="currentColor"
+                          fillRule="evenodd"
+                          d="M7 7c0-2.762 2.238-5 5-5s5 2.238 5 5v3h.4c.88 0 1.6.72 1.6 1.6v7c0 1.32-1.08 2.4-2.4 2.4H7.4C6.08 21 5 19.92 5 18.6v-7c0-.88.72-1.6 1.6-1.6H7zm8 0v3H9V7c0-1.658 1.342-3 3-3s3 1.342 3 3m-3 5.25a1.75 1.75 0 0 0-.75 3.332V18a.75.75 0 0 0 1.5 0v-2.418A1.75 1.75 0 0 0 12 12.25"
+                          clipRule="evenodd"
+                        ></path>
                       </svg>
-                      <span className="font-medium">
-                        The introduction to professional study
-                      </span>
                     </div>
-                    <div className="flex items-center gap-1.5">15:00</div>
+                  </li>
+                  <li className="flex items-center justify-between gap-1.5 hover:bg-muted text-muted-foreground p-2 rounded">
+                    <span className="font-medium">Assessment</span>
+                    <div className="flex items-center gap-1.5">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-4 h-4 text-muted-foreground"
+                        width={24}
+                        height={24}
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="currentColor"
+                          fillRule="evenodd"
+                          d="M7 7c0-2.762 2.238-5 5-5s5 2.238 5 5v3h.4c.88 0 1.6.72 1.6 1.6v7c0 1.32-1.08 2.4-2.4 2.4H7.4C6.08 21 5 19.92 5 18.6v-7c0-.88.72-1.6 1.6-1.6H7zm8 0v3H9V7c0-1.658 1.342-3 3-3s3 1.342 3 3m-3 5.25a1.75 1.75 0 0 0-.75 3.332V18a.75.75 0 0 0 1.5 0v-2.418A1.75 1.75 0 0 0 12 12.25"
+                          clipRule="evenodd"
+                        ></path>
+                      </svg>
+                    </div>
+                  </li>
+                  <li className="flex items-center justify-between gap-1.5 hover:bg-muted text-muted-foreground p-2 rounded">
+                    <span>Notebook examples</span>
+                    <div className="flex items-center gap-1.5">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-4 h-4 text-muted-foreground"
+                        width={24}
+                        height={24}
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="currentColor"
+                          fillRule="evenodd"
+                          d="M7 7c0-2.762 2.238-5 5-5s5 2.238 5 5v3h.4c.88 0 1.6.72 1.6 1.6v7c0 1.32-1.08 2.4-2.4 2.4H7.4C6.08 21 5 19.92 5 18.6v-7c0-.88.72-1.6 1.6-1.6H7zm8 0v3H9V7c0-1.658 1.342-3 3-3s3 1.342 3 3m-3 5.25a1.75 1.75 0 0 0-.75 3.332V18a.75.75 0 0 0 1.5 0v-2.418A1.75 1.75 0 0 0 12 12.25"
+                          clipRule="evenodd"
+                        ></path>
+                      </svg>
+                    </div>
                   </li>
                 </ul>
               </div>
@@ -432,22 +439,6 @@ export default function SideCurriculum({className}: sideCurriculumProps) {
                 onClick={() => setModule4Open(!module4Open)}
                 className="w-full bg-background cursor-pointer p-4 flex items-start gap-3 transition-colors"
               >
-                <div className="shrink-0 mt-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-5 h-5 text-muted-foreground"
-                    width={24}
-                    height={24}
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      fill="currentColor"
-                      fillRule="evenodd"
-                      d="M7 7c0-2.762 2.238-5 5-5s5 2.238 5 5v3h.4c.88 0 1.6.72 1.6 1.6v7c0 1.32-1.08 2.4-2.4 2.4H7.4C6.08 21 5 19.92 5 18.6v-7c0-.88.72-1.6 1.6-1.6H7zm8 0v3H9V7c0-1.658 1.342-3 3-3s3 1.342 3 3m-3 5.25a1.75 1.75 0 0 0-.75 3.332V18a.75.75 0 0 0 1.5 0v-2.418A1.75 1.75 0 0 0 12 12.25"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
                 <div className="flex-1 text-left">
                   <h3 className="font-semibold text-foreground mb-1">
                     Projects & Certification
@@ -470,7 +461,7 @@ export default function SideCurriculum({className}: sideCurriculumProps) {
 
               {/* Projects and Certificate for Module 4 */}
               <div
-                className={`space-y-2 pl-8 pr-3 pb-3 transition-all duration-300 ${module4Open ? "block" : "hidden"}`}
+                className={`space-y-2 px-3 pb-3 transition-all duration-300 ${module4Open ? "block" : "hidden"}`}
               >
                 <div className="px-4">
                   <p className="text-sm text-muted-foreground mb-4">
@@ -624,7 +615,19 @@ export default function SideCurriculum({className}: sideCurriculumProps) {
             </li>
           </ol>
         </div>
-      </div>
+      </>
+      {/* <div className="bg-background overflow-hidden border-t p-4 absolute bottom-0 z-10 w-full">
+        <div className="flex flex-col space-y-2">
+          <div className="flex items-center gap-2">
+            <button className="w-full bg-foreground hover:bg-purple-500 text-background py-3 rounded-lg font-semibold hover:opacity-90 transition-colors cursor-pointer">
+              Start learning
+            </button>
+            <button className="flex items-center justify-center w-14 h-full bg-background text-foreground py-3 rounded-lg font-semibold border border-border hover:cursor-pointer transition-colors">
+             <Bookmark className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+      </div> */}
     </section>
   );
 }

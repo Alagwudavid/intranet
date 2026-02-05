@@ -26,6 +26,7 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import SearchBar from "./search-bar";
+import logoImage from "@/public/logo.png"
 
 const LogoIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -213,7 +214,7 @@ const AppsIcon = (props: React.SVGProps<SVGSVGElement>) => {
   );
 };
 
-export default function Navbar() {
+export default function SpecialNavbar() {
   // const [isProfileOpen, setIsProfileOpen] = useState(false);
   const pathname = usePathname();
   const isInCommunity = pathname?.startsWith("/c/");
@@ -257,56 +258,12 @@ export default function Navbar() {
     <nav className="sticky top-0 left-0 right-0 pl-20 px-2 z-header bg-background border-b">
       <div className="max-w-full mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <div className="flex flex-shrink-0 items-center gap-2">
-            <div className="flex rounded-lg overflow-hidden">
-              <img
-                src={"/assets/user-1.png"}
-                alt="User profile image"
-                className="w-10 h-10 rounded-lg object-cover"
-              />
-            </div>
-            <div className="flex items-center justify-between gap-3">
-              <div className="flex flex-col">
-                <h1 className="text-lg font-bold text-foreground">
-                  Intranet{" "}
-                  {pathname?.startsWith("/c")
-                    ? "Community"
-                    : pathname?.startsWith("/school")
-                      ? "School"
-                      : "home"}
-                </h1>
-                <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                  <span className="text-green-500">1,002 online</span>•
-                  <span>210,200 members</span>
-                </div>
-              </div>
-              <div className="w-10 h-10 rounded-lg hover:bg-muted text-muted-foreground flex items-center justify-center cursor-pointer">
-                <EllipsisVertical className="w-6 h-6" />
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <Link
-              href="/c"
-              className={`w-full px-4 py-2 rounded-full text-base text-center font-medium transition-colors 
-                ${pathname?.startsWith("/c")
-                  ? "text-muted-foreground bg-muted hover:bg-muted/80 hover:text-foreground"
-                  : "bg-background text-foreground hover:bg-muted/80 hover:text-muted-foreground"
-                }`}
-            >
-              Community
-            </Link>
-            <Link
-              href="/school"
-              className={`w-full px-4 py-2 rounded-full text-base text-center font-medium transition-colors 
-                ${pathname?.startsWith("/school")
-                  ? "text-muted-foreground bg-muted hover:bg-muted/80 hover:text-foreground"
-                  : "bg-background text-foreground hover:bg-muted/80 hover:text-muted-foreground"
-                }`}
-            >
-              School
-            </Link>
-          </div>
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2">
+              <Image src={logoImage} alt="Intranet Logo" width={32} height={32} className="w-8 h-8" />
+              <span className="font-bold text-2xl font-mono text-foreground">Intranet</span>
+          </Link>
+
           <div className="flex items-center space-x-1 md:space-x-3 ml-2">
             {/* Chat */}
             <Link

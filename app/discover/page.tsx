@@ -122,7 +122,7 @@ function DiscoverPage() {
                     <h1 className="text-3xl font-bold text-center">Find Schools</h1>
                     <div className='flex items-center justify-center gap-2'>
                         <span>or</span>
-                        <Link href="/intranet/new-school" className="text-primary font-medium hover:underline">
+                        <Link href="/new-school" className="text-primary font-medium hover:underline">
                             Create your school
                         </Link>
                     </div>

@@ -169,7 +169,7 @@ const difficultyColors = {
 export default function ChallengesPage() {
     return (
         <div className="py-6 px-4">
-            <div className="space-y-6">
+            <div className="space-y-6 shrink-0">
                 {/* Header */}
                 <div className="flex items-center justify-between">
                     <div>

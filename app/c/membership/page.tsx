@@ -49,7 +49,7 @@ function MembershipPage() {
 
   return (
     <section className="py-8 px-4 md:px-8 lg:px-12 w-full bg-muted min-h-screen">
-      <div className="space-y-6 max-w-7xl mx-auto">
+      <div className="space-y-6 max-w-7xl mx-auto shrink-0">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">

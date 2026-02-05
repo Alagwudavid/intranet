@@ -509,7 +509,7 @@ function CalendarPage() {
 
     return (
         <div className="min-h-screen bg-background text-foreground">
-            <div className="max-w-7xl mx-auto p-3 lg:p-6">
+            <div className="max-w-7xl mx-auto p-3 lg:p-6 shrink-0">
                 {/* Header with controls */}
                 <div className="mb-4 lg:mb-6 flex flex-col lg:flex-row items-stretch lg:items-center gap-3 lg:gap-4">
                     {/* Left side - View mode toggle + icons */}

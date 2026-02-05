@@ -91,13 +91,13 @@ export default function Tooltip({
     const getArrowPosition = () => {
         switch (position) {
             case 'right':
-                return 'absolute right-full top-1/2 -translate-y-1/2 border-8 border-transparent border-r-gray-900';
+                return 'absolute right-full top-1/2 -translate-y-1/2 border-8 border-transparent border-r-foreground';
             case 'left':
-                return 'absolute left-full top-1/2 -translate-y-1/2 border-8 border-transparent border-l-gray-900';
+                return 'absolute left-full top-1/2 -translate-y-1/2 border-8 border-transparent border-l-foreground';
             case 'top':
-                return 'absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-gray-900';
+                return 'absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-foreground';
             case 'bottom':
-                return 'absolute bottom-full left-1/2 -translate-x-1/2 border-8 border-transparent border-b-gray-900';
+                return 'absolute bottom-full left-1/2 -translate-x-1/2 border-8 border-transparent border-b-foreground';
         }
     };
 
@@ -121,7 +121,7 @@ export default function Tooltip({
                         transformOrigin: getTransformOrigin(),
                     }}
                 >
-                    <div className="relative bg-gray-900 text-white text-sm font-medium px-3 py-2 rounded-lg shadow-xl whitespace-nowrap">
+                    <div className="relative bg-foreground text-background text-sm font-medium px-3 py-2 rounded-lg shadow-xl whitespace-nowrap">
                         {label}
                         {/* Arrow */}
                         <div className={getArrowPosition()}></div>

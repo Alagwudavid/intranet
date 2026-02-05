@@ -1,7 +1,7 @@
 export default function AboutPage() {
     return (
         <div className="py-6 px-4">
-            <div className="max-w-3xl mx-auto space-y-6">
+            <div className="max-w-3xl mx-auto space-y-6 shrink-0">
                 <h2 className="text-2xl font-bold">About This Community</h2>
 
                 <div className="bg-card p-6 rounded-lg border">

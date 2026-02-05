@@ -161,7 +161,7 @@ const mockPosts: Post[] = [
 
 export default function CommunityPage() {
     return (
-        <div className="max-w-3xl mx-auto p-4">
+        <div className="max-w-3xl mx-auto p-4 flex-shrink-0">
             {/* Event Announcement */}
             <div className="border rounded-2xl shadow-sm mb-4 overflow-hidden">
                 <div className="relative w-full h-48 bg-gradient-to-r from-slate-400 to-slate-700">

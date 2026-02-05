@@ -91,7 +91,7 @@ const mockLeaderboard: LeaderboardEntry[] = [
 export default function LeaderboardPage() {
     return (
         <div className="py-6 px-4">
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-4xl mx-auto shrink-0">
                 {/* Header */}
                 <div className="mb-8">
                     <h1 className="text-3xl font-bold mb-2">Leaderboard</h1>
