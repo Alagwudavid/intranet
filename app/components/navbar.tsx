@@ -254,7 +254,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="sticky top-0 left-0 right-0 pl-20 px-2 z-header bg-background border-b">
+    <nav className="sticky top-0 left-0 right-0 px-2 z-header bg-background border-b">
       <div className="max-w-full mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex flex-shrink-0 items-center gap-2">
@@ -286,7 +286,7 @@ export default function Navbar() {
                 {/* <EllipsisVertical /> */}
                 <ExpandIcon className="w-6 h-6" />
               </div>
-              <div className="w-px h-5 bg-border p-px"/>
+              <div className="w-px h-5 bg-border p-px rounded" />
               <div className="w-10 h-10 rounded-lg hover:bg-muted text-muted-foreground flex items-center justify-center cursor-pointer">
                 <X className="w-6 h-6" />
               </div>

@@ -22,6 +22,8 @@ import {
   ShoppingBag,
   Users,
   EllipsisVertical,
+  Folder,
+  Ticket,
 } from "lucide-react";
 import SearchBar from "@/app/components/search-bar";
 
@@ -119,7 +121,7 @@ const LibraryIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg {...props} xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24"><path fill="currentColor" d="M22 14v-2.202c0-2.632 0-3.949-.77-4.804a3 3 0 0 0-.224-.225C20.151 6 18.834 6 16.202 6h-.374c-1.153 0-1.73 0-2.268-.153a4 4 0 0 1-.848-.352C12.224 5.224 11.816 4.815 11 4l-.55-.55c-.274-.274-.41-.41-.554-.53a4 4 0 0 0-2.18-.903C7.53 2 7.336 2 6.95 2c-.883 0-1.324 0-1.692.07A4 4 0 0 0 2.07 5.257C2 5.626 2 6.068 2 6.95V14c0 3.771 0 5.657 1.172 6.828S6.229 22 10 22h4c3.771 0 5.657 0 6.828-1.172S22 17.771 22 14" opacity={0.5}></path><path fill="currentColor" d="M12.25 10a.75.75 0 0 1 .75-.75h5a.75.75 0 0 1 0 1.5h-5a.75.75 0 0 1-.75-.75"></path></svg>
 );
 
-const RandomIcon = (props: React.SVGProps<SVGSVGElement>) => (
+const ChannelIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     {...props} xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 256 256"><path fill="currentColor" d="M224 84h-43.8l7.61-41.85a12 12 0 0 0-23.62-4.3L155.8 84h-39.6l7.61-41.85a12 12 0 1 0-23.62-4.3L91.8 84H48a12 12 0 0 0 0 24h39.44l-7.27 40H32a12 12 0 0 0 0 24h43.8l-7.61 41.85a12 12 0 0 0 9.66 14A11.4 11.4 0 0 0 80 228a12 12 0 0 0 11.8-9.86l8.4-46.14h39.6l-7.61 41.85a12 12 0 0 0 9.66 14a11.4 11.4 0 0 0 2.16.2a12 12 0 0 0 11.8-9.86L164.2 172H208a12 12 0 0 0 0-24h-39.44l7.27-40H224a12 12 0 0 0 0-24m-79.83 64h-39.61l7.27-40h39.61Z"></path></svg>
 );
@@ -214,24 +216,26 @@ export default function SideMenu({
   return (
     <div className="relative h-full w-full bg-background border-r">
       <div className="h-full pb-20 overflow-y-auto custom-scrollbar">
-        <div className="p-4">
+        {/* <div className="p-4">
           <SearchBar />
-        </div>
-        <div className="hidden flex flex-col border-b pb-4 px-">
-          <h1 className="text-foreground mb-1">Rate this community</h1>
-          <div className="flex items-center gap-1 text-base text-muted-foreground">
-            <div className="flex rounded-full w-6 h-6 overflow-hidden mr-2">
-              <img
-                src={"/assets/user-1.png"}
-                alt="User profile image"
-                className="w-6 h-6 rounded-full object-cover"
-              />
+        </div> */}
+        <div className="p-4">
+          <div className="border rounded-2xl flex flex-col p-3">
+            <h1 className="text-foreground mb-1">Rate this community</h1>
+            <div className="flex items-center gap-1 text-base text-muted-foreground">
+              <div className="flex rounded-full w-6 h-6 overflow-hidden mr-2">
+                <img
+                  src={"/assets/user-1.png"}
+                  alt="User profile image"
+                  className="w-6 h-6 rounded-full object-cover"
+                />
+              </div>
+              <Star className="w-5 h-5 text-amber-500" />
+              <Star className="w-5 h-5 text-amber-500" />
+              <Star className="w-5 h-5 text-amber-500" />
+              <Star className="w-5 h-5 text-amber-500" />
+              <Star className="w-5 h-5 text-amber-500" />
             </div>
-            <Star className="w-5 h-5 text-amber-500" />
-            <Star className="w-5 h-5 text-amber-500" />
-            <Star className="w-5 h-5 text-amber-500" />
-            <Star className="w-5 h-5 text-amber-500" />
-            <Star className="w-5 h-5 text-amber-500" />
           </div>
         </div>
         <div className="p-4 flex flex-col space-y-2">
@@ -258,22 +262,12 @@ export default function SideMenu({
           {isCommunityOpen && (
             <>
               <div className="rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5">
-                <RandomIcon className={"size-5 text-muted-foreground"} />
+                <ChannelIcon className={"size-5 text-muted-foreground"} />
                 <span>Discussions</span>
               </div>
               <div className="rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={20}
-                    height={20}
-                    viewBox="0 0 26 26"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M13 0c-1.7 0-3 1.3-3 3v6c0 1.7 1.3 3 3 3h6l4 4v-4c1.7 0 3-1.3 3-3V3c0-1.7-1.3-3-3-3zm4.188 3h1.718l1.688 6h-1.5l-.407-1.5h-1.5L16.813 9H15.5zM18 4c-.1.4-.212.888-.313 1.188l-.28 1.312h1.187l-.282-1.313C18.113 4.888 18 4.4 18 4M3 10c-1.7 0-3 1.3-3 3v6c0 1.7 1.3 3 3 3v4l4-4h6c1.7 0 3-1.3 3-3v-6h-3c-1.9 0-3.406-1.3-3.906-3zm4.594 2.906c1.7 0 2.5 1.4 2.5 3c0 1.4-.481 2.288-1.281 2.688c.4.2.874.306 1.374.406l-.374 1c-.7-.2-1.426-.512-2.126-.813c-.1-.1-.275-.093-.375-.093C6.112 18.994 5 18 5 16c0-1.7.994-3.094 2.594-3.094m0 1.094c-.8 0-1.188.9-1.188 2c0 1.2.388 2 1.188 2s1.218-.9 1.218-2s-.418-2-1.218-2"
-                    ></path>
-                </svg>
-                <span>Question & answers</span>
+                <ChannelIcon className={"size-5 text-muted-foreground"} />
+                <span>FAQ</span>
               </div>
             </>
           )}
@@ -333,23 +327,23 @@ export default function SideMenu({
                 href="/c/calendar"
                 className={`rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5 ${pathname === "/c/calendar" ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""}`}
               >
-                <EventIcon className={`size-5 ${pathname === "/c/calendar" ? "text-primary-foreground" : "text-muted-foreground"}`} />
+                <Ticket className={`size-5 ${pathname === "/c/calendar" ? "text-primary-foreground" : "text-muted-foreground"}`} />
                 <span>Events</span>
               </Link>
               <Link
                 href="/c/library"
                 className={`rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5 ${pathname === "/c/library" ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""}`}
               >
-                <LibraryIcon className={`size-5 ${pathname === "/c/library" ? "text-primary-foreground" : "text-muted-foreground"}`} />
+                <Folder className={`size-5 ${pathname === "/c/library" ? "text-primary-foreground" : "text-muted-foreground"}`} />
                 <span>Library</span>
               </Link>
-              <Link
+              {/* <Link
                 href="/c/shop"
                 className={`rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5 ${pathname === "/c/shop" ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""}`}
               >
                 <ShoppingBag className={`size-5 ${pathname === "/c/shop" ? "text-primary-foreground" : "text-muted-foreground"}`} />
                 <span>Shop</span>
-              </Link>
+              </Link> */}
               <Link
                 href="/c/members"
                 className={`rounded-lg hover:bg-muted/50 hover:text-foreground text-muted-foreground flex items-center gap-2 text-base cursor-pointer p-1.5 px-2.5 ${pathname === "/c/members" ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""}`}

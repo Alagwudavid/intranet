@@ -16,7 +16,7 @@ export default function VaultLayout({
     <>
       <Navbar />
       <Sidebar />
-      <div className="min-h-page bg-muted pl-20">{children}</div>
+      <div className="min-h-page bg-muted">{children}</div>
     </>
   );
 }

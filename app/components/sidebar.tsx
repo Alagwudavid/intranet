@@ -569,7 +569,7 @@ export default function Sidebar({ className = "" }: SidebarProps) {
                 href={"/community"}
                 className="w-12 h-12 flex items-center justify-center rounded-xl bg-background text-foreground transition-all cursor-pointer"
               >
-                <MoreAcademiesIcon className="w-8 h-8" />
+                <Grid3x3 className="w-8 h-8" />
               </Link>
             </Tooltip> 
 

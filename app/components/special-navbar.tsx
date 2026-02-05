@@ -255,13 +255,13 @@ export default function SpecialNavbar() {
   }, []);
 
   return (
-    <nav className="sticky top-0 left-0 right-0 pl-20 px-2 z-header bg-background border-b">
+    <nav className="sticky top-0 left-0 right-0 px-2 z-header bg-background border-b">
       <div className="max-w-full mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-              <Image src={logoImage} alt="Intranet Logo" width={32} height={32} className="w-8 h-8" />
-              <span className="font-bold text-2xl font-mono text-foreground">Intranet</span>
+            <Image src={logoImage} alt="Intranet Logo" width={32} height={32} className="w-8 h-8" />
+            <span className="font-bold text-2xl font-mono text-foreground">Intranet</span>
           </Link>
 
           <div className="flex items-center space-x-1 md:space-x-3 ml-2">

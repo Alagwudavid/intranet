@@ -41,42 +41,42 @@ const toolsDropdownItems: DropdownItem[] = [
     }
 ];
 const IntranetIcon = (props: React.SVGProps<SVGSVGElement>) => {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      xmlSpace="preserve"
-      width="30px"
-      height="33px"
-      version="1.1"
-      style={{
-        shapeRendering: "geometricPrecision",
-        textRendering: "geometricPrecision",
-        // imageRendering: "optimizeQuality",
-        fillRule: "evenodd",
-        clipRule: "evenodd",
-      }}
-      viewBox="0 0 12.92 14"
-    >
-      <g>
-        <metadata />
-        <g>
-          <g>
-            <path
-            //   fill="var(bg-primary)"
-              className="fill-primary"
-              d="M11.26 7.93c0,0 0,0 0,0l0 0zm-11.23 1.43c0.11,1.02 0.68,1.69 1.26,2.09 0.34,0.24 1.63,0.95 2.12,1.24 0.48,0.28 1.73,1.03 2.19,1.17 1.1,0.33 1.84,0.01 2.64,-0.45l3.2 -1.85c0.36,-0.2 0.67,-0.48 0.89,-0.78 0.64,-0.89 0.57,-1.55 0.57,-2.8 0,-0.56 0,-1.11 0,-1.67 0,-1.11 0.14,-1.99 -0.46,-2.92 -0.43,-0.66 -0.75,-0.8 -1.35,-1.16l-2.67 -1.54c-0.83,-0.47 -1.48,-0.86 -2.59,-0.62 -0.69,0.16 -1.6,0.78 -2.23,1.13 -0.36,0.21 -0.7,0.41 -1.06,0.62 -0.76,0.44 -1.52,0.78 -1.95,1.4 -0.66,0.94 -0.58,1.5 -0.58,2.8 0,0.63 -0.03,2.9 0.02,3.34z"
-            />
-          </g>
-          <path fill="white" d="M11.26 7.93c0,0 0,0 0,0z" />
-        </g>
-        <path
-          fill="#FEFEFE"
-          d="M8.37 6.64l2.98 -1.74c0.58,-0.34 1.05,0.01 1.05,0.77l0 3.14c0,0.78 -0.48,1.7 -1.06,2.04l-3.01 1.77c-0.59,0.35 -1.06,-0.01 -1.06,-0.8l0.03 -3.16c0.01,-0.78 0.49,-1.68 1.07,-2.02z"
-        />
-      </g>
-    </svg>
-  );
+    return (
+        <svg
+            {...props}
+            xmlns="http://www.w3.org/2000/svg"
+            xmlSpace="preserve"
+            width="30px"
+            height="33px"
+            version="1.1"
+            style={{
+                shapeRendering: "geometricPrecision",
+                textRendering: "geometricPrecision",
+                // imageRendering: "optimizeQuality",
+                fillRule: "evenodd",
+                clipRule: "evenodd",
+            }}
+            viewBox="0 0 12.92 14"
+        >
+            <g>
+                <metadata />
+                <g>
+                    <g>
+                        <path
+                            //   fill="var(bg-primary)"
+                            className="fill-primary"
+                            d="M11.26 7.93c0,0 0,0 0,0l0 0zm-11.23 1.43c0.11,1.02 0.68,1.69 1.26,2.09 0.34,0.24 1.63,0.95 2.12,1.24 0.48,0.28 1.73,1.03 2.19,1.17 1.1,0.33 1.84,0.01 2.64,-0.45l3.2 -1.85c0.36,-0.2 0.67,-0.48 0.89,-0.78 0.64,-0.89 0.57,-1.55 0.57,-2.8 0,-0.56 0,-1.11 0,-1.67 0,-1.11 0.14,-1.99 -0.46,-2.92 -0.43,-0.66 -0.75,-0.8 -1.35,-1.16l-2.67 -1.54c-0.83,-0.47 -1.48,-0.86 -2.59,-0.62 -0.69,0.16 -1.6,0.78 -2.23,1.13 -0.36,0.21 -0.7,0.41 -1.06,0.62 -0.76,0.44 -1.52,0.78 -1.95,1.4 -0.66,0.94 -0.58,1.5 -0.58,2.8 0,0.63 -0.03,2.9 0.02,3.34z"
+                        />
+                    </g>
+                    <path fill="white" d="M11.26 7.93c0,0 0,0 0,0z" />
+                </g>
+                <path
+                    fill="#FEFEFE"
+                    d="M8.37 6.64l2.98 -1.74c0.58,-0.34 1.05,0.01 1.05,0.77l0 3.14c0,0.78 -0.48,1.7 -1.06,2.04l-3.01 1.77c-0.59,0.35 -1.06,-0.01 -1.06,-0.8l0.03 -3.16c0.01,-0.78 0.49,-1.68 1.07,-2.02z"
+                />
+            </g>
+        </svg>
+    );
 };
 export function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -105,7 +105,7 @@ export function Navbar() {
     };
 
     return (
-        <nav className="sticky top-0 z-50 w-full bg-background/95 pl-20 lg:pl-0 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <nav className="sticky top-0 z-50 w-full bg-background/95 lg:pl-0 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-3">
@@ -181,7 +181,7 @@ export function Navbar() {
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="absolute right-0 mt-2 w-80 bg-background rounded-3xl border shadow-lg overflow-hidden" style={{zIndex: 60}}
+                        className="absolute right-0 mt-2 w-80 bg-background rounded-3xl border shadow-lg overflow-hidden" style={{ zIndex: 60 }}
                     >
                         <div className="px-4 py-6 space-y-4">
                             <Link
