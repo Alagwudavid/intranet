@@ -259,15 +259,17 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex flex-shrink-0 items-center gap-2">
             <div className="flex rounded-lg overflow-hidden">
-              <img
+              <Image
                 src={"/assets/user-1.png"}
                 alt="User profile image"
-                className="w-10 h-10 rounded-lg object-cover"
+                width={24}
+                height={24}
+                className="w-7 h-7 rounded object-cover"
               />
             </div>
-            <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center justify-between gap-1">
               <div className="flex flex-col">
-                <h1 className="text-lg font-bold text-foreground">
+                <h1 className="text-lg font-bold text-foreground w-25 line-clamp-1">
                   Intranet{" "}
                   {pathname?.startsWith("/c")
                     ? "Community"
@@ -275,13 +277,18 @@ export default function Navbar() {
                       ? "School"
                       : "home"}
                 </h1>
-                <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                {/* <div className="flex items-center gap-1 text-xs text-muted-foreground">
                   <span className="text-green-500">1,002 online</span>•
                   <span>210,200 members</span>
-                </div>
+                </div> */}
               </div>
               <div className="w-10 h-10 rounded-lg hover:bg-muted text-muted-foreground flex items-center justify-center cursor-pointer">
-                <EllipsisVertical className="w-6 h-6" />
+                {/* <EllipsisVertical /> */}
+                <ExpandIcon className="w-6 h-6" />
+              </div>
+              <div className="w-px h-5 bg-border p-px"/>
+              <div className="w-10 h-10 rounded-lg hover:bg-muted text-muted-foreground flex items-center justify-center cursor-pointer">
+                <X className="w-6 h-6" />
               </div>
             </div>
           </div>
