@@ -178,9 +178,9 @@ function DiscoverPage() {
                                         <h3 className="font-semibold text-foreground text-lg leading-tight">
                                             {community.name}
                                         </h3>
-                                        <p className="font-semibold text-muted-foreground text-sm leading-tight">
+                                        {/* <p className="font-semibold text-muted-foreground text-sm leading-tight">
                                             @_username
-                                        </p>
+                                        </p> */}
                                     </div>
 
                                     {/* Description */}
@@ -193,11 +193,11 @@ function DiscoverPage() {
                                         <span className="font-medium">{community.privacy}</span>
                                         <span>•</span>
                                         <span>{community.members}</span>
-                                        <span>•</span>
-                                        <span className={`font-medium ${community.price === 'Free' ? 'text-green-600' : 'text-foreground'
-                                            }`}>
-                                            {community.price}
-                                        </span>
+                                        {community.price != 'Free' && (
+                                            <>
+                                                <span>•</span>
+                                                <span className={`font-medium text-foreground`}>{community.price}</span>
+                                            </>)}
                                     </div>
                                 </div>
                             </div>

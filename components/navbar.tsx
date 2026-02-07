@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { ArrowUpRight, ChevronDownCircle, Menu, X, ShoppingBag, GraduationCap, MessagesSquare, FileText, WalletCards, Vault, Puzzle, Brain, ArrowRight, LucideIcon } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll } from 'framer-motion';
 
 interface DropdownItem {
     href: string;
@@ -44,7 +44,8 @@ const toolsDropdownItems: DropdownItem[] = [
 export function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [toolsDropdownOpen, setToolsDropdownOpen] = useState(false);
-
+    // const [scrollY, setScrollY] = useScroll({mainContainer, navBar, })
+    
     const renderDropdownItems = (items: DropdownItem[], onClose: () => void) => {
         return items.map((item) => {
             const Icon = item.icon;
@@ -121,7 +122,7 @@ export function Navbar() {
                 {/* Right Side Actions */}
                 <div className="flex items-center gap-4">
                     <Button asChild className="hidden sm:flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition">
-                        <Link href="/#waitlist-form">Join now!</Link>
+                        <Link href="/#waitlist-form">Continue</Link>
                     </Button>
 
                     {/* Mobile Menu Button */}
@@ -197,7 +198,7 @@ export function Navbar() {
 
                             <div className="pt-4 border-t border-border">
                                 <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-                                    <Link href="/#waitlist-form" onClick={() => setMobileMenuOpen(false)}>Join now!</Link>
+                                    <Link href="/#waitlist-form" onClick={() => setMobileMenuOpen(false)}>Continue</Link>
                                 </Button>
                             </div>
                         </div>

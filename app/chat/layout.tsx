@@ -4,6 +4,7 @@ import Sidebar from "@/app/components/sidebar";
 import AppContent from "../components/app-content";
 import FooterMini from "../components/footer-mini";
 import SideMenu from "../c/components/sidemenu";
+import MiniNavbar from "@/components/mini-navbar";
 
 export const metadata: Metadata = {
   title: "Chat | Intranet web",
@@ -20,7 +21,7 @@ export default function ChatLayout({
       <Sidebar />
       <div className="flex-1 flex flex-col w-[calc(100%-88px)] h-screen relative bg-muted pr-2">
         <AppContent className="gap-0!">
-          {/* <Navbar /> */}
+          <MiniNavbar />
           <div className="flex flex-1 overflow-hidden">
             {/* Main Content - Flexible width with internal scroll */}
             <div className="flex-1 overflow-y-auto custom-scrollbar min-w-96">

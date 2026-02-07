@@ -161,16 +161,16 @@ const mockPosts: Post[] = [
 
 export default function CommunityPage() {
     return (
-        <div className="max-w-3xl min-w-sm mx-auto p-4 shrink-0 space-y-4">
+        <div className="max-w-3xl min-w-sm mx-auto p-4 shrink-0 space-y-6">
             {/* Event Announcement */}
             <div className="border rounded-2xl shadow-sm overflow-hidden">
-                <div className="relative w-full h-48 bg-gradient-to-r from-slate-400 to-slate-700">
-                    <Image
+                <div className="relative w-full h-48 bg-muted">
+                    {/* <Image
                         src="/assets/event-bg-2.png"
                         alt="Event banner"
                         fill
                         className="object-cover opacity-80"
-                    />
+                    /> */}
                     <div className="absolute inset-0 bg-gradient-to-r from-slate-700/80 to-slate-900/80 flex items-center justify-center">
                         <div className="text-white text-center px-4">
                             <div className="flex items-center justify-center gap-2 mb-3">
@@ -235,6 +235,10 @@ export default function CommunityPage() {
             </div> */}
 
             <div className='flex items-center gap-3 justify-between'>
+                 <button className="flex items-center gap-2 px-6 py-2 bg-muted hover:bg-muted/80 rounded-full text-sm font-medium transition-colors">
+                    <Plus className="w-4 h-4" />
+                    New post
+                </button>
                 <div className="flex gap-3">
                     <div className="w-8 h-8 rounded-full bg-muted overflow-hidden relative flex-shrink-0">
                         <Image
@@ -245,10 +249,6 @@ export default function CommunityPage() {
                         />
                     </div>
                 </div>
-                 <button className="flex items-center gap-2 px-6 py-2 bg-muted hover:bg-muted/80 rounded-full text-sm font-medium transition-colors">
-                    <Plus className="w-4 h-4" />
-                    New post
-                </button>
             </div>
 
             {/* Posts Feed */}

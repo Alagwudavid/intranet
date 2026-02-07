@@ -31,6 +31,7 @@ import {
   DropdownDivider,
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from "@/lib/use-theme";
+import logoImage from "@/public/logo.png"
 
 interface SidebarProps {
   className?: string;
@@ -319,19 +320,7 @@ const ChatIcon = (props: React.SVGProps<SVGSVGElement>) => {
 const ActivityIcon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="currentColor"
-        fillRule="evenodd"
-        d="M12 1.25A7.75 7.75 0 0 0 4.25 9v.704a3.53 3.53 0 0 1-.593 1.958L2.51 13.385c-1.334 2-.316 4.718 2.003 5.35q1.133.309 2.284.523l.002.005C7.567 21.315 9.622 22.75 12 22.75s4.433-1.435 5.202-3.487l.002-.005a29 29 0 0 0 2.284-.523c2.319-.632 3.337-3.35 2.003-5.35l-1.148-1.723a3.53 3.53 0 0 1-.593-1.958V9A7.75 7.75 0 0 0 12 1.25m3.376 18.287a28.5 28.5 0 0 1-6.753 0c.711 1.021 1.948 1.713 3.377 1.713s2.665-.692 3.376-1.713M5.75 9a6.25 6.25 0 1 1 12.5 0v.704c0 .993.294 1.964.845 2.79l1.148 1.723a2.02 2.02 0 0 1-1.15 3.071a26.96 26.96 0 0 1-14.187 0a2.02 2.02 0 0 1-1.15-3.07l1.15-1.724a5.03 5.03 0 0 0 .844-2.79z"
-        clipRule="evenodd"
-      />
-    </svg>
+      {...props} xmlns="http://www.w3.org/2000/svg" width={20} height={20} viewBox="0 0 20 20"><path fill="currentColor" d="M14.65 8.512c-2.28-4.907-3.466-6.771-7.191-6.693c-1.327.027-1.009-.962-2.021-.587c-1.01.375-.143.924-1.177 1.773c-2.902 2.383-2.635 4.587-1.289 9.84c.567 2.213-1.367 2.321-.602 4.465c.559 1.564 4.679 2.219 9.025.607c4.347-1.613 7.086-4.814 6.527-6.378c-.765-2.145-2.311-.961-3.272-3.027m-3.726 8.083c-3.882 1.44-7.072.594-7.207.217c-.232-.65 1.253-2.816 5.691-4.463s6.915-1.036 7.174-.311c.153.429-1.775 3.116-5.658 4.557m-1.248-3.494c-2.029.753-3.439 1.614-4.353 2.389c.643.584 1.847.726 3.046.281c1.527-.565 2.466-1.866 2.095-2.904l-.016-.036q-.376.122-.772.27"></path></svg>
   );
 };
 
@@ -390,7 +379,7 @@ const DashboardIcon = (props: React.SVGProps<SVGSVGElement>) => {
 
 const MoreAcademiesIcon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
-    <svg {...props} xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 20.25h4.25a4 4 0 0 0 4-4v-2.5M12 20.25H7.75a4 4 0 0 1-4-4V12M12 20.25V15a3 3 0 0 0-3-3H3.75m0 0V7.75a4 4 0 0 1 4-4h2.5m3.5 0h5.5c.276 0 .526.112.707.293m.293 6.207v-5.5a1 1 0 0 0-.293-.707M13.75 10.25l5.5-5.5l.707-.707"></path></svg>
+    <svg {...props} xmlns="http://www.w3.org/2000/svg" width={21} height={21} viewBox="0 0 21 21"><g fill="none" fillRule="evenodd" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1}><circle cx={7.5} cy={7.5} r={2}></circle><circle cx={13.5} cy={7.5} r={2}></circle><circle cx={7.5} cy={13.5} r={2}></circle><circle cx={13.5} cy={13.5} r={2}></circle></g></svg>
   );
 };
 
@@ -469,127 +458,32 @@ export default function Sidebar({ className = "" }: SidebarProps) {
       >
         <div className="flex flex-col items-center w-full py-2 space-y-3">
           <div className="space-y-2">
-            {/* More Options */}
-            {/* <DropdownMenu
-              trigger={
-                <Tooltip label="Menu">
-                  <button className="w-12 h-12 flex items-center justify-center rounded-xl bg-background text-foreground transition-all mb-6 cursor-pointer">
-                    <MenuIcon className="w-6 h-6" />
-                  </button>
-                </Tooltip>
-              }
-            >
-              <DropdownItem icon={<AppsIcon className="w-5! h-5!" />}>
-                Apps & toolkit
-              </DropdownItem>
-              <DropdownItem icon={<LibraryIcon className="w-5! h-5!" />}>
-                Library
-              </DropdownItem>
-              <DropdownItem icon={<AffiliateIcon className="w-5! h-5!" />}>
-                Affiliate
-              </DropdownItem>
-              <DropdownItem icon={<Languages className="w-5! h-5!" />}>
-                Language
-              </DropdownItem>
-              <div className="relative">
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setShowThemeMenu(!showThemeMenu);
-                  }}
-                  className="w-full flex items-center gap-3 px-4 py-2 text-sm text-foreground hover:bg-background transition-colors text-left"
-                >
-                  <Moon className="w-5! h-5!" />
-                  <span>Theme</span>
-                  <ChevronRight className="w-4! h-4! ml-auto" />
-                </button>
-                {showThemeMenu && (
-                  <div
-                    className="absolute left-full top-0 ml-1 w-48 bg-muted rounded-xl shadow-lg border overflow-hidden z-50"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <div className="py-2">
-                      <button
-                        onClick={() => {
-                          setTheme("light");
-                          setShowThemeMenu(false);
-                        }}
-                        className="w-full flex items-center gap-3 px-4 py-2 text-sm hover:bg-background transition-colors"
-                      >
-                        <Sun className="w-5! h-5!" />
-                        <span>Light</span>
-                        {theme === "light" && (
-                          <Check className="w-4! h-4! ml-auto" />
-                        )}
-                      </button>
-                      <button
-                        onClick={() => {
-                          setTheme("dark");
-                          setShowThemeMenu(false);
-                        }}
-                        className="w-full flex items-center gap-3 px-4 py-2 text-sm hover:bg-background transition-colors"
-                      >
-                        <Moon className="w-5! h-5!" />
-                        <span>Dark</span>
-                        {theme === "dark" && (
-                          <Check className="w-4! h-4! ml-auto" />
-                        )}
-                      </button>
-                      <button
-                        onClick={() => {
-                          setTheme("system");
-                          setShowThemeMenu(false);
-                        }}
-                        className="w-full flex items-center gap-3 px-4 py-2 text-sm hover:bg-background transition-colors"
-                      >
-                        <Monitor className="w-5! h-5!" />
-                        <span>System</span>
-                        {theme === "system" && (
-                          <Check className="w-4! h-4! ml-auto" />
-                        )}
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </div>
-              <DropdownDivider />
-              <DropdownItem icon={<SettingIcon className="w-5! h-5!" />}>
-                Account setting
-              </DropdownItem>
-              <DropdownItem icon={<ShieldQuestionIcon className="w-5! h-5!" />}>
-                <Link href={"/intranet/me/tasks"}>Help center</Link>
-              </DropdownItem>
-              <DropdownItem icon={<LogoutIcon className="w-5! h-5!" />}>
-                <Link href={"/intranet/auth"}>Logout</Link>
-              </DropdownItem>
-            </DropdownMenu> */}
-
-            <Tooltip label="New">
+            <Tooltip label="Direct Message">
+              <Link
+                href={"/chat"}
+                className="w-12 h-12 flex items-center justify-center rounded-xl bg-background text-foreground transition-all cursor-pointer"
+              >
+                <Image src={logoImage} alt="Intranet Logo" width={32} height={32} className="w-6 h-6" />
+              </Link>
+            </Tooltip> 
+            <Tooltip label="Activities">
               <Link
                 href={"/community"}
                 className="w-12 h-12 flex items-center justify-center rounded-xl bg-background text-foreground transition-all cursor-pointer"
               >
-                <Grid3x3 className="w-8 h-8" />
+                <ActivityIcon className="w-6 h-6" />
               </Link>
             </Tooltip> 
-
-            <Tooltip label="New">
+            <Tooltip label="View all">
               <Link
-                href={"/discover"}
-                className="w-12 h-12 flex items-center justify-center rounded-full bg-background hover:bg-gray-200 text-background-foreground hover:text-gray-900 transition-all"
+                href={"/community"}
+                className="w-12 h-12 flex items-center justify-center rounded-xl bg-background text-foreground transition-all cursor-pointer"
               >
-                <Plus className="w-6 h-6" />
+                <MoreAcademiesIcon className="w-8 h-8" />
               </Link>
-            </Tooltip>            
+            </Tooltip> 
+          
           </div>
-          {/* <Tooltip label={"Intranet"}>
-              <Link
-                  href="/intranet/c"
-                  className={`w-12 h-12 flex items-center justify-center rounded-xl transition-all`}
-              >
-                  <LogoIcon className="w-6 h-6" />
-              </Link>
-          </Tooltip> */}
 
           
           <div className="w-10 h-[2px] rounded bg-border dark:bg-background mb-4"></div>
@@ -618,6 +512,14 @@ export default function Sidebar({ className = "" }: SidebarProps) {
                 </Link>
               </Tooltip>
             ))}
+            <Tooltip label="New">
+              <Link
+                href={"/discover"}
+                className="w-12 h-12 flex items-center justify-center rounded-full bg-background hover:bg-gray-200 text-background-foreground hover:text-gray-900 transition-all"
+              >
+                <Plus className="w-6 h-6" />
+              </Link>
+            </Tooltip>  
           </div>
           
           {/* <div className="w-10 h-px bg-background mb-4"></div> */}
