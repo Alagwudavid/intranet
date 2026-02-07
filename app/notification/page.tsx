@@ -34,7 +34,7 @@ const notifications: Notification[] = [
         type: 'activity',
         user: {
             name: 'Mike Chen',
-            avatar: '/assets/user-2.png'
+            avatar: '/assets/user-1.png'
         },
         action: 'liked your comment on',
         content: 'Web Development Fundamentals',
@@ -46,7 +46,7 @@ const notifications: Notification[] = [
         type: 'mention',
         user: {
             name: 'Emma Wilson',
-            avatar: '/assets/user-3.png'
+            avatar: '/assets/user-1.png'
         },
         action: 'replied to your post in',
         content: 'Community Discussion',
@@ -58,7 +58,7 @@ const notifications: Notification[] = [
         type: 'activity',
         user: {
             name: 'David Lee',
-            avatar: '/assets/user-4.png'
+            avatar: '/assets/user-1.png'
         },
         action: 'started following you',
         time: '1d ago',
@@ -69,7 +69,7 @@ const notifications: Notification[] = [
         type: 'activity',
         user: {
             name: 'Lisa Brown',
-            avatar: '/assets/user-5.png'
+            avatar: '/assets/user-1.png'
         },
         action: 'joined your community',
         content: 'Teachers Community',

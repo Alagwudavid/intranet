@@ -468,7 +468,7 @@ export default function Sidebar({ className = "" }: SidebarProps) {
             </Tooltip> 
             <Tooltip label="Activities">
               <Link
-                href={"/community"}
+                href={"/notification"}
                 className="w-12 h-12 flex items-center justify-center rounded-xl bg-background text-foreground transition-all cursor-pointer"
               >
                 <ActivityIcon className="w-6 h-6" />
