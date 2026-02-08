@@ -48,7 +48,7 @@ interface SearchBarProps {
 
 export default function SearchBar({
   maxWidth = "max-w-xl",
-  placeholder = "What are you looking for?",
+  placeholder = "Search...",
   onSearch,
   isInCommunity = false,
   communityName = "Intranet-community",
@@ -189,29 +189,14 @@ export default function SearchBar({
     <div className={`flex-1 ${maxWidth} relative`} ref={dropdownRef}>
       <div className="relative flex items-center gap-2">
         <div className="relative flex-1 flex items-center">
-          {/* Community Indicator */}
-          {isInCommunity ? (
-            <div className="flex items-center gap-2 p-1 rounded-xl bg-background text-foreground border absolute left-2 top-1/2 transform -translate-y-1/2 select-none">
-              <div className="w-6 h-6 flex items-center justify-center rounded-lg bg-gray-200 text-muted-foreground hover:text-gray-900 transition-all">
-                <LogoIcon className="w-4 h-4" />
-              </div>
-              <span className="font-mono font-bold text-base hidden lg:flex max-w-20 line-clamp-1 text-ellipsis">
-                {communityName}
-              </span>
-              <button className="w-6 h-6 flex items-center justify-center text-muted-foreground hover:bg-muted rounded-full transition-colors">
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-          ) : (
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-          )}
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
           <input
             type="text"
             placeholder={`${isInCommunity ? "Search in " + communityName : placeholder}`}
             value={searchQuery}
             onChange={handleChange}
             onFocus={handleFocus}
-            className={`w-full bg-muted text-foreground ${isInCommunity ? "pl-22 lg:pl-40" : "pl-10"} pr-12 py-2 rounded-xl border focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400`}
+            className={`w-full bg-background text-foreground ${isInCommunity ? "pl-22 lg:pl-40" : "pl-10"} pr-12 py-2 rounded-full border focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400`}
           />
 
           {/* Clear Button or Loading Indicator */}
@@ -221,7 +206,7 @@ export default function SearchBar({
             ) : searchQuery ? (
               <button
                 onClick={handleClearSearch}
-                className="p-1.5 rounded-lg transition-colors text-muted-foreground hover:bg-background"
+                className="p-1.5 rounded-lg transition-colors text-muted-foreground hover:bg-muted"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -229,167 +214,6 @@ export default function SearchBar({
           </div>
         </div>
       </div>
-
-      {/* Search Results Dropdown */}
-      {isDropdownOpen && (
-        <div className="absolute left-0 right-0 mt-2 bg-background border rounded-lg shadow-lg z-50 max-h-150 overflow-y-auto custom-scrollbar">
-          {!searchQuery && !searchResults ? (
-            /* Trending Searches */
-            <div className="p-3">
-              <h3 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
-                <TrendingUp className="w-4 h-4" />
-                Trending
-              </h3>
-              <div className="space-y-1">
-                {trendingSearches.map((item) => (
-                  <button
-                    key={item.id}
-                    className="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-muted rounded-lg transition-colors text-left"
-                    onClick={() => {
-                      setSearchQuery(item.text);
-                      onSearch?.(item.text);
-                    }}
-                  >
-                    <TrendingUp className="w-4 h-4 text-muted-foreground" />
-                    <span className="text-sm text-foreground">{item.text}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-          ) : searchResults ? (
-            /* Grouped Search Results */
-            <div className="p-3">
-              {/* Courses */}
-              {searchResults.courses.length > 0 && (
-                <div className="mb-4">
-                  <h3 className="text-xs font-semibold text-muted-foreground mb-2 flex items-center gap-2 px-2">
-                    <BookOpen className="w-3.5 h-3.5" />
-                    COURSES
-                  </h3>
-                  <div className="space-y-1">
-                    {searchResults.courses.map((course: any) => (
-                      <Link
-                        key={course.id}
-                        href={`/intranet/course/${course.id}`}
-                        className="flex items-start gap-3 px-3 py-2.5 hover:bg-muted rounded-lg transition-colors"
-                        onClick={() => setIsDropdownOpen(false)}
-                      >
-                        <div className="text-2xl shrink-0">{course.image}</div>
-                        <div className="flex-1 min-w-0">
-                          <div className="text-sm font-medium text-foreground line-clamp-1">
-                            {course.title}
-                          </div>
-                          <div className="text-xs text-muted-foreground">
-                            Course • {course.author}
-                          </div>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Communities */}
-              {searchResults.communities.length > 0 && (
-                <div className="mb-4">
-                  <h3 className="text-xs font-semibold text-muted-foreground mb-2 flex items-center gap-2 px-2">
-                    <Users className="w-3.5 h-3.5" />
-                    COMMUNITIES
-                  </h3>
-                  <div className="space-y-1">
-                    {searchResults.communities.map((community: any) => (
-                      <Link
-                        key={community.id}
-                        href={`/intranet/community/${community.id}`}
-                        className="flex items-center gap-3 px-3 py-2.5 hover:bg-muted rounded-lg transition-colors"
-                        onClick={() => setIsDropdownOpen(false)}
-                      >
-                        <div className="text-2xl shrink-0">
-                          {community.image}
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="text-sm font-medium text-foreground line-clamp-1">
-                            {community.name}
-                          </div>
-                          <div className="text-xs text-muted-foreground">
-                            {community.members}
-                          </div>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Users */}
-              {searchResults.users.length > 0 && (
-                <div className="mb-4">
-                  <h3 className="text-xs font-semibold text-muted-foreground mb-2 flex items-center gap-2 px-2">
-                    <Users className="w-3.5 h-3.5" />
-                    USERS
-                  </h3>
-                  <div className="space-y-1">
-                    {searchResults.users.map((user: any) => (
-                      <Link
-                        key={user.id}
-                        href={`/intranet/profile/${user.id}`}
-                        className="flex items-center gap-3 px-3 py-2.5 hover:bg-muted rounded-lg transition-colors"
-                        onClick={() => setIsDropdownOpen(false)}
-                      >
-                        <div className="text-2xl shrink-0">{user.image}</div>
-                        <div className="flex-1 min-w-0">
-                          <div className="text-sm font-medium text-foreground line-clamp-1">
-                            {user.name}
-                          </div>
-                          <div className="text-xs text-muted-foreground">
-                            {user.username}
-                          </div>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Events */}
-              {searchResults.events.length > 0 && (
-                <div className="mb-2">
-                  <h3 className="text-xs font-semibold text-muted-foreground mb-2 flex items-center gap-2 px-2">
-                    <Calendar className="w-3.5 h-3.5" />
-                    EVENTS
-                  </h3>
-                  <div className="space-y-1">
-                    {searchResults.events.map((event: any) => (
-                      <Link
-                        key={event.id}
-                        href={`/intranet/event/${event.id}`}
-                        className="flex items-center gap-3 px-3 py-2.5 hover:bg-muted rounded-lg transition-colors"
-                        onClick={() => setIsDropdownOpen(false)}
-                      >
-                        <div className="text-2xl shrink-0">{event.image}</div>
-                        <div className="flex-1 min-w-0">
-                          <div className="text-sm font-medium text-foreground line-clamp-1">
-                            {event.title}
-                          </div>
-                          <div className="text-xs text-muted-foreground">
-                            {event.date}
-                          </div>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          ) : isSearching ? (
-            /* Loading State */
-            <div className="p-8 flex flex-col items-center justify-center">
-              <div className="w-8 h-8 border-3 border-blue-500 border-t-transparent rounded-full animate-spin mb-3" />
-              <p className="text-sm text-muted-foreground">Searching...</p>
-            </div>
-          ) : null}
-        </div>
-      )}
     </div>
   );
 }

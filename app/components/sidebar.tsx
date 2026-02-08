@@ -19,6 +19,7 @@ import {
   Sun,
   Monitor,
   Check,
+  Boxes,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -51,7 +52,6 @@ const LogoIcon = (props: React.SVGProps<SVGSVGElement>) => (
       fillRule: "evenodd",
       clipRule: "evenodd",
     }}
-    {...props}
   >
     <g>
       <path
@@ -469,17 +469,17 @@ export default function Sidebar({ className = "" }: SidebarProps) {
             <Tooltip label="Activities">
               <Link
                 href={"/notification"}
-                className="w-12 h-12 flex items-center justify-center rounded-xl bg-background text-foreground transition-all cursor-pointer"
+                className="w-12 h-12 flex items-center justify-center rounded-xl bg-background text-muted-foreground transition-all cursor-pointer"
               >
                 <ActivityIcon className="w-6 h-6" />
               </Link>
             </Tooltip> 
-            <Tooltip label="View all">
+            <Tooltip label="Communities">
               <Link
                 href={"/community"}
-                className="w-12 h-12 flex items-center justify-center rounded-xl bg-background text-foreground transition-all cursor-pointer"
+                className="w-12 h-12 flex items-center justify-center rounded-xl bg-background text-muted-foreground transition-all cursor-pointer"
               >
-                <MoreAcademiesIcon className="w-8 h-8" />
+                <Boxes className="w-8 h-8" />
               </Link>
             </Tooltip> 
           

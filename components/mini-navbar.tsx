@@ -24,9 +24,14 @@ export default function MiniNavbar() {
           {/* Center: Breadcrumb Navigation */}
           <div className="flex items-center gap-1 flex-1 justify-center text-sm text-muted-foreground">
             {segments.map((segment, index) => (
-              <span key={index} className="capitalize font-semibold">
-                {segment}
-              </span>
+              <div key={index} className="flex items-center gap-1">
+                {
+                  index > 0 && <ChevronRight className="w-4 h-4 text-muted-foreground mt-1" />
+                }
+                <span className="capitalize font-semibold">
+                  {segment}
+                </span>
+              </div>
             ))}
           </div>
           <div className="flex items-center space-x-1 md:space-x-3 ml-2" />

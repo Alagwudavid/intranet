@@ -229,8 +229,10 @@ export default function Navbar() {
 
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSchoolsOpen, setIsSchoolsOpen] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
+  const schoolsRef = useRef<HTMLDivElement>(null);
 
   // Close dropdowns when clicking outside
   useEffect(() => {
@@ -246,6 +248,12 @@ export default function Navbar() {
         !profileRef.current.contains(event.target as Node)
       ) {
         setIsProfileOpen(false);
+      }
+      if (
+        schoolsRef.current &&
+        !schoolsRef.current.contains(event.target as Node)
+      ) {
+        setIsSchoolsOpen(false);
       }
     };
 
@@ -267,7 +275,7 @@ export default function Navbar() {
                 className="w-7 h-7 rounded object-cover"
               />
             </div>
-            <div className="flex items-center justify-between gap-1">
+            <div className="flex items-center justify-between gap-1 relative">
               <div className="flex flex-col">
                 <h1 className="text-lg font-bold text-foreground w-25 line-clamp-1">
                   Intranet{" "}
@@ -277,18 +285,80 @@ export default function Navbar() {
                       ? "School"
                       : "home"}
                 </h1>
-                {/* <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                  <span className="text-green-500">1,002 online</span>•
-                  <span>210,200 members</span>
-                </div> */}
               </div>
-              <div className="w-10 h-10 rounded-lg hover:bg-muted text-muted-foreground flex items-center justify-center cursor-pointer">
-                {/* <EllipsisVertical /> */}
-                <ExpandIcon className="w-6 h-6" />
-              </div>
-              <div className="w-px h-5 bg-border p-px rounded" />
-              <div className="w-10 h-10 rounded-lg hover:bg-muted text-muted-foreground flex items-center justify-center cursor-pointer">
-                <X className="w-6 h-6" />
+              <div ref={schoolsRef}>
+                <button
+                  onClick={() => setIsSchoolsOpen(!isSchoolsOpen)}
+                  className="w-10 h-10 rounded-lg hover:bg-muted text-muted-foreground flex items-center justify-center cursor-pointer"
+                >
+                  <ExpandIcon className="w-6 h-6" />
+                </button>
+                {isSchoolsOpen && (
+                  <div
+                    className="absolute left-0 mt-2 w-72 bg-background rounded-2xl border shadow-lg overflow-hidden"
+                    style={{ zIndex: 60 }}
+                  >
+                    <div className="p-3">
+                      <div className="flex items-center justify-between mb-3 px-2">
+                        <SearchBar />
+                      </div>
+                      <div className="space-y-1">
+                        <Link
+                          href="/school/course/parlay-pros"
+                          onClick={() => setIsSchoolsOpen(false)}
+                          className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors"
+                        >
+                          <div className="w-10 h-10 bg-muted from-blue-500 to-purple-500 rounded-lg flex items-center justify-center text-white font-bold">
+                            PP
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="font-medium text-sm truncate">Parlay Pros</p>
+                            <p className="text-xs text-muted-foreground truncate">Athletic sports</p>
+                          </div>
+                        </Link>
+                        <Link
+                          href="/school/course/become-the-best-producer-you-can-be"
+                          onClick={() => setIsSchoolsOpen(false)}
+                          className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors"
+                        >
+                          <div className="w-10 h-10 bg-muted from-orange-500 to-pink-500 rounded-lg flex items-center justify-center text-white font-bold">
+                            SA
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="font-medium text-sm truncate">SoniX Academy</p>
+                            <p className="text-xs text-muted-foreground truncate">Music production</p>
+                          </div>
+                        </Link>
+                        <Link
+                          href="/school/course/digital-marketing-mastery"
+                          onClick={() => setIsSchoolsOpen(false)}
+                          className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors"
+                        >
+                          <div className="w-10 h-10 bg-muted from-green-500 to-teal-500 rounded-lg flex items-center justify-center text-white font-bold">
+                            MP
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="font-medium text-sm truncate">Marketing Pro</p>
+                            <p className="text-xs text-muted-foreground truncate">Digital marketing</p>
+                          </div>
+                        </Link>
+                        <Link
+                          href="/school/course/full-stack-web-development"
+                          onClick={() => setIsSchoolsOpen(false)}
+                          className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors"
+                        >
+                          <div className="w-10 h-10 bg-muted from-indigo-500 to-blue-500 rounded-lg flex items-center justify-center text-white font-bold">
+                            CA
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="font-medium text-sm truncate">Code Academy</p>
+                            <p className="text-xs text-muted-foreground truncate">Web development</p>
+                          </div>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -315,38 +385,14 @@ export default function Navbar() {
             </Link>
           </div>
           <div className="flex items-center space-x-1 md:space-x-3 ml-2">
-            {/* Chat */}
+            {/* Settings */}
             {/* <Link
-              href="/chat"
-              className="flex items-center gap-1 relative text-base text-foreground hover:text-muted-foreground transition-colors cursor-pointer"
+              href="/me/setting"
+              className="flex items-center p-2 text-base font-medium bg-muted text-muted-foreground rounded-full hover:bg-muted/90 transition-colors cursor-pointer"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-6 h-6 lg:w-7 lg:h-7"
-                width={24}
-                height={24}
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M8 9h8m-8 4h6m4-9a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-5l-5 3v-3H6a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3z"
-                ></path>
-              </svg>
-              <span className="w-2.5 h-2.5 bg-primary rounded-full absolute top-0 right-0" />
+              <Settings2 className="w-6 h-6" />
             </Link> */}
-            <Link
-              href="/notification"
-              className="flex items-center gap-1 relative p-2 text-foreground hover:bg-muted rounded-full transition-colors cursor-pointer"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24"><path fill="currentColor" d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2zM8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15zm5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12zm7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1"></path></svg>
-              <span className="text-foreground text-xs font-bold">
-                5+
-              </span>
-            </Link>
+            <SearchBar maxWidth="w-40" />
             {/* Profile Dropdown */}
             <div ref={profileRef} className="relative">
               <button

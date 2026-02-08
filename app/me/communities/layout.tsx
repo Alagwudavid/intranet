@@ -14,9 +14,7 @@ export default function CommunitiesLayout({
 }) {
     return (
         <>
-            {/* <Navbar /> */}
-            {/* <Sidebar /> */}
-            <div className="min-h-page bg-muted">
+            <div className="min-h-page bg-background">
                 {children}
             </div>
         </>
